@@ -66,7 +66,7 @@ class Game:
                     self.problem_list.append(
                         Problem(cell_list[0], int(cell_list[1]), cell_list[2:]))
 
-    def play(self, problem_list: List[Problem]):
+    def __play(self, problem_list: List[Problem]):
         print()
         if len(problem_list) == 0:
             print('登録されている問題がありません\n')
