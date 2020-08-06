@@ -147,12 +147,12 @@ class Game:
         print('正解番号を入力してください')
         input_ans_idx = input_int(0, len(input_choice_list) - 1)
         self.problem_list.append(Problem(input_sentence, input_ans_idx, input_choice_list))
-        lines = []
+        line_list = []
         for problem in self.problem_list:
             line = ','.join(problem.tolist())
-            lines.append(line)
+            line_list.append(line)
         with open(PROBLEM_FILEPATH, 'w') as f:
-            f.write('\n'.join(lines))
+            f.write('\n'.join(line_list))
         print()
 
     def delete(self):
@@ -171,12 +171,12 @@ class Game:
                     print('消去する問題番号を入力してください')
                     no = input_int(0, len(self.problem_list) - 1)
                     self.problem_list.pop(no)
-                    lines = []
+                    line_list = []
                     for problem in self.problem_list:
                         line = ','.join(problem.tolist())
-                        lines.append(line)
+                        line_list.append(line)
                     with open(PROBLEM_FILEPATH, 'w') as f:
-                        f.write('\n'.join(lines))
+                        f.write('\n'.join(line_list))
                 else:
                     print('登録されている問題がありません\n')
 
