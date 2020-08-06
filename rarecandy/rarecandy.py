@@ -8,7 +8,7 @@ from typing import List
 PROBLEM_FILEPATH = 'problem.csv'
 
 
-def input_int(min_no, max_no) -> int:
+def input_int(min_no: int, max_no: int) -> int:
     no = min_no - 1
     while no < min_no or max_no < no:
         print('> ', end='')
@@ -164,7 +164,7 @@ def main():
             game.register()
         elif list(FrontMenu)[menu_no] == FrontMenu.DELETE:
             game.delete()
-    print('### See you ###')
+    print('-*-' * 15 + ' See you ' + '-*-' * 15)
 
 
 if __name__ == '__main__':
