@@ -25,9 +25,15 @@ def input_int(min_no: int, max_no: int) -> int:
 class FrontMenu(Enum):
     PLAY_NORMAL = '通常モードでプレイ'
     PLAY_RANDOM = 'ランダムモードでプレイ'
+    DISPLAY = '問題を表示する'
     REGISATER = '問題を登録する'
     DELETE = '問題を削除する'
     EXIT = '終了'
+
+
+class DisplayMenu(Enum):
+    DETAIL = '詳細を見る'
+    EXIT = '閲覧終了'
 
 
 class RegisterMenu(Enum):
@@ -85,6 +91,34 @@ class Game:
         problem_list_copy = self.problem_list.copy()
         random.shuffle(problem_list_copy)
         self.play(problem_list_copy)
+
+    def display(self):
+        print()
+        if len(self.problem_list) == 0:
+            print('登録されている問題がありません\n')
+            return
+        for i, problem in enumerate(self.problem_list):
+            print(f'{i}) {problem.sentence}')
+        print()
+        menu_no = 0
+        while list(DisplayMenu)[menu_no] != DisplayMenu.EXIT:
+            for i, menu in enumerate(DisplayMenu):
+                print(f'{i}) {menu.value}')
+            menu_no = input_int(0, len(DisplayMenu) - 1)
+            print()
+            if list(DisplayMenu)[menu_no] == DisplayMenu.DETAIL:
+                print('詳細を見たい問題の番号を入力してください')
+                no = input_int(0, len(self.problem_list) - 1)
+                print()
+                problem = self.problem_list[no]
+                print(f'問題文) {problem.sentence}')
+                print(f'正解番号) {problem.ans_idx}')
+                for i, choice in enumerate(problem.choice_list):
+                    print(f'選択肢{i}) {choice}')
+                print()
+                for i, problem in enumerate(self.problem_list):
+                    print(f'{i}) {problem.sentence}')
+                print()
 
     def register(self):
         print('\n問題文を入力してください')
@@ -160,6 +194,8 @@ def main():
             game.play_normal()
         elif list(FrontMenu)[menu_no] == FrontMenu.PLAY_RANDOM:
             game.play_random()
+        elif list(FrontMenu)[menu_no] == FrontMenu.DISPLAY:
+            game.display()
         elif list(FrontMenu)[menu_no] == FrontMenu.REGISATER:
             game.register()
         elif list(FrontMenu)[menu_no] == FrontMenu.DELETE:
