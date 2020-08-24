@@ -47,37 +47,37 @@ class DeleteMenu(Enum):
 
 
 class Problem:
-    def __init__(self, sentence: str, ans_idx: int, choice_list: List[str]):
+    def __init__(self, sentence: str, ans_idx: int, choice_lst: List[str]):
         self.sentence = sentence
         self.ans_idx = ans_idx
-        self.choice_list = choice_list
+        self.choice_lst = choice_lst
 
     def tolist(self) -> List[str]:
-        return [self.sentence, str(self.ans_idx)] + self.choice_list
+        return [self.sentence, str(self.ans_idx)] + self.choice_lst
 
 
 class Game:
     def __init__(self):
-        self.problem_list = []
+        self.problem_lst = []
         if os.path.isfile(PROBLEM_FILEPATH):
             with open(PROBLEM_FILEPATH, 'r') as f:
                 for line in f:
-                    cell_list = line.split(',')
-                    self.problem_list.append(
-                        Problem(cell_list[0], int(cell_list[1]), cell_list[2:]))
+                    cell_lst = line.split(',')
+                    self.problem_lst.append(
+                        Problem(cell_lst[0], int(cell_lst[1]), cell_lst[2:]))
 
-    def __play(self, problem_list: List[Problem]):
+    def __play(self, problem_lst: List[Problem]):
         print()
-        if len(problem_list) == 0:
+        if len(problem_lst) == 0:
             print('登録されている問題がありません\n')
             return
-        for i, problem in enumerate(problem_list):
+        for i, problem in enumerate(problem_lst):
             print(f'[問題{i}] {problem.sentence}')
             correct = False
             while not correct:
-                for j, choice in enumerate(problem.choice_list):
+                for j, choice in enumerate(problem.choice_lst):
                     print(f'{j}) {choice}')
-                input_ans = input_int(0, len(problem.choice_list) - 1)
+                input_ans = input_int(0, len(problem.choice_lst) - 1)
                 correct = input_ans == problem.ans_idx
                 if correct:
                     print('O\n')
@@ -85,19 +85,19 @@ class Game:
                     print('X\n')
 
     def play_normal(self):
-        self.play(self.problem_list)
+        self.play(self.problem_lst)
 
     def play_random(self):
-        problem_list_copy = self.problem_list.copy()
-        random.shuffle(problem_list_copy)
-        self.play(problem_list_copy)
+        problem_lst_copy = self.problem_lst.copy()
+        random.shuffle(problem_lst_copy)
+        self.play(problem_lst_copy)
 
     def display(self):
         print()
-        if len(self.problem_list) == 0:
+        if len(self.problem_lst) == 0:
             print('登録されている問題がありません\n')
             return
-        for i, problem in enumerate(self.problem_list):
+        for i, problem in enumerate(self.problem_lst):
             print(f'{i}) {problem.sentence}')
         print()
         menu_no = 0
@@ -108,15 +108,15 @@ class Game:
             print()
             if list(DisplayMenu)[menu_no] == DisplayMenu.DETAIL:
                 print('詳細を見たい問題の番号を入力してください')
-                no = input_int(0, len(self.problem_list) - 1)
+                no = input_int(0, len(self.problem_lst) - 1)
                 print()
-                problem = self.problem_list[no]
+                problem = self.problem_lst[no]
                 print(f'問題文) {problem.sentence}')
                 print(f'正解番号) {problem.ans_idx}')
-                for i, choice in enumerate(problem.choice_list):
+                for i, choice in enumerate(problem.choice_lst):
                     print(f'選択肢{i}) {choice}')
                 print()
-                for i, problem in enumerate(self.problem_list):
+                for i, problem in enumerate(self.problem_lst):
                     print(f'{i}) {problem.sentence}')
                 print()
 
@@ -127,9 +127,9 @@ class Game:
             print('> ', end='')
             input_sentence = input().strip()
             print()
-        input_choice_list = []
+        input_choice_lst = []
         menu_no = 0
-        while list(RegisterMenu)[menu_no] != RegisterMenu.EXIT or len(input_choice_list) == 0:
+        while list(RegisterMenu)[menu_no] != RegisterMenu.EXIT or len(input_choice_lst) == 0:
             for i, menu in enumerate(RegisterMenu):
                 print(f'{i}){menu.value} ', end='')
             print()
@@ -138,21 +138,21 @@ class Game:
             if list(RegisterMenu)[menu_no] == RegisterMenu.REGISTER:
                 input_choice = ''
                 while len(input_choice) == 0:
-                    print(f'選択肢{len(input_choice_list)} > ', end='')
+                    print(f'選択肢{len(input_choice_lst)} > ', end='')
                     input_choice = input().strip()
                     print()
-                input_choice_list.append(input_choice)
-            if len(input_choice_list) == 0:
+                input_choice_lst.append(input_choice)
+            if len(input_choice_lst) == 0:
                 print('最低1つ選択肢を登録してください\n')
         print('正解番号を入力してください')
-        input_ans_idx = input_int(0, len(input_choice_list) - 1)
-        self.problem_list.append(Problem(input_sentence, input_ans_idx, input_choice_list))
-        line_list = []
-        for problem in self.problem_list:
+        input_ans_idx = input_int(0, len(input_choice_lst) - 1)
+        self.problem_lst.append(Problem(input_sentence, input_ans_idx, input_choice_lst))
+        line_lst = []
+        for problem in self.problem_lst:
             line = ','.join(problem.tolist())
-            line_list.append(line)
+            line_lst.append(line)
         with open(PROBLEM_FILEPATH, 'w') as f:
-            f.write('\n'.join(line_list))
+            f.write('\n'.join(line_lst))
         print()
 
     def delete(self):
@@ -165,18 +165,18 @@ class Game:
             menu_no = input_int(0, len(DeleteMenu) - 1)
             print()
             if list(DeleteMenu)[menu_no] == DeleteMenu.DELETE:
-                if len(self.problem_list) > 0:
-                    for i, problem in enumerate(self.problem_list):
+                if len(self.problem_lst) > 0:
+                    for i, problem in enumerate(self.problem_lst):
                         print(f'{i}) {problem.sentence}')
                     print('消去する問題番号を入力してください')
-                    no = input_int(0, len(self.problem_list) - 1)
-                    self.problem_list.pop(no)
-                    line_list = []
-                    for problem in self.problem_list:
+                    no = input_int(0, len(self.problem_lst) - 1)
+                    self.problem_lst.pop(no)
+                    line_lst = []
+                    for problem in self.problem_lst:
                         line = ','.join(problem.tolist())
-                        line_list.append(line)
+                        line_lst.append(line)
                     with open(PROBLEM_FILEPATH, 'w') as f:
-                        f.write('\n'.join(line_list))
+                        f.write('\n'.join(line_lst))
                 else:
                     print('登録されている問題がありません\n')
 

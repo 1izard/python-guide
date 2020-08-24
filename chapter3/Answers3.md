@@ -193,7 +193,7 @@ print("さいしょはグー，じゃんけん > ", end="")
 
 while player == cpu:
     player = int(input())
-    cpu = int(random.random() * 3)
+    cpu = random.randint(0, 2)
 
     print(f"プレイヤー:{player}, CPU:{cpu}")
 
@@ -203,5 +203,4 @@ while player == cpu:
         print("CPUのかち！")
     else:
         print("あいこで > ", end="")
-
 ```

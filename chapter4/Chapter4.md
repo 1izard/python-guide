@@ -2,40 +2,40 @@
 
 # 基本データ構造
 
-この章では，複数の値を保持するために使用される基本的なデータ構造を導入します．  
+この章では，複数のオブジェクトを保持するために使用される基本的なデータ構造を導入します．  
 具体的には以下になります．  
 
-|       名前        |                 説明                 |                  例                   |               特徴                |
-| :---------------: | :----------------------------------: | :-----------------------------------: | :-------------------------------: |
-|       List        |          複数のデータを格納          |              `[1, 2, 3]`              |    ミュータブル(値を変更可能)     |
-|  Tuple (タプル)   |          複数のデータを格納          |              `(1, 2, 3)`              | イミュータブル (値を変更できない) |
-| Dictionary(=辞書) | key, valueのペアで複数のデータを格納 | `{"name": "Flareon", "type": "Fire"}` |           ミュータブル            |
+|       名前       |                 説明                 |                  例                   |               特徴                |
+| :--------------: | :----------------------------------: | :-----------------------------------: | :-------------------------------: |
+|       list       |          複数のデータを格納          |              `[1, 2, 3]`              |    ミュータブル(値を変更可能)     |
+|  tuple (タプル)  |          複数のデータを格納          |              `(1, 2, 3)`              | イミュータブル (値を変更できない) |
+| dictionary(辞書) | key, valueのペアで複数のデータを格納 | `{"name": "Flareon", "type": "Fire"}` |           ミュータブル            |
 
 <br>
 
-# List
+# list
 
-例を見てわかる通り，複数の値を保持するデータ構造です．  
-ほかの言語では配列にあたりますが，PythonのListにはint型でもstr型でもなんでも格納できます．  
+例を見てわかる通り，複数のオブジェクトを保持するデータ構造です．  
+list には int 型でも str 型でもなんでも格納できます．  
 
 ```python
-int_list = [10, 11, 12, 13, 14, 15]
-float_list = [3.1, -6.2, -190.2, 66.7]
-str_list = ["Eevee", "Vaporeon", "Jolteon", "Flareon"]
-bool_list = [True, False, True]
-misc_list = [10, 3.1, "Eevee"]
-empty_list = []
+int_lst = [10, 11, 12, 13, 14, 15]
+float_lst = [3.1, -6.2, -190.2, 66.7]
+str_lst = ["Eevee", "Vaporeon", "Jolteon", "Flareon"]
+bool_lst = [True, False, True]
+misc_lst = [10, 3.1, "Eevee"]
+empty_lst = []
 ```
 
 多次元にもできます．  
 
 ```python
-list_2_3 = [
+lst_2_3 = [
   [10, 11, 12],
   [20, 21, 22]
 ]   # 2 x 3
 
-list_2_2_3 = [
+lst_2_2_3 = [
   [
     [100, 101, 102],
     [110, 111, 112],
@@ -46,7 +46,7 @@ list_2_2_3 = [
   ]
 ]   # 2 x 2 x 3
 
-misc_list = [
+misc_lst = [
   0, 1, 2,
   [10, 11],
   [
@@ -59,29 +59,27 @@ misc_list = [
 
 ## 初期化
 
-Listの初期化にはいろいろな方法があります．  
-後から参照しやすいよう各ケースごとにまとめようとした分ちょっと詰め込みすぎてしまったので，途中で飽きた場合はインデックスの項目に進んでもらってもOKです．  
-わからなくなったり忘れたりしたらここを探してみてください．  
+list の初期化にはいろいろな方法があります．  
 
 ### 要素で初期化
 
-これまでの例のように，`[]`の中に要素を `,`(カンマ) で区切って羅列することで，それらの要素を含んだListオブジェクト(=List型の具体物のこと．int型の値などとは違ってList型の値とは呼べないのでオブジェクトと呼ぶことにしましょう)が作れます．  
-`[]` の中に何も要素を入れない場合は空リストになります．  
+これまでの例のように，`[]`の中に要素を `,`(カンマ) で区切って羅列することで，それらの要素を含んだ list オブジェクトが作れます．  
+`[]` の中に何も要素を入れない場合は空 list になります．  
 
 ```python
-int_list = [10, 11, 12, 13, 14, 15]
-empty_list = []
+int_lst = [10, 11, 12, 13, 14, 15]
+empty_lst = []
 ```
 
-同じ値の複数個の要素で初期化する場合は `*`演算子で要素を繰り返して生成することができます．(`*`演算子は初期化以外のときでもListをコピーするために使用できます)
+同じ値の複数個の要素で初期化する場合は `*`演算子で要素を繰り返して生成することができます．(`*`演算子は初期化以外のときでも list をコピーするために使用できます)
 
 ```python
 ones = [1] * 5    # [1, 1, 1, 1, 1]
 one_two_threes = [1, 2, 3] * 3    # [1, 2, 3, 1, 2, 3, 1, 2, 3]
 ```
 
-(以下はList内包表記，オフセットの項目のあとに読んでください)  
-多次元Listの初期化に `*` を使う場合には注意が必要です．  
+(後回し: 以下は list 内包表記，インデックス，コピー，for文の項目のあとに読んでください)  
+多次元 list の初期化に `*` を使う場合には注意が必要です．  
 たとえば以下のように初期化したとしましょう．  
 
 ```python
@@ -102,8 +100,8 @@ x[0][0] = 1
 print(x)    # [[1, 0], [1, 0], [1, 0]]
 ```
 
-理由は，`*` によるListのコピーが浅いコピー(Shallow Copy)であり，リスト`x[0]`，`x[1]`， `x[2]` がすべて同じ要素を参照しているからです．  
-回避案としては，最も内側のListだけを `*` で生成し，残りをList内包表記で書けば，`*` に準ずる簡潔さでListを作れます．  
+理由は，`*` による list のコピーが Shallow Copy であり，list `x[0]`，`x[1]`， `x[2]` がすべて同じ要素を参照しているからです．  
+回避案としては，最も内側の list だけを `*` で生成し，残りを list 内包表記で書けば，`*` に準ずる簡潔さで list を作れます．  
 
 ```python
 x = [[0] * 2 for _ in range(3)]   # [[0, 0], [0, 0], [0, 0]]
@@ -113,23 +111,55 @@ print(x)    # [[1, 0], [0, 0], [0, 0]]
 
 (ここまで後回し)
 
+(ここから下もまた後回し: list のメソッドと for 文の項目の後で読んでください)  
+
+### 空 list に `append()` して初期化
+
+要素数が多くて書ききれない場合や，要素をロジック的に作れる場合のわかりやすい初期化の方法として，for 文を用いて 空 list に append メソッドで繰り返し要素を追加していく方法があります．  
+ロジックが 1 行で書けるような場合は，後述する list 内包表記でもっと簡潔に書けるのでそちらの方が好まれますが，list内包表記に慣れないうちは簡単なこちらの方法を使うのがいいかもしれません．  
+(Python の for 文と `append()` は非常に遅いです...)
+
+次の例は，0 から 9 までの整数を要素としてもつ list を，for 文，空 list，append メソッドで作る例です．  
+同じことは `list(range(10))` でできます．  
+
+```python
+lst1 = []
+for i in range(10):
+    lst1.append(i)
+
+print(lst1)    # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+次の例は，2 の累乗の 0 乗から 9 乗までを要素としてもつ list を，for 文，空 list，append メソッドで作る例です．  
+list 内包表記では `[2 ** i for i in range(10)]` と書けます．  
+
+```python
+lst1 = []
+for i in range(10):
+    lst1.append(2 ** i)
+
+print(lst1)  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+```
+
+(ここまで後回し)
+
 ### `list()`で初期化
 
-組込み関数 `list()` にIterableオブジェクトを与えることでListを作成します．  
-Iterable(=反復可能=要素を順々に辿ることのできる)オブジェクトとはTupleやDictionaryなどのオブジェクトのことをいいます．  
-ListオブジェクトもIterableオブジェクトです．  
-とりあえず値がいっぱい並んでる感じのは大体そうです．  
+組込み関数 `list()` に Iterable オブジェクト を与えることで list オブジェクト を作ることができます．  
+Iterable(=反復可能=繰り返し処理できる) オブジェクトとは list や tuple， dictionary などのオブジェクトのことをいいます．  
+Iterable という型があるわけではなく，要素を 1 つ 1 つ取り出すなど繰り返し処理が可能なオブジェクトをまとめてそう呼んでいます．  
+何となく，複数の値が並んでいるようなオブジェクトをイメージしていただけたらいいです．  
 
-`list()` を使って，TupleやDictionaryオブジェクトからListオブジェクトを作れます．  
-Tupleはイミュータブル(=値を変更できない)ですが，Listはミュータブル(=値を変更可能)です．  
-また，Dicrionaryを引数として与えると全てのkeyのListが作られます．  
+`list()` を使って，tuple や dictionary のオブジェクトから list オブジェクト を作れます．  
+tuple はイミュータブル(=値を変更できない)ですが，list はミュータブル(=値を変更可能)です．  
+また，Dicrionary を引数として与えると全ての key の list オブジェクト が作られます．  
 
 ```python
 list_from_tuple = list((1, 2, 3))   # [1, 2, 3]
 list_from_dicrionary = list({"name": "Flareon", "type": "Fire"})  # ["name", "type"]
 ```
 
-文字列(=strオブジェクト)もListにできます．  
+文字列 (str オブジェクト) も 1 文字ずつ取り出せるので iterable オブジェクトの 1 つです．  
 
 ```python
 list_from_str = list("一文字ずつ要素になります．")
@@ -138,64 +168,64 @@ list_from_str = list("一文字ずつ要素になります．")
 
 よくいっしょに使われるのは組込み関数 `range()` です．  
 この関数は引数として `start`，`end`，`step` をとり，それらをもとに整数の数列を作ります．  
-その数列を `list()` に渡すと数列のListを作ることができます．  
+その数列を `list()` に渡すと数列のlistを作ることができます．  
 いくつか例を見てましょう．  
 
 ```python
-list_0_10_1 = list(range(0, 10, 1))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-list_5_20_2 = list(range(5, 20, 2))   # [5, 7, 9, 11, 13, 15, 17, 19]
-list_m3_3_1 = list(range(-3, 3, 1))   # [-3, -2, -1, 0, 1, 2]
-list_9_m1_m1 = list(range(9, -1, -1)) # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+lst_0_10_1 = list(range(0, 10, 1))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+lst_5_20_2 = list(range(5, 20, 2))   # [5, 7, 9, 11, 13, 15, 17, 19]
+lst_m3_3_1 = list(range(-3, 3, 1))   # [-3, -2, -1, 0, 1, 2]
+lst_9_m1_m1 = list(range(9, -1, -1)) # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 ```
 
 `start`，`end`，`step` の指定の仕方は文字列のスライスと同じです．  
 区間は `[start, end)` で，**`end` の数は含まれません**．  
 `step` を負数にすると逆順になります．  
-`range(start, -1, -1)` で `start` から0まで１ずつカウントダウンするのはよく使うので覚えておくとよいです．  
+`range(start, -1, -1)` で `start` から0まで１ずつカウントダウンするのはよく使うので，慣用的に覚えておくとよいです．  
 
-`start` を省略すると `start = 0`， `step` を省略すると `step = 1` になります．  
+`end` のみを指定して `start` と `step` を省略すると，`start = 0`，`step = 1` になります．  
 
 ```python
-list_0_10_1 = list(range(0, 10, 1))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-list_x_10_1 = list(range(10, 1))      # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-list_x_10_x = list(range(10))         # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+lst_0_10_1 = list(range(0, 10, 1))   # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+lst_x_10_x = list(range(10))         # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
 (Extra)
 
-### List内包表記 (List Comprehension)
+### list内包表記 (list Comprehension)
 
-Python特有の書き方です．  
+Python 特有の書き方です．  
 書式は `[ expression for item in iterable ]` です．  
-最初はうへーってなりますが，1行でいろんなリストを作れるので便利です．  
-と言いつつ自分は初めてPythonを勉強したときは理解できなくて飛ばしました．  
-なぜこんな書き方ができるのかとかあんまり深いことは考えずに，丸暗記して慣れることをおすすめします．  
+最初はうへーってなりますが，1 行でいろんな list を作れるので便利です (あと普通に for 文と `append()` を使って list を作るより若干速い)．  
+と言いつつ自分は初めてPythonを勉強したときは全然理解できませんでした...
+すんなり書けるとめっちゃ気持ちいいです．  
+ほかの言語の配列やリストを使うのが面倒になります．  
 
 ```python
-list1 = [i for i in range(10)]
+lst1 = [i for i in range(10)]
 # [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-list2 = [2 * i for i in range(10)]
+lst2 = [2 * i for i in range(10)]
 # [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
 
-list3 = [2 ** i for i in range(10)]
+lst3 = [2 ** i for i in range(10)]
 # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 
-list4 = ["No." + str(i) for i in range(3)]
+lst4 = ["No." + str(i) for i in range(3)]
 # ["No.1", "No.2", "No.3"]
 ```
 
 
-多次元Listも作ることができます．  
+多次元listも作ることができます．  
 
 ```python
-list1 = [[j for j in range(3)] for i in range(2)]
+lst1 = [[j for j in range(3)] for i in range(2)]
 # [[0, 1, 2], [0, 1, 2]]
 
-list2 = [[2 * j for j in range(3)] for i in range(2)]
+lst2 = [[2 * j for j in range(3)] for i in range(2)]
 # [[0, 2, 4], [0, 2, 4]]
 
-list3 = [[i + j for j in range(3)] for i in range(3)]
+lst3 = [[i + j for j in range(3)] for i in range(3)]
 # [[0, 1, 2], [1, 2, 3], [2, 3, 4]]
 
 multiples = [[i * j for j in range(1, 9)] for i in range(1, 9)]
@@ -212,11 +242,11 @@ multiples = [[i * j for j in range(1, 9)] for i in range(1, 9)]
 '''
 ```
 
-if文も使えます．  
+if文 も使えます．  
 
 ```python
 evens = [i for i in range(10) if i % 2 == 0]    # [0, 2, 4, 6, 8]
-odds = [i for i in range(10) if i % 2 != 0]       # [1, 3, 5, 7, 9]
+odds = [i for i in range(10) if i % 2 != 0]     # [1, 3, 5, 7, 9]
 ```
 
 三項演算子も使えます．  
@@ -230,163 +260,400 @@ kronecker_delta = [[1 if i == j else 0 for j in range(3)] for i in range(3)]
 '''
 ```
 
-練習問題で複数の入力がある際に使えるList内包表記を紹介します．  
-次のコードでは，3行の標準入力を読み取ってListにし，アンパックしてすぐ使えるようにしています． 
-Pythonでは，使う必要のない一時的な変数を慣習的に `_` と書きます．
+複数の入力がある際に使えるlist内包表記を紹介します．  
+次のコードでは，3 行の標準入力を読み取って list にし，アンパックしてすぐ使えるようにしています．  
+Python では，使う必要のない一時的な変数を慣習的に `_` と書きます．  
 
 ```python
-a, b, c = [input() for _ in range(3)]
+'''
+入力:
+1
+2
+3
+'''
+a, b, c = [input() for _ in range(3)]   # 1, 2, 3
 ```
 
 空白で区切られた3つの数字を標準入力から読み取るコードです．  
 
 ```python
-a, b, c = [str(i) for i input().split()]
+# 入力: 1 2 3
+a, b, c = [int(i) for i in input().split()]  # 1, 2, 3
 ```
 
 (ここまでExtra)
 
 ## インデックス
 
-str型と同様に，Listのインデックスは0番目から始まります．  
-`[n]` の書式で，Listのn番目の要素を取得することができます．  
+str 型と同様に，list のインデックスは 0 番目から始まります．  
+`[n]` の書式で，list の n 番目の要素を取得することができます．  
+存在しないインデックスを指定するとエラーになります．  
 
 ```python
-list1 = [0, 1, 2, 3, 4]
+lst1 = [10, 11, 12, 13, 14]
 
-a = list1[0]    # 0
-b = list1[3]    # 3
-c = list1[-1]    # 5
+a = lst1[0]    # 10
+b = lst1[3]    # 13
+c = lst1[-1]   # 14
+
+d = lst1[10]   # IndexError: list index out of range
 ```
 
 変数と同様に扱えます．  
-右辺でインデックスの要素にアクセスする場合は，Listの中身は変わりません．   
+右辺でインデックスの要素にアクセスする場合は，list の中身は変わりません．   
 
 ```python
-list1 = [0, 1, 2, 3, 4]
+lst1 = [0, 1, 2, 3, 4]
 
-a = 3 * list1[2]    # 6
-b = list1[3] ** 2    # 9
-c = list1[4] // list1[2]    # 2
+a = 3 * lst1[2]            # 6
+b = lst1[3] ** 2           # 9
+c = lst1[4] // lst1[2]    # 2
 
-c += list1[3]    # 5
+c += lst1[3]    # 5
 
-print(list1)    # [0, 1, 2, 3, 4]
+print(lst1)     # [0, 1, 2, 3, 4]
 ```
 
-また，str型と違いListはミュータブル(=値を変更可能)なので，左辺で `<Listオブジェクト>[n]` とすることでn番目に要素を代入することができます．  
+また，str 型と違い list はミュータブル(=値を変更可能)なので，左辺で `<listオブジェクト>[n]` とすることで n 番目に要素を代入することができます．  
 
 ```python
-list1 = [0, 1, 2, 3, 4]
+lst1 = [10, 11, 12, 13, 14]
 
-list1[0] = 10
-list1[3] = 30
-list1[-1] = 40
+lst1[0] = 100
+lst1[3] = 300
+lst1[-1] = 400
 
-print(list1)    # [10, 1, 2, 30, 40]
+print(lst1)    # [100, 11, 12, 300, 400]
 ```
+
+再代入とはラベルを貼り替えることでした．  
+上のコードがしていることを図で表すと次のようになります (アドレスは一例です)．  
+
+![list_assignment1](list_assignment1.png)
+
+![list_assignment2](list_assignment2.png)
+
+この図のように，list はオブジェクトそのものを保持しているわけではなく，オブジェクトの参照を保持しています．  
+つまり，例えば `lst[0] = 100` というのは，list が持っている変数 `lst[0]` に代入する (list が持っているラベル `lst[0]` を `100` に割り当てる) ことと同じです．  
+
+list がオブジェクトの参照を保持していることに注意してください．  
+次のコードは，変数 lst1 に `[10, 11, 12, 13, 14]` を代入してから変数 lst2 に lst1 を代入しています．  
+このとき，lst1 と lst2 は同じ list オブジェクトを指しているので，`lst2[0]` = 100 とすると lst1 も `[100, 11, 12, 13, 14]` になります．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+lst2 = lst1
+lst2[0] = 100
+
+print(lst1)    # [100, 11, 12, 13, 14]
+print(lst2)    # [100, 11, 12, 13, 14]
+```
+
+![list_assignment3](list_assignment3.png)
+
+同じ参照を持った異なる list オブジェクトを作るには，変数の代入ではなく list オブジェクトをコピーする必要があります．  
+list のコピーについては後述します．  
+
 
 多次元の場合も次元の数だけ `[]` を重ねることで，同様にして要素の取得，代入が行えます．  
 
 ```python
-list_2_3 = [[0, 1, 2], [10, 11, 12]]
+lst_2_3 = [[0, 1, 2], [10, 11, 12]]
 
-a = list_2_3[0][0]  # 0
-b = list_2_3[0][2]  # 2
-c = list_2_3[1][2]  # 12
+a = lst_2_3[0][0]  # 0
+b = lst_2_3[0][2]  # 2
+c = lst_2_3[1][2]  # 12
 
-list_2_3[0][0] = 100
-list_2_3[0][2] = 200
-list_2_3[1][2] = 300
+lst_2_3[0][0] = 100
+lst_2_3[0][2] = 200
+lst_2_3[1][2] = 300
 
-print(list_2_3)   # [[100, 1, 200], [10, 11, 300]]
+print(lst_2_3)   # [[100, 1, 200], [10, 11, 300]]
 ```
 
 
 ## len()
 
-str型と同様，Listの長さ=要素数も組込み関数 `len()` で計算することができます．  
+str 型と同様，list の長さ=要素数も組込み関数 `len()` で計算することができます．  
 
 ```python
-int_list = [10, 11, 12, 13, 14, 15]
-int_list_length = len(int_list)   # 6
+int_lst = [10, 11, 12, 13, 14, 15]
+int_lst_length = len(int_lst)   # 6
 
-empty_list = []
-empty_list_length = len(empty_list)   # 0
+empty_lst = []
+empty_lst_length = len(empty_lst)   # 0
 ```
 
 ## スライス
 
-str型と同じように，Listでも `[start:end:step]` で要素の抽出が行えます．  
-文字列の章でスライスに苦労した方はうんざりするかもしれません(自分も最初はまたかよ...って感じでした)．
-しかし，これほど簡単かつ柔軟に配列の要素を扱える言語はほかにありません．  
+str 型と同じように，list でも `[start:end:step]` で要素の抽出が行えます．  
+文字列の章でスライスに苦労した方はうんざりするかもしれません(自分も最初はもういいよ...って感じでした)．  
+しかし，これほど簡単かつ柔軟に配列の要素を扱える言語はほかにないと思います．  
 少しずつ慣れていきましょう．  
 
 ```python
-list1 = list(range(10, 20))    # [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+lst1 = list(range(10, 20))    # [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 
-list0_4 = list1[:4]         # [10, 11, 12, 13]
-list0_m1 = list1[:-1]       # [10, 11, 12, 13, 14, 15, 16, 17, 18]
-list3_7 = list1[3:7]        # [13, 14, 15, 16]
-list2_9_3 = list1[2:9:3]    # [12, 15, 18]
+lst0_4 = lst1[:4]         # [10, 11, 12, 13]
+lst0_m1 = lst1[:-1]       # [10, 11, 12, 13, 14, 15, 16, 17, 18]
+lst3_7 = lst1[3:7]        # [13, 14, 15, 16]
+lst2_9_3 = lst1[2:9:3]    # [12, 15, 18]
 
-even_idx_vals = list1[::2]  # [10, 12, 14, 16, 18]
-odd_idx_vals = list1[1::2]  # [11, 13, 15, 17, 19]
+even_idx_vals = lst1[::2]  # [10, 12, 14, 16, 18]
+odd_idx_vals = lst1[1::2]  # [11, 13, 15, 17, 19]
 ```
 
-`[::-1]` で逆順のListも簡単に作れます．  
+**スライスできない場合は 空 list が返されます**．  
 
 ```python
-list1 = list(range(10, 20)   # [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
-list1_r = list1[::-1]        # [19, 18, 17, 16, 15, 14, 13, 12, 11, 10]
+lst1 = list(range(10, 20))    # [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+lst100_130 = lst1[100:130]    # []
+```
+
+`[::-1]` で逆順の list も簡単に作れます．  
+
+```python
+lst1 = list(range(10, 20)   # [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+lst1_r = lst1[::-1]        # [19, 18, 17, 16, 15, 14, 13, 12, 11, 10]
 ```
 
 `[:]` でコピー(Shallow Copy)になります．   
 
 ```python
-list1 = [0, 1, 2]
-list2 = list1[:]    # [0, 1, 2]
+lst1 = [0, 1, 2]
+lst2 = lst1[:]    # [0, 1, 2]
 
-list1[0] = 100
-print(list1)    # [100, 1, 2]
-print(list2)    # [0, 1, 2]
+lst1[0] = 100
+print(lst1)    # [100, 1, 2]
+print(lst2)    # [0, 1, 2]
 ```
 
-Shallow CopyなのでList内のListの要素は共有されます．    
+
+## コピー
+
+同じ list オブジェクトを，今の内容のままプログラム中の 2 ヶ所で使いたくなったとします．  
+前に見たとおり，ただ別の変数に代入しただけでは，1 ヶ所で list の内容が変更されるともう 1 ヶ所でもその変更が反映されてしまいます．  
+これを回避するには，同じ内容を持った list をもう 1 つ新しく作る，つまり list をコピーする必要があります．  
+
+コピーには，Shallow Copy と Deep Copy の 2 種類があります．  
+Shallow Copy と Deep Copy は，list だけでなくオブジェクトの参照を保持するいろいろなオブジェクトに関わってきますが，ここでは list に焦点を当てて話を進めます．  
+Shallow Copy は，もとの list が持つオブジェクトの参照を維持したままもう 1 つの list を作ることをいいます．  
+Deep Copy は，もとの list と， list が持つオブジェクトの参照先のオブジェクトごとコピーすることをいいます．  
+
+list をコピーする方法は 4 種類ありますが，上の 3 つはすべて同じことをします．  
+
+|                書式                |                    説明                     |     種類     |
+| :--------------------------------: | :-----------------------------------------: | :----------: |
+|      `<list オブジェクト>[:]`      |     スライスの範囲を全要素にしてコピー      | Shallow Copy |
+|    `<list オブジェクト>.copy()`    |  list オブジェクトの copy メソッドでコピー  | Shallow Copy |
+|   `import copy`<br>`copy.copy()`   |   copy モジュールの copy メソッドでコピー   | Shallow Copy |
+| `import copy`<br>`copy.deepcopy()` | copy モジュールの deepcopy メソッドでコピー |  Deep Copy   |
+
+
+まずは 1 次元の list をコピーする例を見ていきましょう．  
+次のコードでは，変数 lst1 に `[10, 11, 12, 13, 14]` を代入したあと，list オブジェクトの copy メソッドを使って 変数 lst2 に lst1 の Shallow Copy を代入しています．  
+`id()` でメモリのアドレスを見てみると，コピーされた list はもとの list の参照を維持していることがわかります．  
+一方，lst1 と lst2 のアドレスは異なっているので，それぞれの変数は別々の list オブジェクトを指していることがわかります．  
+これにより， `lst2[0] = 100` としても lst1 の list オブジェクトは `[10, 11, 12, 13, 14]` のままとなっています．  
 
 ```python
-list3 = [[0, 1, 2], [0, 1, 2], [0, 1, 2]]
-list4 = list3[:]
+lst1 = [10, 11, 12, 13, 14]
+lst2 = lst1.copy()  # Shallo Copy
 
-list3[0][0] = 100
-print(list3)    # [[100, 1, 2], [0, 1, 2], [0, 1, 2]]
-print(list4)    # [[100, 1, 2], [0, 1, 2], [0, 1, 2]]
+print(f"id(lst1)    | {id(lst1)}")      # id(lst1)    | 4440134720
+print(f"id(lst1[0]) | {id(lst1[0])}")   # id(lst1[0]) | 4437912288
+print(f"id(lst1[1]) | {id(lst1[1])}")   # id(lst1[1]) | 4437912320
+print(f"id(lst1[2]) | {id(lst1[2])}")   # id(lst1[2]) | 4437912352
+
+print()
+
+print(f"id(lst2)    | {id(lst2)}")      # id(lst2)    | 4440134336
+print(f"id(lst2[0]) | {id(lst2[0])}")   # id(lst2[0]) | 4437912288
+print(f"id(lst2[1]) | {id(lst2[1])}")   # id(lst2[1]) | 4437912320
+print(f"id(lst2[2]) | {id(lst2[2])}")   # id(lst2[2]) | 4437912352
+
+print()
+
+lst2[0] = 100
+
+print(f"lst1        | {lst1}")          # lst1        | [10, 11, 12]
+print(f"lst2        | {lst2}")          # lst2        | [100, 11, 12]
+
+print()
+
+print(f"id(lst1)    | {id(lst1)}")      # id(lst1)    | 4440134720
+print(f"id(lst1[0]) | {id(lst1[0])}")   # id(lst1[0]) | 4437912288
+print(f"id(lst1[1]) | {id(lst1[1])}")   # id(lst1[1]) | 4437912320
+print(f"id(lst1[2]) | {id(lst1[2])}")   # id(lst1[2]) | 4437912352
+
+print()
+
+print(f"id(lst2)    | {id(lst2)}")      # id(lst2)    | 4440134336
+print(f"id(lst2[0]) | {id(lst2[0])}")   # id(lst2[0]) | 4437915168
+print(f"id(lst2[1]) | {id(lst2[1])}")   # id(lst2[1]) | 4437912320
+print(f"id(lst2[2]) | {id(lst2[2])}")   # id(lst2[2]) | 4437912352
 ```
+
+図にするとこんな感じです．  
+
+![1d_list_copy](1d_list_copy.png)
+
+このように，1 次元 list の場合は Shallow Copy で別々の list が作れます．  
+
+Deep Copy が必要となるのは，多次元 list のコピーが必要なときです．  
+
+次のコードでは，2 * 2 の 多次元 list を変数 lst3 に代入したあと，Shallow Copy して変数 lst4 に代入しています．  
+lst3 と lst4 のアドレスを見てみると，たしかに lst4 はコピーされた新しい list オブジェクトを指しています．  
+しかし，`lst4[0][0]` に 100 を代入したところ，`lst[0][0]` も 100 に変更されてしまっています．  
+これは，Shallow Copy がオブジェクトの参照を維持したままもう 1 つの list を作るからです．  
+
+```python
+lst3 = [[10, 11], [20, 21]]
+lst4 = lst3.copy()
+
+print(f"id(lst3)       | {id(lst3)}")        # id(lst3)       | 4346513792
+print(f"id(lst3[0])    | {id(lst3[0])}")     # id(lst3[0])    | 4345603136
+print(f"id(lst3[1])    | {id(lst3[1])}")     # id(lst3[1])    | 4345602752
+print(f"id(lst3[0][0]) | {id(lst3[0][0])}")  # id(lst3[0][0]) | 4343380704
+print(f"id(lst3[0][1]) | {id(lst3[0][1])}")  # id(lst3[0][1]) | 4343380736
+print(f"id(lst3[1][0]) | {id(lst3[1][0])}")  # id(lst3[1][0]) | 4343381024
+print(f"id(lst3[1][1]) | {id(lst3[1][1])}")  # id(lst3[1][1]) | 4343381056
+
+print()
+
+print(f"id(lst4)       | {id(lst4)}")        # id(lst4)       | 4346513856
+print(f"id(lst4[0])    | {id(lst4[0])}")     # id(lst4[0])    | 4345603136  <- lst3[0] とアドレスが同じ！
+print(f"id(lst4[1])    | {id(lst4[1])}")     # id(lst4[1])    | 4345602752  <- lst3[1] とアドレスが同じ！
+print(f"id(lst4[0][0]) | {id(lst4[0][0])}")  # id(lst4[0][0]) | 4343380704
+print(f"id(lst4[0][1]) | {id(lst4[0][1])}")  # id(lst4[0][1]) | 4343380736
+print(f"id(lst4[1][0]) | {id(lst4[1][0])}")  # id(lst4[1][0]) | 4343381024
+print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4343381056
+
+print()
+
+lst4[0][0] = 100
+
+print(f"lst3           | {lst3}")            # lst3           | [[100, 11], [20, 21]]    <- lst3 も変更されている！
+print(f"lst4           | {lst4}")            # lst4           | [[100, 11], [20, 21]]
+
+print()
+
+print(f"id(lst3)       | {id(lst3)}")        # id(lst3)       | 4346513792
+print(f"id(lst3[0])    | {id(lst3[0])}")     # id(lst3[0])    | 4345603136
+print(f"id(lst3[1])    | {id(lst3[1])}")     # id(lst3[1])    | 4345602752
+print(f"id(lst3[0][0]) | {id(lst3[0][0])}")  # id(lst3[0][0]) | 4343383584
+print(f"id(lst3[0][1]) | {id(lst3[0][1])}")  # id(lst3[0][1]) | 4343380736
+print(f"id(lst3[1][0]) | {id(lst3[1][0])}")  # id(lst3[1][0]) | 4343381024
+print(f"id(lst3[1][1]) | {id(lst3[1][1])}")  # id(lst3[1][1]) | 4343381056
+
+print()
+
+print(f"id(lst4)       | {id(lst4)}")        # id(lst4)       | 4346513856
+print(f"id(lst4[0])    | {id(lst4[0])}")     # id(lst4[0])    | 4345603136
+print(f"id(lst4[1])    | {id(lst4[1])}")     # id(lst4[1])    | 4345602752
+print(f"id(lst4[0][0]) | {id(lst4[0][0])}")  # id(lst4[0][0]) | 4343383584
+print(f"id(lst4[0][1]) | {id(lst4[0][1])}")  # id(lst4[0][1]) | 4343380736
+print(f"id(lst4[1][0]) | {id(lst4[1][0])}")  # id(lst4[1][0]) | 4343381024
+print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4343381056
+```
+
+図はこんな感じです (見やすさを優先し，アドレスの順序を一部無視しています)．  
+中の list オブジェクトへの参照を維持したままコピーされるため，もとの list と コピーされて作られた list は同じ list オブジェクトを使うことになります．  
+その結果，`lst4[0][0] = 100` で `lst3[0][0]` も 100 になってしまったのです．  
+
+![2d_list_shallow_copy](2d_list_shallow_copy.png)
+
+
+これを回避するには，オブジェクトの参照先からまるごとコピーする，すなわち Deep Copy する必要があります．  
+Deep Copy する場合は，copy モジュールの `deepcopy`メソッド を使います．  
+図からもわかるように，内側の list オブジェクトもコピーされているので，`lst4[0][0] = 100` としても lst3 が指す list オブジェクトは何も変更されません．  
+(この図も見やすさ重視で一部アドレスの順序を無視しています)  
+
+```python
+import copy
+
+
+lst3 = [[10, 11], [20, 21]]
+lst4 = copy.deepcopy(lst3)
+
+print(f"id(lst3)       | {id(lst3)}")        # id(lst3)       | 4451815040
+print(f"id(lst3[0])    | {id(lst3[0])}")     # id(lst3[0])    | 4451760832
+print(f"id(lst3[1])    | {id(lst3[1])}")     # id(lst3[1])    | 4451820736
+print(f"id(lst3[0][0]) | {id(lst3[0][0])}")  # id(lst3[0][0]) | 4448627424
+print(f"id(lst3[0][1]) | {id(lst3[0][1])}")  # id(lst3[0][1]) | 4448627456
+print(f"id(lst3[1][0]) | {id(lst3[1][0])}")  # id(lst3[1][0]) | 4448627744
+print(f"id(lst3[1][1]) | {id(lst3[1][1])}")  # id(lst3[1][1]) | 4448627776
+
+print()
+
+print(f"id(lst4)       | {id(lst4)}")        # id(lst4)       | 4451892992
+print(f"id(lst4[0])    | {id(lst4[0])}")     # id(lst4[0])    | 4451892736  <- lst3[0] とアドレスが違う！
+print(f"id(lst4[1])    | {id(lst4[1])}")     # id(lst4[1])    | 4451905920  <- lst3[1] とアドレスが違う！
+print(f"id(lst4[0][0]) | {id(lst4[0][0])}")  # id(lst4[0][0]) | 4448627424
+print(f"id(lst4[0][1]) | {id(lst4[0][1])}")  # id(lst4[0][1]) | 4448627456
+print(f"id(lst4[1][0]) | {id(lst4[1][0])}")  # id(lst4[1][0]) | 4448627744
+print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4448627776
+
+print()
+
+lst4[0][0] = 100
+
+print(f"lst3           | {lst3}")            # lst3           | [[10, 11], [20, 21]]    <- 変更されてない！
+print(f"lst4           | {lst4}")            # lst4           | [[100, 11], [20, 21]]
+
+print()
+
+print(f"id(lst3)       | {id(lst3)}")        # id(lst3)       | 4451815040
+print(f"id(lst3[0])    | {id(lst3[0])}")     # id(lst3[0])    | 4451760832
+print(f"id(lst3[1])    | {id(lst3[1])}")     # id(lst3[1])    | 4451820736
+print(f"id(lst3[0][0]) | {id(lst3[0][0])}")  # id(lst3[0][0]) | 4448627424
+print(f"id(lst3[0][1]) | {id(lst3[0][1])}")  # id(lst3[0][1]) | 4448627456
+print(f"id(lst3[1][0]) | {id(lst3[1][0])}")  # id(lst3[1][0]) | 4448627744
+print(f"id(lst3[1][1]) | {id(lst3[1][1])}")  # id(lst3[1][1]) | 4448627776
+
+print()
+
+print(f"id(lst4)       | {id(lst4)}")        # id(lst4)       | 4451892992
+print(f"id(lst4[0])    | {id(lst4[0])}")     # id(lst4[0])    | 4451892736
+print(f"id(lst4[1])    | {id(lst4[1])}")     # id(lst4[1])    | 4451905920
+print(f"id(lst4[0][0]) | {id(lst4[0][0])}")  # id(lst4[0][0]) | 4448630304
+print(f"id(lst4[0][1]) | {id(lst4[0][1])}")  # id(lst4[0][1]) | 4448627456
+print(f"id(lst4[1][0]) | {id(lst4[1][0])}")  # id(lst4[1][0]) | 4448627744
+print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4448627776
+```
+
+![2d_list_deep_copy1](2d_list_deep_copy1.png)
+
+![2d_list_deep_copy2](2d_list_deep_copy2.png)
+
+このように，多次元の list をはじめ オブジェクトを保持するオブジェクトのコピーには Deep Copy を使う場面があるということを覚えておいてください．  
+
 
 ## アンパック (Unpack)
 
-ListやTupleは，左辺に変数を複数置くことでListを分解して要素を一度に代入することができます．  
+list や tuple は，左辺に変数を複数置くことで list を分解して要素を一度に代入することができます．  
 
 ```python
-list1 = [10, 11, 12]
+lst1 = [10, 11, 12]
 
-a, b, c = list1
+a, b, c = lst1
 print(a, b, c)    # 10 11 12
 ```
 
-Listを変数と部分Listに分割したい場合は `*` を使います．
-個別に変数化したいものを並べ，`*` をつけた変数を1つ置くことで，残りを `*` のついた変数にListとしてまとめることができます．  
+list を変数と部分 list に分割したい場合は `*` を使います．  
+個別に変数化したいものを並べ，`*` をつけた変数を1つ置くことで，残りを `*` のついた変数に list としてまとめることができます．  
 
 ```python
-list1 = [10, 11, 12, 13, 14]
-a, b, *c = list1
+lst1 = [10, 11, 12, 13, 14]
+a, b, *c = lst1
 
 print(a)    # 10
 print(b)    # 11
 print(c)    # [12, 13, 14]
 
 
-x, *y, z = list1
+x, *y, z = lst1
 
 print(x)    # 10
 print(y)    # [11, 12, 13]
@@ -396,137 +663,108 @@ print(z)    # 14
 スライスを使うとこんな感じです．   
 
 ```python
-list1 = [10, 11, 12, 13, 14]
-a, b = list1[:2]
-c = list1[2:]
+lst1 = [10, 11, 12, 13, 14]
+a, b = lst1[:2]
+c = lst1[2:]
 ```
 
-Tupleの項でも見ますが，次のようにも書けます．   
+tuple の項で説明しますが，次のようにも書けます．   
 
 ```python
-list1 = [10, 11, 12, 13, 14]
-a, b, c = list1[0], list[1], list[2:]
+lst1 = [10, 11, 12, 13, 14]
+a, b, c = lst1[0], lst[1], lst[2:]
 ```
 
 
 ## 加算，乗算
 
-Listには加算と乗算の演算が用意されています．  
+list には加算と乗算の演算が用意されています．  
 
 |     演算子      |                       説明                       |
 | :-------------: | :----------------------------------------------: |
-| `list1 + list2` | オペランドの **Listどうし** を連結したListを作る |
-| `list1 * int1`  |    `list1` を `int1` だけコピーしたListを作る    |
+| `list1 + list2` | オペランドの **listどうし** を連結したlistを作る |
+| `list1 * int1`  |    `list1` を `int1` だけコピーしたlistを作る    |
 
-加算はListどうしのみでできます．  
+加算は list どうしのみでできます．  
 
 ```python
-list1 = [0, 1, 2, 3, 4]
-list2 = [10, 11, 12]
+lst1 = [0, 1, 2, 3, 4]
+lst2 = [10, 11, 12]
 
-list3 = list1 + list2    # [0, 1, 2, 3, 4, 10, 11, 12]
+lst3 = lst1 + lst2    # [0, 1, 2, 3, 4, 10, 11, 12]
 
 
-list4 = [0, 1, 2, 3, 4]
+lst4 = [0, 1, 2, 3, 4]
 
-list7 = list1 + list2 + list4
+lst7 = lst1 + lst2 + lst4
 # [0, 1, 2, 3, 4, 10, 11, 12, 100, 101, 102, 103]
 
 
-list7 += [1000]
+lst7 += [1000]
 # [0, 1, 2, 3, 4, 10, 11, 12, 100, 101, 102, 103, 1000]
 ```
 
-乗算は `list1 * int1` の形で，`list1` を `int1` だけコピーしたListを作ります．   
+乗算は `list1 * int1` の形で，`list1` を `int1` だけコピーした list を作ります．   
 
 ```python
-list1 = [0, 1, 2] * 3    # [0, 1, 2, 0, 1, 2, 0, 1, 2]
+lst1 = [0, 1, 2] * 3    # [0, 1, 2, 0, 1, 2, 0, 1, 2]
 ```
 
-これは次のことと同じです．  
-
-```python
-list1 = [0, 1, 2]
-list2 = [list0, list0, list0]
-```
-
-(Extra)
-
-しかし，次のコードとは異なります．  
-
-```python
-list3 = [[0, 1, 2], [0, 1, 2], [0, 1, 2]]
-```
-
-違いは，上のコードは共通のListオブジェクト(`list0`)を要素としてもっているのに対して，下は独立したListオブジェクトを要素としていることです．  
-この違いは，例えば次のように影響します．  
-
-```python
-list2[0] = 100
-print(list2)
-
-list3[0] = 100
-print(list3)
-```
-
-(ここまでExtra)
 
 ## in
 
-あるオブジェクト x が List に含まれるかどうかは `x in <listオブジェクト>` で確かめられます．  
+あるオブジェクト x が list に含まれるかどうかは `x in <listオブジェクト>` で確かめられます．  
 
 ```python
-list1 = [10, 11, 12, 13, 14]
+lst1 = [10, 11, 12, 13, 14]
 
 x1 = 10
-if x1 in list1:
+if x1 in lst1:
     print("Yes")
 else:
     print("No")
 # Yes
 
 x2 = 20
-if x2 in list1:
-    print("Yes)
+if x2 in lst1:
+    print("Yes")
 else:
     print("No")
 # No
 ```
 
 
-## List のメソッド
+## list のメソッド
 
-List の代表的なメソッドを紹介します．  
+list の代表的なメソッドを紹介します．  
 
-|            メソッド             |                        説明                         |
-| :-----------------------------: | :-------------------------------------------------: |
-|           `append(x)`           |             `x` をListの末尾に追加する              |
-|         `insert(i, x)`          |          インデックス`i`に値`x`を挿入する           |
-|           `remove(x)`           | `x`に等しい要素でインデックスが最小のものを除去する |
-|             `pop()`             |           Listの末尾の要素を除去して返す            |
-|           `index(x)`            |     `x` に等しい要素で最小のインデックスを返す      |
-|           `count(x)`            |            引数と同じ値の要素の数を返す             |
-| `sort(key=None, reverse=False)` |          要素を **in-place** でソートする           |
+|            メソッド             |                         説明                         |
+| :-----------------------------: | :--------------------------------------------------: |
+|           `append(x)`           |             `x` を list の末尾に追加する             |
+|         `insert(i, x)`          |         インデックス `i` に値 `x` を挿入する         |
+|           `remove(x)`           | `x` に等しい要素でインデックスが最小のものを除去する |
+|             `pop()`             |           list の末尾の要素を除去して返す            |
+|           `index(x)`            |      `x` に等しい要素で最小のインデックスを返す      |
+|           `count(x)`            |             引数と同じ値の要素の数を返す             |
+| `sort(key=None, reverse=False)` |           要素を **in-place** でソートする           |
 
-`copy`モジュール
-|`deepcopy()`|引数のListをDeep Copyする|
 
-`append()` は引数のオブジェクトをListの末尾に追加します．  
+`append()` は引数のオブジェクトを list の末尾に追加します．  
 
 ```python
-list1 = []
-list1.append(10)    # [10]
-list1.append(11)    # [10, 11]
-list1.append(12)    # [10, 11, 12]
+lst1 = []
+lst1.append(10)    # [10]
+lst1.append(11)    # [10, 11]
+lst1.append(12)    # [10, 11, 12]
 ```
 
 `index(x)` で，`x` に等しい要素のインデックスを返します．  
 複数ある場合は最小のインデックスになります．  
 
 ```python
-list1 = [10, 11, 11, 10, 11, 10]
+lst1 = [10, 11, 11, 10, 11, 10]
 
-idx11 = list1.index(11)    # 1
+idx11 = lst1.index(11)    # 1
 ```
 
 `x` に等しい要素がない場合は ValueError になります．  
@@ -535,32 +773,32 @@ idx11 = list1.index(11)    # 1
 ```python
 lsit1 = [10, 11, 11, 10, 11, 10]
 
-cnt12 = list1.count(12)        # 0
+cnt12 = lst1.count(12)        # 0
 if cnt12 > 0:
-    idx12 = list1.index(12)
+    idx12 = lst1.index(12)
 else:
     idx12 = -1
 
 print(idx12)    # -1
 
 
-cnt10 = list1.count(10)    # 3
+cnt10 = lst1.count(10)    # 3
 if cnt10 > 0:
-    idx10 = list1.index(10)
+    idx10 = lst1.index(10)
 else:
     idx10 = -1
 
 print(idx10)    # 0
 ```
 
-(Extra)
+(Extra)  
 あるいは `try-except` で囲って例外処理をします．  
 
 ```python
-list1 = [10, 14, 11, 10,  12, 13]
+lst1 = [10, 14, 11, 10,  12, 13]
 
 try:
-    idx12 = list1.index(12)    # ValueError
+    idx12 = lst1.index(12)    # ValueError
 except ValueError:
     idx12 = -1
 
@@ -568,107 +806,87 @@ print(idx12)    # -1
 ```
 (ここまでExtra)
 
-`sort()` でListの要素を昇順にできます．   
+`sort()` でlistの要素を昇順にできます．   
 
 ```python
-list1 = [10, 14, 11, 10, 12, 13]
-list1.sort()
-print(list1)    # [10, 10, 11, 12, 13, 14]
+lst1 = [10, 14, 11, 10, 12, 13]
+lst1.sort()
+print(lst1)    # [10, 10, 11, 12, 13, 14]
 ```
 
 `sort(reverse=True)` とすれば降順でソートできます．  
 
 ```python
-list1 = [10, 14, 11, 10, 12, 13]
-list1.sort(reverse=True)
-print(list1)    # [14, 13, 12, 11, 10, 10]
+lst1 = [10, 14, 11, 10, 12, 13]
+lst1.sort(reverse=True)
+print(lst1)    # [14, 13, 12, 11, 10, 10]
 ```
 
-`sort()` は **in-place(=その場で)なので，もとのListが変化する** ことに気を付けましょう．  
-もとのListを壊したくない場合は，組込み関数 `sorted()` を使います．  
+`sort()` は **in-place(=その場で)なので，もとの list が変化する** ことに気を付けましょう．  
+もとの list を壊したくない場合は，組込み関数 `sorted()` を使います．  
 
 ```python
-list1 = [10, 14, 11, 10,  12, 13]
+lst1 = [10, 14, 11, 10,  12, 13]
 
-list2 = sorted(list1)
+lst2 = sorted(lst1)
 
-print(list1)    # [10, 14, 11, 10, 12, 13]
-print(list2)    # [10, 10, 11, 12, 13, 14]
+print(lst1)    # [10, 14, 11, 10, 12, 13]
+print(lst2)    # [10, 10, 11, 12, 13, 14]
 ```
 
-`sort()` に `key` を渡すといろんな仕方でソートできて楽しいのですが，書くことが多くて煩雑になるので `sort()` だけの章か項目でも作ろうと思ってます．   
+`sort()` に `key` を渡すといろんな仕方でソートできて楽しいのですが，書くことが多くて煩雑になるのでまた別のところで説明しようと思います．  
 
 
 (Extra)  
-2次元以上の List を，全く別の List としてコピー(Deep Copy)するには `copy`モジュールの `deepcopy()` を使います．  
-
-```python
-import copy
-
-list1 = [[0, 1, 2], [0, 1, 2]]
-
-shallow_copied_list = list1[:]
-deep_copied_list = copy.deepcopy(list1)
-
-deep_copied_list[0][0] = 100
-print(deep_copied_list)    # [[100, 1, 2], [0, 1, 2]]
-print(list1)                      # [[0, 1, 2], [0, 1, 2]]
-
-shallow_copied_list[0][0] = 100
-print(shallow_copied_list)    # [[100, 1, 2], [0, 1, 2]]
-print(list1)                          # [[100, 1, 2], [0, 2, 2]]
-``` 
-
-
-あと，以下は一応表には載せたんですがあんま使ったことないのメソッドになります．  
+以下は一応表には載せたんですがあんま使わないメソッドになります．  
 
 `insert(i, x)` で，`x` を `i`番目に挿入します．   
 
 ```python
-list1 = [10, 11, 12]
-list2 = list1.insert(1, 100)
+lst1 = [10, 11, 12]
+lst2 = lst1.insert(1, 100)
 
-print(list1)    # [10, 100, 11, 12]
-print(list2)
+print(lst1)    # [10, 100, 11, 12]
+print(lst2)
 ```
 
-`remove(x)` で `x` をListから除去します．  
+`remove(x)` で `x` をlistから除去します．  
 同じ値の要素が複数ある場合は，インデックスが最小のものを除去します．  
 
 ```python
-list1 = [10, 11, 11, 10, 11, 10]
+lst1 = [10, 11, 11, 10, 11, 10]
 
-list1.remove(11)    # [10, 11, 10, 11, 10]
+lst1.remove(11)    # [10, 11, 10, 11, 10]
 ```
 
-`append()` と `pop()` を使ってListをスタックとして扱えます．  
+`append()` と `pop()` を使ってlist をスタックとして扱えます．  
 
 ```python
-list1 = [10, 11, 12]
+lst1 = [10, 11, 12]
 
-list1.append(13)
-list1.append(14)
+lst1.append(13)
+lst1.append(14)
 
-a = list1.pop()    # 14
-b = list1.pop()    # 13
-c = list1.pop()    # 12
+a = lst1.pop()    # 14
+b = lst1.pop()    # 13
+c = lst1.pop()    # 12
 
-print(list1)    # [10, 11, 12]
+print(lst1)    # [10, 11, 12]
 ```
 (ここまでExtra)
 
 
-# Tuple (タプル)
+# tuple (タプル)
 
-Listがミュータブルだったのに対し，Tupleはイミュータブルです．  
-ListとTupleは非常によく似ているので，`Tuple = 要素を変更できないList` と思ってもらっていいです．  
+list がミュータブルだったのに対し，tuple はイミュータブルです．  
+list と tupleは非常によく似ているので，`tuple = 要素を変更できない list` と思ってもらって OK です．  
 あんま使わないんでそれさえ覚えてもらえればいいかと．  
 
-下の例は，Tupleに代入しようしてエラーになるコードです．  
+下の例は，tuple に代入しようしてエラーになるコードです．  
 
 ```python
-list1 = [10, 11, 12, 13, 14]
-list1[2] = 100    # [10, 11, 100, 13, 14]
+lst1 = [10, 11, 12, 13, 14]
+lst1[2] = 100    # [10, 11, 100, 13, 14]
 
 tpl1 = (10, 11, 12, 13, 14)
 tpl1[2] = 100
@@ -679,8 +897,8 @@ tpl1[2] = 100
 
 ### 要素で初期化
 
-`()` の中に `,`(カンマ)区切りで要素を並べてTupleを作ることができます．  
-空タプルは `(, )` で定義します．  
+`()` の中に `,`(カンマ)区切りで要素を並べて tuple を作ることができます．  
+空タプルは `()` で定義します．  
 
 ```python
 tpl1 = (10, 11, 12, 13, 14)
@@ -688,13 +906,13 @@ tpl2 = (10.9, 11.3, 12.4, 13.0, 14.4)
 tpl3 = ("zero", "one", "two", "three", "four")
 
 misc_tpl = (1, "one", [100, 200, 300])
-empty_tpl = (, )
+empty_tpl = ()
 ```
 
-一応 `()` がなくてもOKですが，Tupleとして扱ってほしい場合は `()` をつける方がわかりやすくていいです．  
+一応 `()` がなくても OK ですが，tuple として扱ってほしい場合は `()` をつける方がわかりやすくていいです．  
 
 ```python
-tpl1 = 10, 11, 12, 13, 14
+tpl1 = 10, 11, 12, 13, 14   # ちょっとわかりにくいかも
 ```
 
 多次元にもできます．   
@@ -716,7 +934,7 @@ tpl_2_2_3 = (
   )
 )   # 2 x 2 x 3
 
-tpl_list = (
+misc_tpl= (
   0, 1, 2,
   (10, 11),
   (
@@ -728,63 +946,53 @@ tpl_list = (
 
 ### `tuple()` で初期化
 
-Listと同様，組込み関数 `tuple()` にiterableオブジェクトを渡すことでTupleを作ることができます．  
-Listの値を渡したいが値を変えられたくない場合は，Listを `tuple()` でTuple化します．  
+list と同様，組込み関数 `tuple()` に iterable オブジェクトを渡すことで tuple を作ることができます．  
+list の値を渡したいが値を変えられたくない場合は，list を `tuple()` で tuple 化します．  
 
 ```python
-tpl_from_list = tuple([1, 2, 3])   # (1, 2, 3)
+tpl_from_lst = tuple([1, 2, 3])   # (1, 2, 3)
 tpl_from_dicrionary = list({"name": "Flareon", "type": "Fire"})  # ("name", "type")
 ```
 
 (Extra)
-### Tuple内包表記
+### tuple 内包表記 ?
 
-List内包表記はあるんですが，**Tuple内包表記はありません**．  
+list 内包表記はあるんですが，**tuple 内包表記はありません**．  
 でも `(expression for item in iterable)` という書式は存在します．  
 見た目的に勘違いしやすい(自分は勘違いしてた)のですが，**`(expression for item in iterable)` は Generator(ジェネレータ)内包表記** です．  
-Generatorは後の章で説明できたらいいんですが，イテレーション機能をもつオブジェクト(generatorオブジェクト)を提供する関数です．  
-次に示すのは，2の累乗を0乗から9乗までイテレートするgeneratorオブジェクトを作るジェネレータになります．  
+ジェネレータは後の章で説明できたらいいんですが，イテレート可能，つまり iterable オブジェクトの 1 つです．  
+しかし，generator オブジェクトは 1 回しかイテレートできません．  
+
+次のジェネレータ内包表記で作られるのは，0 から 9 までの整数を 0 から順に 1 つずつ生成する generator オブジェクトです．  
 
 ```python
-def generator1():
-    i = 0
-    while i < 10:
-        yield 2 ** i
-        i += 1
+g = (i for i in range(10))
 ```
 
-このジェネレータは次のジェネレータ内包表記と同じ動作をします．  
+generator オブジェクトは iterable オブジェクトの 1 つなので，`tuple()` を使って tuple にできます．  
+次の例では，同じ generator オブジェクトを使って 2 つの tuple を作ろうとしています．  
+`tpl1` は思った通りに作れましたが，generator オブジェクトがイテレートできるのは 1 回きりなので `tpl2` は空になっています．  
 
 ```python
-(2 ** i for i in range(10))
+g = (i for i in range(10))
+
+tpl1 = tuple(g)
+print(tpl1)     # (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+tpl2 = tuple(g)
+print(tpl2)     # ()
 ```
 
-iterableオブジェクトがイテレートできるのはこういったジェネレータがオブジェクト(のクラスの `__iter__` と `__next__`)に実装されているからです．  
-逆に言えば，オブジェクト(のクラスの `__iter__` と `__next__`)にジェネレータを実装するとiterableオブジェクトになります．  
-ワクワクしてきたところですが，一旦この話は置いておきましょう．  
-
-ジェネレータはgeneratorオブジェクトを返します．  
-generatorオブジェクトはiterableなので，`tuple()` とジェネレータ内包表記を用いて次のようにTupleが作れます．  
-
-```python
-tpl = tuple((2 ** i for i in range(10))
-# (1, 2, 4, 8, 16, 32, 64, 128, 256, 512)
-```
-
-上のジェネレータからも作ることができます．  
-
-```python
-gen1 = generator1()
-
-tpl = tuple(gen1)    # (1, 2, 4, 8, 16, 32, 64, 128, 256, 512)
-```
+list や tuple が複数の値を持ち，持っている値をイテレートするのに対し，ジェネレータは次の値が必要になったとき動的に値を生成します．  
+`i for i in range(10)` という 0 から 9 までの整数を生成するロジックだけを保持しておき，必要になったときにそのロジックに従って値を生成するといったイメージですかね．  
+そのため，メモリに乗り切らない大量のデータを処理するときや遅延評価が必要なときに使用されます．  
 
 (ここまでExtra)
 
 
 ## アンパック
 
-Listと同様，Tupleもアンパックできます．  
+listと同様，tupleもアンパックできます．  
 
 ```python
 tpl = (10, 11, 12)
@@ -795,7 +1003,7 @@ print(b)    # 11
 print(c)    # 12
 ```
 
-Tupleの定義とアンパックを使用すると，複数の変数に一度に値を代入することができます．  
+tupleの定義とアンパックを使用すると，複数の変数に一度に値を代入することができます．  
 
 ```python
 a, b, c = 10, 11, 12
@@ -849,44 +1057,44 @@ empty_tpl_length = len(empty_tpl)   # 0
 ```
 
 
-# Dictionary (辞書)
+# dictionary (辞書)
 
-Pythonには，keyとvalueのペアを複数保持するデータ構造として Dictionary (辞書) があります．  
+Pythonには，keyとvalueのペアを複数保持するデータ構造として dictionary (辞書) があります．  
 同様のデータ構造は，ほかの言語では Map という名称が多いです．  
 見た目的には以下のようになります．  
 key には，一意であればどんなオブジェクトでも指定できます(正確には hash値 が計算可能なオブジェクト)．  
 
 ```python
-dict1 = {
+dct1 = {
     1: "one",
     2: "two",
     3: "three"
 }
 
-dict2 = {
+dct2 = {
     "one": 1,
     "two": 2,
     "three": 3
 }
 
-dict3 = {
+dct3 = {
   "evens": [0, 2, 4, 6, 8],
   "odds": [1, 3, 5, 7, 9]
 }
 
-dict4 = {
+dct4 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
-empty_dict = {}
+empty_dct = {}
 ```
 
-Dictionary も多次元にできます．  
+dictionary も多次元にできます．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": {
         "number": 134,
         "type": "Water"
@@ -904,14 +1112,14 @@ dict1 = {
 
 ## 初期化
 
-Dictionaryも複数の初期化方法を持っています．  
+dictionaryも複数の初期化方法を持っています．  
 
 ### 要素で初期化
 
 先ほどの例にもあったように，`{key: value, key: value, ... }` の書式で値を定義します．  
 
 ```python
-dict1 = {
+dct1 = {
     "name": "Flareon",
     "type": "Fire"
 }
@@ -919,15 +1127,15 @@ dict1 = {
 
 ### `dict()` で初期化
 
-組込み関数 `dict()` を使用してDictionaryを作ります．  
-次の例は，引数としてTupleのListを渡しています．  
+組込み関数 `dict()` を使用してdictionaryを作ります．  
+次の例は，引数としてtupleのlistを渡しています．  
 
 ```python
-dict1 = dict([("name", "Flareon"), ("type", "Fire")])
+dct1 = dict([("name", "Flareon"), ("type", "Fire")])
 
-print(dict1)
+print(dct1)
 '''
-dict1 = {
+{
     "name": "Flareon",
     "type": "Fire"
 }
@@ -938,11 +1146,11 @@ dict1 = {
 キーボード引数については関数の章で紹介します．  
 
 ```python
-dict1 = dict(name="Flareon", type="Fire")
+dct1 = dict(name="Flareon", type="Fire")
 
-print(dict1)
+print(dct1)
 '''
-dict1 = {
+{
     "name": "Flareon",
     "type": "Fire"
 }
@@ -951,17 +1159,17 @@ dict1 = {
 
 (Extra)
 
-### Dictionary内包表記
+### dictionary内包表記
 
-List, Generator に並んで Dictionary にも内包表記があります．  
+list, Generator に並んで dictionary にも内包表記があります．  
 書式は `{ key: value for items in iterable }` です．
 key と value のペアがある分ちょっと複雑です．  
 
 ```python
-dict1 = {i: i * i for i in range(10)}
+dct1 = {i: i * i for i in range(10)}
 # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 
-dict2 = {s: len(s) for s in ("Eevee", "Vapareon", "Jolteon", "Flareon")}
+dct2 = {s: len(s) for s in ("Eevee", "Vapareon", "Jolteon", "Flareon")}
 '''
 {
     "Eevee": 5,
@@ -971,7 +1179,7 @@ dict2 = {s: len(s) for s in ("Eevee", "Vapareon", "Jolteon", "Flareon")}
 }
 '''
 
-dict3 = {k: v for k, v in (("name", "Flareon"), ("number", 136), ("type", "Fire"))}
+dct3 = {k: v for k, v in (("name", "Flareon"), ("number", 136), ("type", "Fire"))}
 '''
 {
     "name": "Flareon",
@@ -988,166 +1196,223 @@ dict3 = {k: v for k, v in (("name", "Flareon"), ("number", 136), ("type", "Fire"
 
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
-a = dict1["Vapareon"]   # Water
-b = dict2["Espeon"]     # KeyError: 'Espeon'
+a = dct1["Vapareon"]   # Water
+b = dct1["Espeon"]     # KeyError: 'Espeon'
+
+
+dct2 = {
+    "Vapareon": {
+        "number": 134,
+        "type": "Water"
+    },
+    "Jolteon": {
+        "number": 135,
+        "type": "Electric"
+    },
+    "Flareon": {
+        "number": 136,
+        "type": "Fire"
+    }
+}
+
+c = dct2["Vapareon"]["number"]   # 134
+d = dct2["Vapareon"]["weight"]   # KeyError: 'weight'
 ```
 
 また，左辺で `<dictオブジェクト>[key]` を使うことで，key に対応した value を代入できます．  
 存在しない key を指定した場合は，key と value のペアが新しく追加されます．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
-dict1["Jolteon"] = "でんき"
-print(dict1)
+dct1["Jolteon"] = "でんき"   # key を指定して値を更新
+dct1["Espeon"] = "エスパー"  # 新しく key と value を追加
+print(dct1)
 '''
-dict1 = {
-    "Vapareon": "Water",
-    "Jolteon": "でんき",
-    "Flareon": "Fire"
-}
-'''
-
-dict1["Espeon"] = "エスパー"
-print(dict1)
-'''
-dict1 = {
+{
     "Vapareon": "Water",
     "Jolteon": "でんき",
     "Flareon": "Fire",
     "Espeon": "エスパー"
 }
 '''
+
+
+dct2 = {
+    "Vapareon": {
+        "number": 134,
+        "type": "Water"
+    },
+    "Jolteon": {
+        "number": 135,
+        "type": "Electric"
+    },
+    "Flareon": {
+        "number": 136,
+        "type": "Fire"
+    }
+}
+
+dct2["Vapareon"]["type"] = "みず"
+dct2["Vapareon"]["weight"] = 29.0
+dct2["Espeon"] = {
+    "number": 196,
+    "type": "エスパー"
+}
+
+print(dct2)
+'''
+{
+    "Vapareon": {
+        "number": 134,
+        "type": "みず",
+        "weight": 29.0
+    },
+    "Jolteon": {
+        "number": 135,
+        "type": "Electric"
+    },
+    "Flareon": {
+        "number": 136,
+        "type": "Fire"
+    },
+    "Espeon": {
+        "number": 196,
+        "type": "エスパー"
+    }
+}
+'''
 ```
 
-ちなみに Dictionary では `[n]` とすると n が key として解釈されるので，List や Tuple のようにインデックスで値を取得することはできません．  
+ちなみに dictionary では `[n]` とすると n が key として解釈されるので，list や tuple のようにインデックスで値を取得することはできません．  
 
 ### len()
 
 `len()` で key, value のペアの数を計算できます．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
-print(len(dict1))    # 3
+print(len(dct1))    # 3
 
-empty_dict = {}
-print(len(empty_dict))    # 0
+empty_dct = {}
+print(len(empty_dct))    # 0
 ```
 
 ## in
 
-あるオブジェクト x が Dictionary の key に存在するかは `x in <dictオブジェクト>` で確かめられます．  
+あるオブジェクト x が dictionary の **key に存在するか** は `x in <dictオブジェクト>` で確かめられます．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
 x1 = "Flareon"
-if x1 in dict1:
+if x1 in dct1:
     print("Yes")
 else:
     print("No")
 # Yes
 
 x2 = "Espeon"
-if x2 in dict1:
+if x2 in dct1:
     print("Yes")
 else:
     print("No")
 # No
 ```
 
-また，あるオブジェクト x が Dictionary の value に存在するかは `x in <dictオブジェクト>.values()` で確かめられます．  
+また，あるオブジェクト x が dictionary の **value に存在するか** は `x in <dictオブジェクト>.values()` で確かめられます．  
 `values()` は dictオブジェクト のすべての value を dictviewオブジェクト で返します．  
-dictviewオブジェクトはイミュータブルで，名前の通り値を見るだけ用のオブジェクトです(values()で返したオブジェクトが変更され，もとのdictオブジェクトのvalueが変わるのを防ぐため) ．
+dictviewオブジェクトはイミュータブルで，名前の通り値を見るだけ用のオブジェクトです．
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
 x1 = "Fire"
-if x1 in dict1:
+if x1 in dct1:
     print("Yes")
 else:
     print("No")
 # Yes
 
 x2 = "でんき"
-if x2 in dict1:
+if x2 in dct1:
     print("Yes")
 else:
     print("No")
 # No
 ```
 
-### Dictionary のメソッド
+### dictionary のメソッド
 
-Dictionary に使用できる主なメソッドを紹介します．  
+dictionary に使用できる主なメソッドを紹介します．  
 
-|        メソッド        |                                                           説明                                                           |
-| :--------------------: | :----------------------------------------------------------------------------------------------------------------------: |
-| get(key, default=None) | key に対応する value を返す．key が存在しなければ default で指定された値を返す．default に何も指定しなければ None を返す |
-|  dict1.update(dict2)   |                 dict1 に dict2 を連結する．重複する key の value は dict2 の value に更新(update)される                  |
-|         keys()         |                                     すべての key を dictviewオブジェクト にして返す                                      |
-|        values()        |                                    すべての value を dictviewオブジェクト にして返す                                     |
-|        items()         |                                      すべての key, value のペアを Tuple にして返す                                       |
+|         メソッド         |                                                           説明                                                           |
+| :----------------------: | :----------------------------------------------------------------------------------------------------------------------: |
+|  get(key, default=None)  | key に対応する value を返す．key が存在しなければ default で指定された値を返す．default に何も指定しなければ None を返す |
+|   dict1.update(dict2)    |                 dict1 に dict2 を連結する．重複する key の value は dict2 の value に更新(update)される                  |
+| setdefault(key, default) |               key に対応する value を返す．key が存在しなければ value に defaut をセットして value を返す                |
+|          keys()          |                                       すべての key を dictviewオブジェクト で返す                                        |
+|         values()         |                                      すべての value を dictviewオブジェクト で返す                                       |
+|         items()          |                                 すべての key, value のペアを dictviewオブジェクト で返す                                 |
 
 `<dictオブジェクト>[key]` で key に紐づいた value を取得できますが，存在しない key を指定した場合は `KeyError` になるのでした．  
 `get(key, default=x)` で，key が存在しない場合は default に指定した値を返すようにすることで，より安全に value を取得することができます．  
-ケースによって key が存在したり存在しなかったりする Dictionary を扱う際に重宝します．  
+ケースによって key が存在したり存在しなかったりする dictionary を扱う際に重宝します．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
-a = dict1.get("Vapareon", "Unknown")  # Water
-b = dict1.get("Espeon", "Unknown")    # Unknown
+a = dct1.get("Vapareon", "Unknown")  # Water
+b = dct1.get("Espeon", "Unknown")    # Unknown
 ```
 
 `dict1.update(dict2)` で，dict1 に dict2 を連結します．  
 重複する key の value は dict2 の value に更新(update)されます．  
-既存の Dictionary の valueまとめて更新したいときや，複数の Dictionary を1つにまとめたいときに使います．  
+既存の dictionary の value をまとめて更新したいときや，複数の dictionary を1つにまとめたいときに使います．  
 
 ```python
-dict1 = {
+dct1 = {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
 
-dict2 = {
+dct2 = {
     "Flareon": "ほのお",
     "Umbreon": "あく",
     "Espeon": "エスパー"
 }
 
-dict1.update(dict2)
-print(dict1)
+dct1.update(dct2)
+print(dct1)
 '''
-dict1 = {
+{
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "ほのお",    <- 更新
@@ -1157,21 +1422,765 @@ dict1 = {
 '''
 ```
 
+(Extra)  
+`setdefault(key, default)` は，key が存在すればその value を返し，存在しなければ新しく key と default のペアを dictionary に追加して，value(=default) を返します．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+a = dct1.setdefault("Vapareon", "Water")
+print(a)  # Water
+
+b = dct1.setdefault("Espeon", "Phychic")
+print(b)  # Phychic
+print(dct1)
+'''
+{
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+'''
+```
+
+使用例は練習問題を参考にしてください．  
+(ここまでExtra)
+
+`keys()`, `values()`, `items()` は，後述するfor文とともによく使用されるメソッドです．  
+
+`keys()` で dictionary のもつすべての key を取得できます．  
+返り値は dictviewオブジェクト なのでそのままだと値は変更できません．  
+list として使用したい場合は `list()` で listオブジェクト にできます．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+keys = dct1.keys()
+print(keys)       # dict_keys(['Vapareon', 'Jolteon', 'Flareon'])
+
+key_lst = list(keys)
+print(key_lst)   # ['Vapareon', 'Jolteon', 'Flareon']
+```
+
+`values()` で dictionary のもつすべての value を取得できます．  
+`keys()` と同様，返り値は dictviewオブジェクト です．  
+`list()` で list化できます．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+values = dct1.values()
+print(values)         # dict_values(['Water', 'Electric', 'Fire'])
+
+value_lst = list(values)
+print(value_lst)     # ['Water', 'Electric', 'Fire']
+```
+
+`items()` で dictionary のもつすべての key, value のペアを取得できます．  
+返り値は dictviewオブジェクト で，1つ1つのペアは tuple になっています．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+items = dct1.items()
+print(items)
+# dict_items([('Vapareon', 'Water'), ('Jolteon', 'Electric'), ('Flareon', 'Fire')])
+```
+
+
 # for文
+
+Pythonにおけるfor文は list や tuple，dictionary といった iterableオブジェクト の要素を1つ1つ取り出す(処理を繰り返す=イテレート(iterate))構文です．  
+ほかの言語を知っている方は，拡張for文をイメージするとわかりやすいと思います．  
+書式は次の通りです．  
+
+![for_format](for_format.png)
+
+次の例は，list の要素を1つずつ取り出して出力するコードです．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+for n in lst1:
+    print(n)
+'''
+10
+11
+12
+13
+14
+'''
+
+lst2 = ["Vapareon", "Jolteon", "Flareon"]
+for s in lst2:
+    print(s)
+'''
+Vapareon
+Jolteon
+Flareon
+'''
+
+lst3 = [[100, 101, 102], [200, 201, 202], [300, 301, 302], [400, 401, 402]]
+for inner_lst in lst3:
+    print(inner_lst)
+'''
+[100, 101, 102]
+[200, 201, 202]
+[300, 301, 302]
+[400, 401, 402]
+'''
+
+lst4 = [{"Vapareon": "Water"}, {"Jolteon": "Electric"}, {"Flareon": "Fire"}]
+for d in lst4:
+    print(d)
+'''
+{'Vapareon': 'Water'}
+{'Jolteon': 'Electric'}
+{'Flareon': 'Fire'}
+'''
+```
+
+変数を複数置くことで，for文で取り出された要素をアンパックすることができます．  
+
+```python
+lst3 = [[100, 101, 102], [200, 201, 202], [300, 301, 302], [400, 401, 402]]
+
+for a, b, c in lst3:
+    print(a, b, c)
+'''
+100 101 102
+200 201 202
+300 301 302
+400 401 402
+'''
+```
+
+要素を逆順で取得したい場合はスライス `[::-1]` を使用します．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+for n in lst1[::-1]:
+    print(n)
+'''
+14
+13
+12
+11
+10
+'''
+```
+
+tuple も list と同じようにfor文が使えます．  
+
+dictionary をそのままfor文で回すと，すべての key が取り出されます．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+for k in dct1:
+    print(k)
+'''
+Vapareon
+Jolteon
+Flareon
+'''
+```
+
+すべての value をfor文で回すには `values()` を使います．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+for v in dct1.values():
+    print(v)
+'''
+Water
+Electric
+Fire
+'''
+```
+
+for文で key と value をいっしょに取り出す場合は `items()` を使います．  
+
+```python
+dct1 = {
+    "Vapareon": "Water",
+    "Jolteon": "Electric",
+    "Flareon": "Fire"
+}
+
+for k, v in dct1.items():
+    print(k, v)
+'''
+Vapareon Water
+Jolteon Electric
+Flareon Fire
+'''
+```
+
+## range()
+
+組込み関数 `range()` は for文 とともによく使われます．  
+`list()` のところでも説明しましたが，`range(start, end, step)` で，`step` が正の場合は `start` 以上 `end` 未満 の整数を，`step` が負の場合は `start` 以下で `end` より大きい整数を，それぞれステップ数 `step` で順に並べた数列(rangeオブジェクト)を返します．  
+**`end` で指定した数は含まれない** ことに注意してください．  
+`end` のみを指定した場合は `start = 0`，`step = 1` となります．  
+
+例えば，0から9までをカウントアップする場合は for文 と `range()` を使って次のようにします．  
+
+```python
+for i in range(0, 10, 1):
+    print(i)
+'''
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+'''
+```
+
+`end` のみを指定し， `start` と `step` を省略すると次のように書けます．  
+
+```python
+for i in range(10):
+    print(i)
+```
+
+`start = 0`, `end = 10`, `step = 2` とした場合は以下のようになります．  
+
+```python
+for i in range(0, 10, 2):
+    print(i)
+'''
+0
+2
+4
+6
+8
+'''
+```
+
+次の例は，`start = 9`，`end = -1`，`step = -1` とした場合です．  
+
+```python
+for i in range(9, -1, -1):
+    print(i)
+'''
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+'''
+```
+
+list の要素にインデックスでアクセスし，要素を書き換える場合にもよく使用します．  
+次のコードは，list のすべての要素を 2倍 します．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+
+for i in range(len(lst1)):
+    lst1[i] *= 2
+
+print(lst1)    # [20, 22, 24, 26, 28]
+```
+
+
+次のプログラムは，for文 を使って list の中で最小値をとる要素を探して出力します．  
+Python には list や tuple などの iterableオブジェクト を与えるとその中の最小値を返す `min()` という便利な組込み関数があります (ほかにも `max()` や `sum()` といった関数もあります．これらは組込み関数の章でまとめて紹介します)．  
+しかし，list などのデータ構造の中から条件に合致した要素を探索するコードを書く際の基礎になるので，自分で書けるようにしておくいいと思います．  
+
+```python
+lst = [12, 11, 10, 13, 12, 10]
+
+min_n = lst[0]
+for n in lst[1:]:
+    if n < min_n:
+        min_n = n
+print(min_n)    # 10
+```
+
+
+## enumerate()
+
+`enumerate()` (enumerate = 列挙する) は，iterableオブジェクト の要素とインデックス(あるいは順序数)をfor文で同時に回したいときに使用する組込み関数です．  
+
+これまで見た例のように，for文は iterableオブジェクト は要素のみを回し，インデックスが必要な場合は `range()` を使っていました．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+
+# 要素を順に取得する
+for n in lst1:
+    print(n)
+
+# インデックスに相当する数列を回す
+for i in range(len(lst1)):
+    print(i)
+```
+
+この2つを合わせた機能をもつのが `enumerate()` です．  
+enumerateメソッドは，順序数と引数で与えられた iterableオブジェクト の要素のペアを1つずつ tuple にした enumerateオブジェクト を返します．  
+for文ではその tuple を1つずつ取り出すので，for文中に変数を `順序数, 要素` の順に置いてアンパックして使用します．  
+
+```python
+for i, n in enumerate(lst1):
+    print(f"lst1[{i}]={n}")
+'''
+lst1[0]=10
+lst1[1]=11
+lst1[2]=12
+lst1[3]=13
+lst1[4]=14
+'''
+```
+
+要素とペアにする整数は0始まり以外にも可能です．  
+引数に `start` (デフォルトは0) を指定すると，その整数から1ずつカウントアップされていきます．
+
+次の例では，順序数を1から開始しています．  
+引数の順序と変数の順序がクロスしていて紛らわしいので注意しましょう．  
+
+```python
+for i, n in enumerate(lst1, 1):
+    print(f"i={i}, n={n}")
+'''
+i=1, n=10
+i=2, n=11
+i=3, n=12
+i=4, n=13
+i=5, n=14
+'''
+```
+
+## ネスト
+
+if文 や while文 と同様に，for文 もネストすることができます．  
+次のコードは，内側と外側の `range()` で 1 から 9 までの数列を 2つ 作り，それぞれの数を掛け合わせることで九九の表を出力します．  
+
+```python
+for i in range(1, 10):
+    for j in range(1, 10):
+        print(i * j, "", end="")
+    print()
+'''
+1 2 3 4 5 6 7 8 9 
+2 4 6 8 10 12 14 16 18 
+3 6 9 12 15 18 21 24 27 
+4 8 12 16 20 24 28 32 36 
+5 10 15 20 25 30 35 40 45 
+6 12 18 24 30 36 42 48 54 
+7 14 21 28 35 42 49 56 63 
+8 16 24 32 40 48 56 64 72 
+9 18 27 36 45 54 63 72 81 
+'''
+```
+
+2次元以上のデータ構造は，for文 を重ねることで要素を列挙できます．  
+次のプログラムでは，2次元list の要素を順に出力しています．  
+
+```python
+lst = [
+    [100, 101, 102],
+    [200, 201],
+    [],
+    [400, 401, 402, 403]
+]
+
+for inner_lst in lst:
+    for n in inner_lst:
+        print(n, "", end="")
+    print()
+'''
+100 101 102 
+200 201 
+
+400 401 402 403 
+'''
+```
+
+## break文
+
+for文 でもループから抜けるために break文 が使えます．  
+次の例は，3 の累乗のうち余りが 1 から 7 になるものの累乗の数を，for文 を回して探しています．  
+内側の for文 で 3 の `j`乗 を計算し，7 で割った余りが外側のループで探している余りに一致した場合は break文 ですぐ拔けるようになっています．  
+if文，while文 と同様，変数のスコープが後ろに続いているため，break文 で抜けたあとも 変数`j` が使えることに注意してください．  
+
+```python
+# 3 は 7 の原始根
+for i in range(1, 8):
+    for j in range(10):
+        if (3 ** j) % 7 == i:
+            break
+    print(f"3^{j} mod 7 = {i}")
+'''
+3^0 mod 7 = 1
+3^2 mod 7 = 2
+3^1 mod 7 = 3
+3^4 mod 7 = 4
+3^5 mod 7 = 5
+3^3 mod 7 = 6
+3^9 mod 7 = 7
+'''
+```
+
+
+## else節
+
+for文 でも else節 を使うことができます．  
+次のプログラムは，dictionary に list `numbers` にある数と同じ `number` をもつ要素があるかを判定しています．  
+存在する場合は `Found`，存在しない場合(=break文が使われなかった場合)は else節 で `Not Found` を出力します．  
+
+```python
+numbers = [134, 196]
+
+dct = {
+    "Vapareon": {
+        "number": 134,
+        "type": "Water"
+    },
+    "Jolteon": {
+        "number": 135,
+        "type": "Electric"
+    },
+    "Flareon": {
+        "number": 136,
+        "type": "Fire"
+    }
+}
+
+for n in numbers:
+    print(f"number {n}: ", end="")
+    for v in dct.values():
+        if v["number"] == n:
+            print("Found")
+            break
+    else:
+        print("Not Found")
+'''
+number 134: Found
+number 196: Not Found
+'''
+```
+
+## continue文
+
+for文 でも continue文 が使用できます．  
+
+<hr>
+
+最後に，後回しにした項目 (listの初期化) の確認をお願いします．  
+
+とても長くなってしまった...  
+list の Shallow Copy らへんの話がちょっと説明不足ですかね...  
+関数の章でも関連してくるので，そこでまとめて詳しく書こうと思います．  
+
 
 # 練習問題
 
 
+## Q1
+
+for文を使って次のような数列を出力してください．  
+
+```
+1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5 
+1 2 3 4 5 6 
+1 2 3 4 5 6 7 
+1 2 3 4 5 6 7 8 
+1 2 3 4 5 6 7 8 9 
+```
+
+## Q2
+
+for文 を使って次の list の要素の和を求めてみましょう．  
+
+```python
+lst = [475, 358, -160, -385, 173, 148, 128, -265, -472, -82, 289, -465, 365, 248, 180, 451, 158, 51, 431, -6]
+```
 
 
+## Q3
+
+for文 を使って次の list の最大値を求め，出力してみましょう．  
+
+```python
+lst = [321, -325, 313, -452, 342, 281, -237, -322, 103, 143, 345, -349, -293, 487, 494, -23, 319, -154, -5, -95]
+```
+
+## Q4
+
+次の list で最大値をとる要素の **インデックス** を出力してください．  
+最大値をとる要素が複数ある場合は，最小のインデックスを出力してください．  
+
+```python
+lst = [131, 101, 79, 134, 83, 146, 78, 143, 140, 61, 92, 56, 76, 77, 146, 58, 137, 126, 85, 82]
+```
+
+## Q5
+
+for文を使って 7 の階乗(`7! = 7 * 6 * 5 * 4 * 3 * 2 * 1`)を計算してみましょう．  
 
 
+## Q6
+
+袋の中に玉が 7 個入っています．  
+玉には 1 から 7 までの整数が 1 つ書かれており，数字に重複はありません．  
+袋の中から玉を同時に 3 個取り出したとき，3 個の玉に書かれている数字の組合せは何通りあるでしょうか．  
+Python で計算してみましょう．  
 
 
+## Q7
+
+次の dictionary の key と value を入れ替えた dictionary を作ってください．  
+なお，作成する dictionary の key の順序は問いません．  
+
+```python
+e2j_dct = {
+    "Vapareon": "シャワーズ",
+    "Jolteon": "サンダース",
+    "Flareon": "ブースター",
+    "Espeon": "エーフィ",
+    "Umbreon": "ブラッキー"
+}
+```
 
 
+## Q8
+
+サイバー攻撃の `カテゴリ名` が次の dictionary で与えられます．  
+各 `カテゴリ名` には `カテゴリID` が割り振られており，`カテゴリID` から `カテゴリ名` を一意に特定できるようになっています．  
+dictionary は `{ カテゴリID : カテゴリ名 }` の対応を表しています．  
+
+```python
+category_dct = {
+    "TA0001": "Innitial Access",
+    "TA0002": "Execution",
+    "TA0003": "Persistence",
+}
+```
+
+セキュリティアラートのデータが list として次のように取得できました．  
+しかし，各アラートデータの `category` の値は `カテゴリID` となっています．  
+人が読むには不便なので，すべてのアラートデータの `category` を `カテゴリ名` に更新して出力してください．  
+また，`category_dct` に存在しない `カテゴリID` の場合は `カテゴリ名` を `Unknown` に更新してください．  
+
+```python
+data_lst = [
+    {
+        "datetime": "2020-08-15 20:10:43",
+        "category": "TA0002",
+        "severity": "Middle"
+    },
+    {
+        "datetime": "2020-08-16 09:11:41",
+        "category": "TA0003",
+        "severity": "Low"
+    },
+    {
+        "datetime": "2020-08-16 10:27:30",
+        "category": "TA0003",
+        "severity": "Low"
+    },
+    {
+        "datetime": "2020-08-16 21:02:56",
+        "category": "TA0004",
+        "severity": "Middle"
+    },
+    {
+        "datetime": "2020-08-17 08:30:17",
+        "category": "TA0001",
+        "severity": "High"
+    },
+    {
+        "datetime": "2020-08-17 10:34:49",
+        "category": "TA0002",
+        "severity": "Low"
+    },
+]
+```
+
+なお，`pprint` モジュールの `pprint` メソッドで出力を整形できます．  
+使い方は普通の `print()` と同じで， `pprint(data_lst)` で出力できます．  
+`pprint` メソッドを使えるようにするため，次のコードをファイルの先頭にコピペしてください．  
+
+```python
+from pprint import pprint
+```
+
+期待される出力は次のとおりです (dictionary の key の順序は問いません)．  
+
+```
+[{'category': 'Execution',
+  'datetime': '2020-08-15 20:10:43',
+  'severity': 'Middle'},
+ {'category': 'Persistence',
+  'datetime': '2020-08-16 09:11:41',
+  'severity': 'Low'},
+ {'category': 'Persistence',
+  'datetime': '2020-08-16 10:27:30',
+  'severity': 'Low'},
+ {'category': 'Unknown',
+  'datetime': '2020-08-16 21:02:56',
+  'severity': 'Middle'},
+ {'category': 'Innitial Access',
+  'datetime': '2020-08-17 08:30:17',
+  'severity': 'High'},
+ {'category': 'Execution',
+  'datetime': '2020-08-17 10:34:49',
+  'severity': 'Low'}]
+```
 
 
+## Q9
+
+各言語で使用されるライブラリやフレームワークの名前が，次の list にまとめられています．  
+言語ごとにライブラリ名・フレームワーク名を dictionary でまとめ，出力してください．  
+出力は `pprint` で整形してください．  
+
+```python
+from pprint import pprint
+
+
+tool_lst = [
+    {
+        "name": "Pandas",
+        "lang": "Python"
+    },
+    {
+        "name": "React",
+        "lang": "JavaScript"
+    },
+    {
+        "name": "NumPy",
+        "lang": "Python"
+    },
+    {
+        "name": "Lombok",
+        "lang": "Java"
+    },
+    {
+        "name": "Boost",
+        "lang": "C++"
+    },
+    {
+        "name": "Deno",
+        "lang": "JavaScript"
+    }
+]
+```
+
+期待される出力は次のとおりです．  
+なお，出力する dictionary の key の順序は問いません．  
+
+```
+{'C++': ['Boost'],
+ 'Java': ['Lombok'],
+ 'JavaScript': ['React', 'Deno'],
+ 'Python': ['Pandas', 'NumPy']}
+```
+
+## Q10
+
+Satoshi，Kasumi，Takeshi の， TOEIC のセクション別スコアが次の dictionary で与えられます．  
+各セクションについて3人の平均スコアを求め，dictionary にまとめて出力してください．  
+出力は `pprint` メソッドを使用して整形してください．  
+
+```python
+from pprint import pprint
+
+
+result_dct = {
+    "Satoshi": {
+        "Listening": 5,
+        "Reading": 5,
+        "Speaking": 200,
+        "Writing": 5
+    },
+    "Kasumi": {
+        "Listening": 495,
+        "Reading": 495,
+        "Speaking": 200,
+        "Writing": 200
+    },
+    "Takeshi": {
+        "Listening": 230,
+        "Reading": 455,
+        "Speaking": 95,
+        "Writing": 60
+    }
+}
+```
+
+期待される出力は次のとおりです．
+
+```
+{'Listening': 243.33333333333334,
+ 'Reading': 318.3333333333333,
+ 'Speaking': 165.0,
+ 'Writing': 88.33333333333333}
+```
+
+
+(Extra)
+
+
+## Q11
+
+次の行列の積を求めてみましょう．  
+
+![Q_matrix](Q_matrix.png)
+
+```python
+A = [[2, 0, 8, 7], [2, 4, 8, 3], [9, 0, 4, 3]]
+B = [[9, 9, 8, 0, 4], [5, 1, 5, 3, 8], [3, 6, 4, 1, 9], [8, 5, 5, 3, 3]]
+```
+
+期待される出力は次の通りです．  
+
+```
+[[ 98 101  83  29 101]
+ [ 86  85  83  29 121]
+ [117 120 103  13  81]]
+```
 
 
 
