@@ -6,7 +6,7 @@
 同様に，同じ処理をあとから何度も使用できるようにできると，コードを書く量が減って便利です．
 また，ほかの人が，自分が書いた処理を簡単に使用することも期待できます．  
 
-例えば，Chapter4 の練習問題の Q6 で使用した `nCk` を求めるプログラムは，`n` と `k` を可変にしていろいろな組合せの総数を求められるようにできると便利そうです．  
+例えば，Chapter4 の練習問題の Q 6 で使用した `nCk` を求めるプログラムは，`n` と `k` を可変にしていろいろな組合せの総数を求められるようにできると便利そうです．  
 
 処理をまとめ，あとから使用する(=呼び出す)には **関数 (function)** を用います．  
 関数の **定義**は次のようになっています．  
@@ -147,6 +147,74 @@ res = comb(**d)    # 35
 
 
 # 仮引数
+
+Python の仮引数の働きは，変数と同じくラベルをイメージしてください．  
+
+例えば，次のコードの関数 none2zero は引数として list `x` をとり，x の中の `None` を 0 に置き換えます．  
+none2zero は置き換えたあとの list を返しませんが，実引数として渡された lst の `None` は 0 に置き換えられています．  
+これは，変数 lst と 仮引数 x が，`[10, 11, None, 13, None]` という同一の list オブジェクトを指しているからです．  
+
+```python
+def none2zero(x):
+    for i in range(len(x)):
+        if x[i] is None:
+            x[i] = 0    # もとの list オブジェクトに変更を加える
+
+
+lst = [10, 11, None, 13, None]
+none2zero(lst)
+print(lst)  # [10, 11, 0, 13, 0]
+```
+
+もとのオブジェクトは変更したくない場合は，関数内で別のオブジェクトを作ってそれを返すようにします．  
+
+```python
+def none2zero(x):
+    x_copy = x.copy()   # 要素が同じ値の新しい list オブジェクトを作る
+    for i in range(len(x_copy)):
+        if x_copy[i] is None:
+            x_copy[i] = 0
+    return x_copy
+
+
+lst = [10, 11, None, 13, None]
+updated_lst = none2zero(lst)
+print(lst)  # [10, 11, None, 13, None]
+print(updated_lst)  # [10, 11, 0, 13, 0]
+```
+
+次のコードの関数 none_safe_strip は，与えられた文字列 s が `None` だったとき`""` (空白文字) に置き換え，文字列の場合は前後の空白を除去しようとしています．  
+しかし，イミュータブルオブジェクトの場合，再代入はラベルの貼り替えと同じです．  
+このコードでは，変数 s と 仮引数 s のうち仮引数 s の方が新しく `""` を指すようになりますが，変数 s の方は `None` を指したままになります．  
+
+```python
+def none_safe_strip(s):
+    if s is None:
+        s = ""
+    else:
+        s.strip()
+
+
+s = None
+none_safe_strip(s)
+print(s)    # None
+```
+
+イミュータブルオブジェクトを新しい値の別のオブジェクトに更新したい場合は値を返す必要があります．  
+
+```python
+def none_safe_strip(s):
+    if s is None:
+        return ""
+    else:
+        return s.strip()
+
+
+s = None
+s = none_safe_strip(s)
+print(s)    # ""
+```
+
 
 ## デフォルト引数
 
@@ -551,6 +619,33 @@ def comb(n, k):
 
 res = comb(-1, 0)   # ValueError: n and k must be n > 0 and k >= 0.
 ```
+
+# 再帰関数
+
+自身の中で自身を呼び出す関数を **再帰関数** といいます．  
+次の再帰関数は，フィボナッチ数列の n 番目の要素を計算して返します．  
+フィボナッチ数列とは，`1, 1, 2, 3, 5, 8, 13, 21, ...` のように，n 番目の数が `n - 2` 番目の数 (2 つ前の数) と `n - 1` 番目の数 (1 つ前の数) の和になっている数列です．  
+
+
+```python
+def fibonacci(n):
+    if n <= 2:
+        return 1
+
+    return fibonacci(n - 2) + fibonacci(n - 1)
+
+
+for i in range(1, 11):
+    print(fibonacci(i), "", end="")
+# 1 1 2 3 5 8 13 21 34 55 
+```
+
+n = 4 のときの動きを図に表すと次のようになります．  
+
+![fibonacci](fibonacci.png)
+
+再帰関数は業務プログラミングではわかりやすさの観点からあまり好まれません．  
+一方，探索や構文解析などいろいろなアルゴリズムを実装するときによく用いられます．  
 
 
 # 関数オブジェクト
@@ -999,64 +1094,625 @@ def get_color_value(color: Color) -> int:
 よく使うのはこのあたりですが，一度公式 doc を読むのをおすすめします．  
 https://docs.python.org/ja/3/library/typing.html
 
-(ここまでExtra)
+(ここまでExtra)  
+
+
+# スコープ (Scope)
+
+if 文，while 文のところでも話しましたが，変数の有効範囲のことを変数の **スコープ** といいます．  
+スコープはグローバル (global) スコープとローカル (local) スコープに大別されます．  
+グローバルスコープにある変数 (グローバル変数) は，プログラム中のどんな場所からも使うことができます．  
+一方，ローカルスコープにある変数 (ローカル変数) は，そのスコープの外からは使うことができません．  
+
+if 文や while 文，for 文と異なり，関数はローカルスコープを作ります．  
+つまり，関数内で定義された変数は関数の中でしか使うことができません．  
+
+次のコードでは関数 f 内で定義された変数 a を `print()` で表示しようとしていますが，関数 f の外側はスコープの外なのでエラーになります．  
+
+```python
+def f():
+    a = 10  # ローカルスコープ
+    return a
+
+
+print(a)    # NameError: name 'a' is not defined
+```
+
+次のコードの変数 a はグローバルスコープで定義されているため，関数 f 内からも使うことができます．  
+
+```python
+a = 0   # グローバルスコープ
+
+
+def f():
+    return a
+
+
+print(f())  # 0
+```
+
+しかし，グローバルスコープの変数は，ローカルスコープからはそのままでは代入することはできません．  
+
+```python
+a = 0   # グローバルスコープ
+
+
+def f():
+    a += 10     # UnboundLocalError: local variable 'a' referenced before assignment
+    return a
+
+
+print(f())
+```
+
+ローカルスコープからグローバルスコープの変数に代入するには `global <変数名>` でグローバルスコープの変数であることを明示する必要があります．  
+
+```python
+a = 0   # グローバルスコープ
+
+
+def f():
+    global a
+
+    a += 10
+    return a
+
+
+print(f())  # 10
+```
+
+次のコードには変数 a が 2 つあります．  
+1 つはグローバルスコープ，もう 1 つはローカルスコープで定義されているので混同されずきちんと動作します．  
+でも紛らわしいので避けたほうがいいです．  
+
+```python
+a = 0   # グローバルスコープ
+
+
+def f():
+    a = 10  # ローカルスコープ
+    return a
+
+
+print(a)    # 0
+print(f())  # 10
+```
+
+スコープは変数を変更や混同から守り，管理しやすくします．  
+グローバル変数はプログラムのどこからでも使用できるのは便利なのですが，どこで変更されるか追いづらいです．  
+そのため，保守の観点から何でもかんでもグローバル変数として定義してしまうのはよくないです．  
+なるべく定数などをグローバルスコープに定義し，ローカルスコープからは極力グローバル変数の値を変更しないことをおすすめします．  
+
+次に紹介するのは，三目ならべをプレイヤー A とプレイヤー B で遊べるプログラムです．  
+
+グローバル変数には，定数や固定値，どの関数からも使用される list を定義しています．  
+定数や固定値の名前にはアルファベットの大文字と数字，アンダースコアを使います．  
+図に示すように，`board` は表示用の盤の状態を保持する list，`counter` は縦，横，斜めのマークの数を数え，勝敗を決めるために使用する list です．  
+
+![tic_toc_toe](tic_toc_toe.png)
+
+グローバル変数の使い方の例として参考にしてください．  
+なお，コードが煩雑になってロジックを追いづらくなるため，各標準入力のバリデーションチェックは設けていません．  
+
+```python
+# グローバル変数
+BOARD_SIZE = 3                 # たて，よこのマス目の数 (定数)
+MENUS = ["あそぶ", "やめる"]    # メニュー (固定値)
+MARKS = {     # 固定値
+    -1: "x",    # プレイヤー B のマーク
+    0: " ",     # まだ置かれてないマス
+    1: "o"      # プレイヤー A のマーク
+}
+board = []      # 表示用の盤
+counter = []    # 盤のたて，よこ，ななめのマークの数を管理する list
+
+
+def init():
+    # 盤とカウンターを初期化
+    global board, counter
+
+    board = []
+    for _ in range(BOARD_SIZE):     # Python では使わない変数の名前は _ (アンダースコア) にする
+        row = []
+        for _ in range(BOARD_SIZE):
+            row.append(MARKS[0])
+        board.append(row)
+    # (Extra) board = [[MARKS[0]] * 3 for _ in range(BOARD_SIZE)] とも書ける
+
+    counter = [0] * 8
+
+
+def print_board():
+    # 盤を o, x で表示
+    print(" |0|1|2|")
+    print("-" * 7)
+    for i, row in enumerate(board):
+        print(f"{i}|" + "|".join(row) + "|")
+        print("-" * 7)
+    print()
+
+
+def put_symbol(row_no, col_no, turn):
+    # row_no と col_no のマス目に o か x を置く．
+    # turn が偶数ならプレイヤー A で o，奇数ならプレイヤー B で x．
+    # マークを置けたら True を，置けなかったら False を返
+    global board, counter
+
+    if not (0 <= row_no < BOARD_SIZE and 0 <= col_no < BOARD_SIZE):
+        # マス目の範囲内じゃないなら False を返す
+        return False
+
+    if board[row_no][col_no] != MARKS[0]:
+        # もうマークが置かれてるなら False を返す
+        return False
+
+    if turn % 2 == 0:
+        # プレイヤー A のターン
+        mark_no = 1   # counter を +1 する
+    else:
+        # プレイヤー B のターン
+        mark_no = -1  # counter を -1 する
+
+    board[row_no][col_no] = MARKS[mark_no]
+
+    # 該当するたて，よこ，ななめをカウント
+    counter[row_no] += mark_no
+    counter[col_no + BOARD_SIZE] += mark_no
+    if row_no == col_no:
+        counter[6] += mark_no
+    if row_no + col_no == BOARD_SIZE - 1:
+        counter[7] += mark_no
+    return True     # マークを置けたので True を返す
+
+
+def judge():
+    # カウンターの中に 3 があったらプレイヤー A の勝ち，-3 があったらプレイヤー B の勝ち
+    # 勝者がプレイヤー A の場合は 1 を，プレイヤー B の場合は -1 を，まだ勝敗が決していない場合は 0 を返す
+    for n in counter:
+        if n == 3:
+            return 1
+        if n == -3:
+            return -1
+    return 0
+
+
+menu_no = 0
+print("三目ならべ")
+while menu_no != 1:     # "やめる" が選択されるまでループ
+    for i, menu in enumerate(MENUS):
+        print(f"{i}) {menu}  ", end="")
+
+    print("> ", end="")
+    menu_no = int(input())
+
+    if menu_no == 1:    # "やめる" が選択されたらループをすぐ抜ける
+        print("また遊んでね")
+        break
+
+    init()              # 盤とカウンターを初期化
+    winner = 0          # 勝者が プレイヤー A の場合は 1，プレイヤー B の場合は -1，まだ勝敗が決していない場合は 0
+    turn = 0            # ターン数をカウント．偶数はプレイヤー A のターン，奇数はプレイヤー B のターン
+    while winner == 0 and turn < BOARD_SIZE * BOARD_SIZE:  # 勝敗が決まるか盤がすべて埋まるまでループ
+        print_board()
+
+        if turn % 2 == 0:
+            print("プレイヤー A の番です")
+        else:
+            print("プレイヤー B の番です")
+
+        put_ok = False
+        while not put_ok:   # マークが置けるまでループ
+            print("たての番号 > ", end="")
+            i = int(input())
+            print("よこの番号 > ", end="")
+            j = int(input())
+
+            print()
+            put_ok = put_symbol(i, j, turn)
+            if not put_ok:
+                # マークを置けなかった
+                print("置けないマスだよ\n")
+
+        winner = judge()  # 勝敗が決まった？
+        turn += 1
+
+    print_board()
+
+    if winner == 0:
+        print("ひきわけ！")
+    elif winner == 1
+        print("プレイヤー A のかち！")
+    else:
+        print("プレイヤー B のかち！")
+    print()
+```
 
 
 # 練習問題
 
-## Q
+## Q 1
 
 2 つの文字列を引数にとり，2 つが同じ文字列である場合は `True`，そうでない場合は `False` を返す関数 ignorecase を実装してみましょう．  
 ただし，アルファベットの大文字と小文字は区別しないものとします
 
-例1.
+例 1.
 
 ```python
 res = ignorecase("Espeon", "espeon")    # True
 ```
 
-例2.
+例 2.
 
 ```python
 res = ignorecase("Espeon", "Espeon")    # True
 ```
 
-例3.
+例 3.
 
 ```python
 res = ignorecase("Espeon", "Umbreon")    # False
 ```
 
-## Q
+
+## Q 2
+
+ある Web サイトのユーザ ID は，登録したメールアドレスの `@` より前の部分になります．  
+メールアドレスを引数として渡すとユーザ ID を返す関数 make_userid を実装してください．  
+
+例 1.  
+
+```python
+email = "sample@example.com"
+userid = make_userid(email)     # sample
+```
+
+
+## Q 3
+
+int または float 型の要素をもった list を渡すと，その合計と平均を返す関数 sum_and_avg 関数を実装してみましょう．  
+返り値は合計，平均の順とします．  
+
+例 1.  
+
+```python
+x = [40.6, 73.22, 80.85, 61.96, 66.34, 52.34, 87.56, 76.77, 68.79, 46.12]
+
+total, avg = sum_and_avg(x)     # 654.65 65.465
+```
+
+例 2.  
+
+```python
+x = [-35, 7, -37, -18, 26, 15, 22, 24, -47, -24]
+total, avg = sum_and_avg(x)     # -67 -6.7
+```
+
+
+## Q 4
+
+座標を表す tuple `p1 = (x1, y1)` と `p2 = (x2, y2)` を与えると，2 点間の距離を返す関数 calc_distance を実装してください．  
+距離はユークリッド距離 `((x1 - x2) ^ 2 + (y1 - y2) ^ 2) ^ 0.5` とします．  
+
+例 1.  
+
+```python
+p1 = (0, 0)
+p2 = (1, 1)
+d = calc_distance(p1, p2)   # 1.4142135623730951
+```
+
+例 2.  
+
+```python
+p1 = (-2, -10)
+p2 = (-8, 3)
+d = calc_distance(p1, p2)   # 16.401219466856727
+```
+
+
+## Q 5
+
+月の数字を引数にとり月次レポートのファイル名を作る関数 make_report_name を実装してください．  
+ファイル名の書式は `monthly_report_<月の英名の接頭辞 3 文字>.txt` です．  
+ファイル名のテンプレート，および月の英名の接頭辞 3 文字は，それぞれグローバル変数 REPORT_NAME，MONTH_PREFIXES として次のように与えられます．  
+
+```python
+REPORT_NAME = "monthly_report_{}.txt"
+MONTH_PREFIXES = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"]
+```
+
+ただし，引数として有効な月の数字は 1 から 12 までとし，それ以外の数字が与えられた場合は ValueError を送出するようにしましょう．  
+エラーメッセージはエラーの原因がわかるようにしてください．  
+
+例 1. 1 月の月次レポートのファイル名を作る  
+
+```python
+report_name = make_report_name(1)   # monthly_report_jan.txt
+```
+
+例 2. 有効でない数を引数として与えた場合  
+
+```python
+report_name = make_report_name(0)
+'''
+Traceback (most recent call last):
+  File "q5.py", line 13, in <module>
+    print(make_report_name(13))
+  File "q5.py", line 7, in make_report_name
+    raise ValueError("Invalid Argument: month must be 1 <= month <= 12.")
+ValueError: Invalid Argument: month must be 1 <= month <= 12.
+'''
+```
+
+
+## Q 6
+
+dictionary `cart` はショッピングカートの内容を表しており，key が商品名，value が個数になっています．  
+`cart` を引数として渡すと合計金額を返す関数 calc_total を実装してみましょう．  
+なお，金額は次の PRICES を global 変数として使用してください．  
+
+```python
+PRICES = {
+    "x_attack": 500,
+    "defender": 550,
+    "x_speed": 350,
+    "x_special": 350,
+    "x_sp_def": 350,
+    "x_accuracy": 950,
+}
+```
+
+例 1.  
+
+```python
+cart = {
+    "x_attack": 3,
+    "defender": 4,
+    "x_speed": 7,
+    "x_sp_def": 1
+}
+
+total = calc_total(cart)    # 6500
+```
+
+例 2.  
+
+```python
+cart = {
+    "x_attack": 8,
+    "x_speed": 7,
+    "x_special": 11,
+    "x_sp_def": 12,
+    "x_accuracy": 2
+}
+
+total = calc_total(cart)
+print(total)    # 16400
+```
+
+
+## Q 7
+
+引数 x で与えられた list の要素を，引数 indices で与えられる x のインデックスを要素とする list に従って in-place でソートする関数 sort_by_indices を実装してください．  
+indices に何も指定しない場合は x の要素を昇順でソートするようにします．  
+また，x と indices の要素の数が一致しない場合は，エラーの原因がわかるようなエラーメッセージとともに ValueError を送出してください．  
+
+例 1.  
+
+```python
+x = [10, 20, 30, 40, 50]
+sort_by_indices(x=x, indices=[2, 0, 1, 4, 3])
+print(x)    # [30, 10, 20, 50, 40]
+```
+
+例 2.  
+
+```python
+x = [30, 10, 20, 50, 40]
+sort_by_indices(x)
+print(x)    # [10, 20, 30, 40, 50]
+```
+
+例 3.  
+
+```python
+x = [10, 20, 30]
+sort_by_indices(x, indices=[2, 0, 1, 4, 3]
+'''
+Traceback (most recent call last):
+  File "q7.py", line 23, in <module>
+    sort_by_indices(x, indices=[2, 0, 1, 4, 3])
+  File "q7.py", line 7, in sort_by_indices
+    raise ValueError(
+ValueError: Invalid Argument: the length of indices must be the same with the length of x.
+'''
+```
+
+
+## Q 8
 
 整数 n を引数にとり，n の階乗を返す関数 perm を実装してみましょう．  
 定義域を考慮し，次の条件を満たすようにしてください．  
 
-- n < 0 の場合 ValueError を送出する
+- n < 0 の場合 ValueError を送出する．エラーメッセージからエラーの原因がわかるようにすること
 - 0 <= n の場合 n の階乗を返す．ただし，`0! = 1` とする．  
 
-例. 関数 perm を使って 7 の階乗を求めると次のようになります．  
+例 1.  
 
 ```python
-res = perm(7)
+res = perm(7)   # 5040
 ```
 
-## Q
+例 2.  
+
+```python
+res = perm(0)   # 1
+```
+
+例 3.  
+
+```python
+res = perm(-1)
+'''
+Traceback (most recent call last):
+  File "q8.py", line 15, in <module>
+    print(perm(-1))
+  File "q8.py", line 3, in perm
+    raise ValueError("Invalid Argument: n must be n >= 0.")
+ValueError: Invalid Argument: n must be n >= 0.
+'''
+```
+
+
+## Q 9
 
 m 種類のものを n 個を並べる順列は，種類ごとの個数をそれぞれ p1, p2, ..., pm 個として `n! / (p1! * p2! * ... * pm!)` で計算できます (ただし p1 + p2 + ... + pm = n)．  
 m 種類のそれぞれの個数 p1, p2, ..., pm を引数にとり，それらを n 個並べる順列を返す関数 perm_with_dup を実装してください．  
+階乗の計算には Q で実装した関数 perm を使用しましょう．  
 定義を考慮し，次の条件を満たすようにしましょう．  
 
 - 引数は可変長とする
-- p1, p2, ..., pm <= の場合 ValueError を送出する
+- p1, p2, ..., pm <= の場合 ValueError を送出する．エラーメッセージからエラーの原因がわかるようにすること
 
-例.  
+例 1.  
 赤色の玉 5 個，青色の玉 3 個，緑色の玉 1 個を並べる順列は `(5 + 3 + 1)! / (5! * 3! * 1!) = ` 通りです．  
 このとき関数 perm_with_dup を次のように使用します．  
 
 ```python
-res = perm_with_dup(5, 3, 1)
+res = perm_with_dup(5, 3, 1)    # 504
+```
+
+例 2.  
+
+```python
+res = perm_with_dup(3, 1, 1, 2, 1)    # 3360
+```
+
+例 3.  
+
+```python
+res = perm_with_dup(5, 3, 0)
+'''
+Traceback (most recent call last):
+  File "q9.py", line 27, in <module>
+    print(perm_with_dup(5, 3, 0))
+  File "q9.py", line 17, in perm_with_dup
+    raise ValueError("Invalid Argument: all args must be arg > 0.")
+ValueError: Invalid Argument: all args must be arg > 0.
+'''
 ```
 
 
+## Q 10
 
+次のグローバル変数 shedules は，一日の会議室の予約情報を保持した list です．  
+
+```python
+schedules = [
+    {
+        "start": 8,
+        "end": 9,
+        "room": "meeting_room_A",
+        "num": 10
+    },
+    {
+        "start": 12,
+        "end": 14,
+        "room": "meeting_room_A",
+        "num": 12
+    },
+    {
+        "start": 13,
+        "end": 14,
+        "room": "meeting_room_B",
+        "num": 5
+    },
+    {
+        "start": 18,
+        "end": 19,
+        "room": "meeting_room_A",
+        "num": 5
+    },
+    {
+        "start": 19,
+        "end": 20,
+        "room": "meeting_room_B",
+        "num": 7
+    },
+]
+```
+
+
+会議室を予約する場合は，開始時刻 start (hour)，終了時刻 end (hour)，使用する会議室 room，人数 num を含んだ dictionary を shedules に追加する必要があります．  
+予約情報を shedules に追加する関数 book を実装したいです．  
+ただし，これから予約する会議室と，すでに予約されている会議室の使用時間に重複がある場合は予約することができません (一方の終了時刻が他方の開始時刻と重複する場合は予約できます)．  
+予約できた場合は `True`，そうでない場合は `False` を返すようにしてください．  
+仮引数は start, end, room, num とします．  
+
+例 1.  
+
+```python
+from pprint import pprint
+
+
+booking = {
+    "start": 9,
+    "end": 10,
+    "room": "meeting_room_A",
+    "num": 8
+}
+
+booked = book(**booking)
+print(booked)   # True
+pprint(schedules)
+'''
+[{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
+ {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
+ {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
+ {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
+ {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19},
+ {'end': 10, 'num': 8, 'room': 'meeting_room_A', 'start': 9}]
+'''
+```
+
+例 2.  
+
+```python
+from pprint import pprint
+
+
+booked = book(start=15, end=17, room="meeting_room_B", num=15)
+print(booked)   # True
+pprint(schedules)
+'''
+[{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
+ {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
+ {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
+ {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
+ {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19},
+ {'end': 17, 'num': 15, 'room': 'meeting_room_B', 'start': 15}]
+'''
+```
+
+例 3.  
+
+```python
+from pprint import pprint
+
+
+booked = book(start=11, end=13, room="meeting_room_A", num=10)
+print(booked)   # False
+pprint(schedules)
+'''
+[{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
+ {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
+ {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
+ {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
+ {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19}]
+'''
+```
+
+<details>
+    <summary>ヒント</summary>
+    <p>予約したい会議室の 1 時間ごとの予約状況を list にして，予約したい開始時刻から終了時刻までに予約がないかを確認します</p>
+</details>

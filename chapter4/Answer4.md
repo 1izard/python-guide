@@ -1,6 +1,6 @@
 # Chapter4 練習問題回答例
 
-## Q1
+## Q 1
 
 ```python
 for i in range(1, 10):
@@ -12,7 +12,7 @@ for i in range(1, 10):
 内側のforループの変数 `j` の取りうる値を，外側のforループの変数 `i` によって 1 ずつ増やしていきます．  
 
 
-## Q2
+## Q 2
 
 ```python
 lst = [475, 358, -160, -385, 173, 148, 128, -265, -472, -82, 289, -465, 365, 248, 180, 451, 158, 51, 431, -6]
@@ -25,7 +25,7 @@ print(total)    # 1620
 ```
 
 
-## Q3
+## Q 3
 
 ```python
 lst = [321, -325, 313, -452, 342, 281, -237, -322, 103,
@@ -40,7 +40,7 @@ print(ans)      # 494
 ```
 
 
-## Q4
+## Q 4
 
 最大値をとる要素がある場合は最小のインデックスを出力するため，最大値とそのインデックスを保持する変数 `max_n`，`ans` を更新する条件は `max_n < n` となります．  
 
@@ -57,7 +57,7 @@ print(ans)      # 5
 ```
 
 
-## Q5
+## Q 5
 
 ```python
 ans = 1
@@ -68,7 +68,7 @@ print(ans)      # 5040
 ```
 
 
-## Q6
+## Q 6
 
 n個の中からk個選ぶときの組合せは `nCk = n * (n - 1) * ... + (n - k + 1) / k * (k - 1) * ... * 1` で計算できます．  
 for文 を使うと次のように書けます．  
@@ -90,7 +90,7 @@ print(ans)      # 35
 ```
 
 
-## Q7
+## Q 7
 
 ```python
 e2j_dct = {
@@ -125,7 +125,7 @@ j2e_dct = {v: k for k, v in e2j_dct.items()}
 (ここまでExtra)
 
 
-## Q8
+## Q 8
 
 ```python
 from pprint import pprint
@@ -176,7 +176,7 @@ pprint(data_lst)
 ```
 
 
-## Q9
+## Q 9
 
 ```python
 from pprint import pprint
@@ -265,7 +265,7 @@ pprint(tool_dct)
 (ここまでExtra)
 
 
-## Q10
+## Q 10
 
 ```python
 from pprint import pprint
@@ -312,7 +312,7 @@ pprint(avg_dct)
 
 (Extra)
 
-## Q11
+## Q 11
 
 ```python
 A = [[2, 0, 8, 7], [2, 4, 8, 3], [9, 0, 4, 3]]
