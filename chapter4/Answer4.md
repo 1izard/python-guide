@@ -1,4 +1,4 @@
-# Chapter4 練習問題回答例
+# Chapter 4 練習問題回答例
 
 ## Q 1
 
@@ -122,7 +122,7 @@ e2j_dct = {
 j2e_dct = {v: k for k, v in e2j_dct.items()}
 ```
 
-(ここまでExtra)
+(ここまで Extra)
 
 
 ## Q 8
@@ -262,7 +262,7 @@ for tool in tool_lst:
 pprint(tool_dct)
 ```
 
-(ここまでExtra)
+(ここまで Extra)
 
 
 ## Q 10

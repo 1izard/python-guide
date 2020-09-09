@@ -1,4 +1,4 @@
-# Chapter4 基本データ構造
+# Chapter 4 基本データ構造
 
 # 基本データ構造
 
@@ -9,7 +9,7 @@
 | :--------------: | :----------------------------------: | :-----------------------------------: | :-------------------------------: |
 |       list       |          複数のデータを格納          |              `[1, 2, 3]`              |    ミュータブル(値を変更可能)     |
 |  tuple (タプル)  |          複数のデータを格納          |              `(1, 2, 3)`              | イミュータブル (値を変更できない) |
-| dictionary(辞書) | key, valueのペアで複数のデータを格納 | `{"name": "Flareon", "type": "Fire"}` |           ミュータブル            |
+| dict(辞書) | key, valueのペアで複数のデータを格納 | `{"name": "Flareon", "type": "Fire"}` |           ミュータブル            |
 
 <br>
 
@@ -146,11 +146,11 @@ print(lst1)  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ### `list()`で初期化
 
 組込み関数 `list()` に Iterable オブジェクト を与えることで list オブジェクト を作ることができます．  
-Iterable(=反復可能=繰り返し処理できる) オブジェクトとは list や tuple， dictionary などのオブジェクトのことをいいます．  
+Iterable(=反復可能=繰り返し処理できる) オブジェクトとは list や tuple， dict などのオブジェクトのことをいいます．  
 Iterable という型があるわけではなく，要素を 1 つ 1 つ取り出すなど繰り返し処理が可能なオブジェクトをまとめてそう呼んでいます．  
 何となく，複数の値が並んでいるようなオブジェクトをイメージしていただけたらいいです．  
 
-`list()` を使って，tuple や dictionary のオブジェクトから list オブジェクト を作れます．  
+`list()` を使って，tuple や dict のオブジェクトから list オブジェクト を作れます．  
 tuple はイミュータブル(=値を変更できない)ですが，list はミュータブル(=値を変更可能)です．  
 また，Dicrionary を引数として与えると全ての key の list オブジェクト が作られます．  
 
@@ -229,7 +229,7 @@ lst3 = [[i + j for j in range(3)] for i in range(3)]
 # [[0, 1, 2], [1, 2, 3], [2, 3, 4]]
 
 multiples = [[i * j for j in range(1, 9)] for i in range(1, 9)]
-'''
+"""
 [[1, 2, 3, 4, 5, 6, 7, 8, 9],
  [2, 4, 6, 8, 10, 12, 14, 16, 18],
  [3, 6, 9, 12, 15, 18, 21, 24, 27],
@@ -239,7 +239,7 @@ multiples = [[i * j for j in range(1, 9)] for i in range(1, 9)]
  [7, 14, 21, 28, 35, 42, 49, 56, 63],
  [8, 16, 24, 32, 40, 48, 56, 64, 72],
  [9, 18, 27, 36, 45, 54, 63, 72, 81]]
-'''
+"""
 ```
 
 if文 も使えます．  
@@ -253,11 +253,11 @@ odds = [i for i in range(10) if i % 2 != 0]     # [1, 3, 5, 7, 9]
 
 ```python
 kronecker_delta = [[1 if i == j else 0 for j in range(3)] for i in range(3)]
-'''
+"""
 [[1, 0, 0],
  [0, 1, 0],
  [0, 0, 1]]
-'''
+"""
 ```
 
 複数の入力がある際に使えるlist内包表記を紹介します．  
@@ -265,12 +265,12 @@ kronecker_delta = [[1 if i == j else 0 for j in range(3)] for i in range(3)]
 Python では，使う必要のない一時的な変数を慣習的に `_` と書きます．  
 
 ```python
-'''
+"""
 入力:
 1
 2
 3
-'''
+"""
 a, b, c = [input() for _ in range(3)]   # 1, 2, 3
 ```
 
@@ -281,7 +281,7 @@ a, b, c = [input() for _ in range(3)]   # 1, 2, 3
 a, b, c = [int(i) for i in input().split()]  # 1, 2, 3
 ```
 
-(ここまでExtra)
+(ここまで Extra)
 
 ## インデックス
 
@@ -832,7 +832,7 @@ except ValueError:
 
 print(idx12)    # -1
 ```
-(ここまでExtra)
+(ここまで Extra)
 
 `sort()` でlistの要素を昇順にできます．   
 
@@ -901,7 +901,7 @@ c = lst1.pop()    # 12
 
 print(lst1)    # [10, 11, 12]
 ```
-(ここまでExtra)
+(ここまで Extra)
 
 
 # tuple (タプル)
@@ -1015,7 +1015,7 @@ list や tuple が複数の値を持ち，持っている値をイテレート�
 `i for i in range(10)` という 0 から 9 までの整数を生成するロジックだけを保持しておき，必要になったときにそのロジックに従って値を生成するといったイメージですかね．  
 そのため，メモリに乗り切らない大量のデータを処理するときや遅延評価が必要なときに使用されます．  
 
-(ここまでExtra)
+(ここまで Extra)
 
 
 ## アンパック
@@ -1085,9 +1085,9 @@ empty_tpl_length = len(empty_tpl)   # 0
 ```
 
 
-# dictionary (辞書)
+# dict (辞書)
 
-Pythonには，keyとvalueのペアを複数保持するデータ構造として dictionary (辞書) があります．  
+Pythonには，keyとvalueのペアを複数保持するデータ構造として dict (辞書) があります．  
 同様のデータ構造は，ほかの言語では Map という名称が多いです．  
 見た目的には以下のようになります．  
 key には，一意であればどんなオブジェクトでも指定できます(正確には hash値 が計算可能なオブジェクト)．  
@@ -1119,7 +1119,7 @@ dct4 = {
 empty_dct = {}
 ```
 
-dictionary も多次元にできます．  
+dict も多次元にできます．  
 
 ```python
 dct1 = {
@@ -1140,7 +1140,7 @@ dct1 = {
 
 ## 初期化
 
-dictionaryも複数の初期化方法を持っています．  
+dictも複数の初期化方法を持っています．  
 
 ### 要素で初期化
 
@@ -1155,19 +1155,19 @@ dct1 = {
 
 ### `dict()` で初期化
 
-組込み関数 `dict()` を使用してdictionaryを作ります．  
+組込み関数 `dict()` を使用してdictを作ります．  
 次の例は，引数としてtupleのlistを渡しています．  
 
 ```python
 dct1 = dict([("name", "Flareon"), ("type", "Fire")])
 
 print(dct1)
-'''
+"""
 {
     "name": "Flareon",
     "type": "Fire"
 }
-'''
+"""
 ```
 
 キーワード引数で key と value を指定することもできます．  
@@ -1177,19 +1177,19 @@ print(dct1)
 dct1 = dict(name="Flareon", type="Fire")
 
 print(dct1)
-'''
+"""
 {
     "name": "Flareon",
     "type": "Fire"
 }
-'''
+"""
 ```
 
 (Extra)
 
-### dictionary内包表記
+### dict内包表記
 
-list, Generator に並んで dictionary にも内包表記があります．  
+list, Generator に並んで dict にも内包表記があります．  
 書式は `{ key: value for items in iterable }` です．
 key と value のペアがある分ちょっと複雑です．  
 
@@ -1198,23 +1198,23 @@ dct1 = {i: i * i for i in range(10)}
 # {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
 
 dct2 = {s: len(s) for s in ("Eevee", "Vapareon", "Jolteon", "Flareon")}
-'''
+"""
 {
     "Eevee": 5,
     "Flareon": 7,
     "Jolteon": 7,
     "Vapareon": 8
 }
-'''
+"""
 
 dct3 = {k: v for k, v in (("name", "Flareon"), ("number", 136), ("type", "Fire"))}
-'''
+"""
 {
     "name": "Flareon",
     "number": 136,
     "type": "Fire"
 }
-'''
+"""
 ```
 
 ### value の取得
@@ -1266,14 +1266,14 @@ dct1 = {
 dct1["Jolteon"] = "でんき"   # key を指定して値を更新
 dct1["Espeon"] = "エスパー"  # 新しく key と value を追加
 print(dct1)
-'''
+"""
 {
     "Vapareon": "Water",
     "Jolteon": "でんき",
     "Flareon": "Fire",
     "Espeon": "エスパー"
 }
-'''
+"""
 
 
 dct2 = {
@@ -1299,7 +1299,7 @@ dct2["Espeon"] = {
 }
 
 print(dct2)
-'''
+"""
 {
     "Vapareon": {
         "number": 134,
@@ -1319,10 +1319,10 @@ print(dct2)
         "type": "エスパー"
     }
 }
-'''
+"""
 ```
 
-ちなみに dictionary では `[n]` とすると n が key として解釈されるので，list や tuple のようにインデックスで値を取得することはできません．  
+ちなみに dict では `[n]` とすると n が key として解釈されるので，list や tuple のようにインデックスで値を取得することはできません．  
 
 ### len()
 
@@ -1342,7 +1342,7 @@ print(len(empty_dct))    # 0
 
 ## in
 
-あるオブジェクト x が dictionary の **key に存在するか** は `x in <dictオブジェクト>` で確かめられます．  
+あるオブジェクト x が dict の **key に存在するか** は `x in <dictオブジェクト>` で確かめられます．  
 
 ```python
 dct1 = {
@@ -1366,7 +1366,7 @@ else:
 # No
 ```
 
-また，あるオブジェクト x が dictionary の **value に存在するか** は `x in <dictオブジェクト>.values()` で確かめられます．  
+また，あるオブジェクト x が dict の **value に存在するか** は `x in <dictオブジェクト>.values()` で確かめられます．  
 `values()` は dictオブジェクト のすべての value を dictviewオブジェクト で返します．  
 dictviewオブジェクトはイミュータブルで，名前の通り値を見るだけ用のオブジェクトです．
 
@@ -1392,9 +1392,9 @@ else:
 # No
 ```
 
-### dictionary のメソッド
+### dict のメソッド
 
-dictionary に使用できる主なメソッドを紹介します．  
+dict に使用できる主なメソッドを紹介します．  
 
 |         メソッド         |                                                           説明                                                           |
 | :----------------------: | :----------------------------------------------------------------------------------------------------------------------: |
@@ -1407,7 +1407,7 @@ dictionary に使用できる主なメソッドを紹介します．
 
 `<dictオブジェクト>[key]` で key に紐づいた value を取得できますが，存在しない key を指定した場合は `KeyError` になるのでした．  
 `get(key, default=x)` で，key が存在しない場合は default に指定した値を返すようにすることで，より安全に value を取得することができます．  
-ケースによって key が存在したり存在しなかったりする dictionary を扱う際に重宝します．  
+ケースによって key が存在したり存在しなかったりする dict を扱う際に重宝します．  
 
 ```python
 dct1 = {
@@ -1422,7 +1422,7 @@ b = dct1.get("Espeon", "Unknown")    # Unknown
 
 `dict1.update(dict2)` で，dict1 に dict2 を連結します．  
 重複する key の value は dict2 の value に更新(update)されます．  
-既存の dictionary の value をまとめて更新したいときや，複数の dictionary を1つにまとめたいときに使います．  
+既存の dict の value をまとめて更新したいときや，複数の dict を1つにまとめたいときに使います．  
 
 ```python
 dct1 = {
@@ -1439,7 +1439,7 @@ dct2 = {
 
 dct1.update(dct2)
 print(dct1)
-'''
+"""
 {
     "Vapareon": "Water",
     "Jolteon": "Electric",
@@ -1447,11 +1447,11 @@ print(dct1)
     "Umbreon": "あく",      <- 新規追加
     "Espeon": "エスパー"     <- 新規追加
 }
-'''
+"""
 ```
 
 (Extra)  
-`setdefault(key, default)` は，key が存在すればその value を返し，存在しなければ新しく key と default のペアを dictionary に追加して，value(=default) を返します．  
+`setdefault(key, default)` は，key が存在すればその value を返し，存在しなければ新しく key と default のペアを dict に追加して，value(=default) を返します．  
 
 ```python
 dct1 = {
@@ -1466,21 +1466,21 @@ print(a)  # Water
 b = dct1.setdefault("Espeon", "Phychic")
 print(b)  # Phychic
 print(dct1)
-'''
+"""
 {
     "Vapareon": "Water",
     "Jolteon": "Electric",
     "Flareon": "Fire"
 }
-'''
+"""
 ```
 
 使用例は練習問題を参考にしてください．  
-(ここまでExtra)
+(ここまで Extra)
 
 `keys()`, `values()`, `items()` は，後述するfor文とともによく使用されるメソッドです．  
 
-`keys()` で dictionary のもつすべての key を取得できます．  
+`keys()` で dict のもつすべての key を取得できます．  
 返り値は dictviewオブジェクト なのでそのままだと値は変更できません．  
 list として使用したい場合は `list()` で listオブジェクト にできます．  
 
@@ -1498,7 +1498,7 @@ key_lst = list(keys)
 print(key_lst)   # ['Vapareon', 'Jolteon', 'Flareon']
 ```
 
-`values()` で dictionary のもつすべての value を取得できます．  
+`values()` で dict のもつすべての value を取得できます．  
 `keys()` と同様，返り値は dictviewオブジェクト です．  
 `list()` で list化できます．  
 
@@ -1516,7 +1516,7 @@ value_lst = list(values)
 print(value_lst)     # ['Water', 'Electric', 'Fire']
 ```
 
-`items()` で dictionary のもつすべての key, value のペアを取得できます．  
+`items()` で dict のもつすべての key, value のペアを取得できます．  
 返り値は dictviewオブジェクト で，1つ1つのペアは tuple になっています．  
 
 ```python
@@ -1534,7 +1534,7 @@ print(items)
 
 # for文
 
-Pythonにおけるfor文は list や tuple，dictionary といった iterableオブジェクト の要素を1つ1つ取り出す(処理を繰り返す=イテレート(iterate))構文です．  
+Pythonにおけるfor文は list や tuple，dict といった iterableオブジェクト の要素を1つ1つ取り出す(処理を繰り返す=イテレート(iterate))構文です．  
 ほかの言語を知っている方は，拡張for文をイメージするとわかりやすいと思います．  
 書式は次の通りです．  
 
@@ -1546,41 +1546,41 @@ Pythonにおけるfor文は list や tuple，dictionary といった iterableオ
 lst1 = [10, 11, 12, 13, 14]
 for n in lst1:
     print(n)
-'''
+"""
 10
 11
 12
 13
 14
-'''
+"""
 
 lst2 = ["Vapareon", "Jolteon", "Flareon"]
 for s in lst2:
     print(s)
-'''
+"""
 Vapareon
 Jolteon
 Flareon
-'''
+"""
 
 lst3 = [[100, 101, 102], [200, 201, 202], [300, 301, 302], [400, 401, 402]]
 for inner_lst in lst3:
     print(inner_lst)
-'''
+"""
 [100, 101, 102]
 [200, 201, 202]
 [300, 301, 302]
 [400, 401, 402]
-'''
+"""
 
 lst4 = [{"Vapareon": "Water"}, {"Jolteon": "Electric"}, {"Flareon": "Fire"}]
 for d in lst4:
     print(d)
-'''
+"""
 {'Vapareon': 'Water'}
 {'Jolteon': 'Electric'}
 {'Flareon': 'Fire'}
-'''
+"""
 ```
 
 変数を複数置くことで，for文で取り出された要素をアンパックすることができます．  
@@ -1590,12 +1590,12 @@ lst3 = [[100, 101, 102], [200, 201, 202], [300, 301, 302], [400, 401, 402]]
 
 for a, b, c in lst3:
     print(a, b, c)
-'''
+"""
 100 101 102
 200 201 202
 300 301 302
 400 401 402
-'''
+"""
 ```
 
 要素を逆順で取得したい場合はスライス `[::-1]` を使用します．  
@@ -1604,18 +1604,18 @@ for a, b, c in lst3:
 lst1 = [10, 11, 12, 13, 14]
 for n in lst1[::-1]:
     print(n)
-'''
+"""
 14
 13
 12
 11
 10
-'''
+"""
 ```
 
 tuple も list と同じようにfor文が使えます．  
 
-dictionary をそのままfor文で回すと，すべての key が取り出されます．  
+dict をそのままfor文で回すと，すべての key が取り出されます．  
 
 ```python
 dct1 = {
@@ -1626,11 +1626,11 @@ dct1 = {
 
 for k in dct1:
     print(k)
-'''
+"""
 Vapareon
 Jolteon
 Flareon
-'''
+"""
 ```
 
 すべての value をfor文で回すには `values()` を使います．  
@@ -1644,11 +1644,11 @@ dct1 = {
 
 for v in dct1.values():
     print(v)
-'''
+"""
 Water
 Electric
 Fire
-'''
+"""
 ```
 
 for文で key と value をいっしょに取り出す場合は `items()` を使います．  
@@ -1662,11 +1662,11 @@ dct1 = {
 
 for k, v in dct1.items():
     print(k, v)
-'''
+"""
 Vapareon Water
 Jolteon Electric
 Flareon Fire
-'''
+"""
 ```
 
 ## range()
@@ -1681,7 +1681,7 @@ Flareon Fire
 ```python
 for i in range(0, 10, 1):
     print(i)
-'''
+"""
 0
 1
 2
@@ -1692,7 +1692,7 @@ for i in range(0, 10, 1):
 7
 8
 9
-'''
+"""
 ```
 
 `end` のみを指定し， `start` と `step` を省略すると次のように書けます．  
@@ -1707,13 +1707,13 @@ for i in range(10):
 ```python
 for i in range(0, 10, 2):
     print(i)
-'''
+"""
 0
 2
 4
 6
 8
-'''
+"""
 ```
 
 次の例は，`start = 9`，`end = -1`，`step = -1` とした場合です．  
@@ -1721,7 +1721,7 @@ for i in range(0, 10, 2):
 ```python
 for i in range(9, -1, -1):
     print(i)
-'''
+"""
 9
 8
 7
@@ -1732,7 +1732,7 @@ for i in range(9, -1, -1):
 2
 1
 0
-'''
+"""
 ```
 
 list の要素にインデックスでアクセスし，要素を書き換える場合にもよく使用します．  
@@ -1788,13 +1788,13 @@ for文ではその tuple を1つずつ取り出すので，for文中に変数を
 ```python
 for i, n in enumerate(lst1):
     print(f"lst1[{i}]={n}")
-'''
+"""
 lst1[0]=10
 lst1[1]=11
 lst1[2]=12
 lst1[3]=13
 lst1[4]=14
-'''
+"""
 ```
 
 要素とペアにする整数は0始まり以外にも可能です．  
@@ -1806,13 +1806,13 @@ lst1[4]=14
 ```python
 for i, n in enumerate(lst1, 1):
     print(f"i={i}, n={n}")
-'''
+"""
 i=1, n=10
 i=2, n=11
 i=3, n=12
 i=4, n=13
 i=5, n=14
-'''
+"""
 ```
 
 ## ネスト
@@ -1825,7 +1825,7 @@ for i in range(1, 10):
     for j in range(1, 10):
         print(i * j, "", end="")
     print()
-'''
+"""
 1 2 3 4 5 6 7 8 9 
 2 4 6 8 10 12 14 16 18 
 3 6 9 12 15 18 21 24 27 
@@ -1835,7 +1835,7 @@ for i in range(1, 10):
 7 14 21 28 35 42 49 56 63 
 8 16 24 32 40 48 56 64 72 
 9 18 27 36 45 54 63 72 81 
-'''
+"""
 ```
 
 2次元以上のデータ構造は，for文 を重ねることで要素を列挙できます．  
@@ -1853,12 +1853,12 @@ for inner_lst in lst:
     for n in inner_lst:
         print(n, "", end="")
     print()
-'''
+"""
 100 101 102 
 200 201 
 
 400 401 402 403 
-'''
+"""
 ```
 
 ## break文
@@ -1875,7 +1875,7 @@ for i in range(1, 8):
         if (3 ** j) % 7 == i:
             break
     print(f"3^{j} mod 7 = {i}")
-'''
+"""
 3^0 mod 7 = 1
 3^2 mod 7 = 2
 3^1 mod 7 = 3
@@ -1883,14 +1883,14 @@ for i in range(1, 8):
 3^5 mod 7 = 5
 3^3 mod 7 = 6
 3^9 mod 7 = 7
-'''
+"""
 ```
 
 
 ## else節
 
 for文 でも else節 を使うことができます．  
-次のプログラムは，dictionary に list `numbers` にある数と同じ `number` をもつ要素があるかを判定しています．  
+次のプログラムは，dict に list `numbers` にある数と同じ `number` をもつ要素があるかを判定しています．  
 存在する場合は `Found`，存在しない場合(=break文が使われなかった場合)は else節 で `Not Found` を出力します．  
 
 ```python
@@ -1919,10 +1919,10 @@ for n in numbers:
             break
     else:
         print("Not Found")
-'''
+"""
 number 134: Found
 number 196: Not Found
-'''
+"""
 ```
 
 ## continue文
@@ -1998,8 +1998,8 @@ Python で計算してみましょう．
 
 ## Q 7
 
-次の dictionary の key と value を入れ替えた dictionary を作ってください．  
-なお，作成する dictionary の key の順序は問いません．  
+次の dict の key と value を入れ替えた dict を作ってください．  
+なお，作成する dict の key の順序は問いません．  
 
 ```python
 e2j_dct = {
@@ -2014,9 +2014,9 @@ e2j_dct = {
 
 ## Q 8
 
-サイバー攻撃の `カテゴリ名` が次の dictionary で与えられます．  
+サイバー攻撃の `カテゴリ名` が次の dict で与えられます．  
 各 `カテゴリ名` には `カテゴリID` が割り振られており，`カテゴリID` から `カテゴリ名` を一意に特定できるようになっています．  
-dictionary は `{ カテゴリID : カテゴリ名 }` の対応を表しています．  
+dict は `{ カテゴリID : カテゴリ名 }` の対応を表しています．  
 
 ```python
 category_dct = {
@@ -2074,7 +2074,7 @@ data_lst = [
 from pprint import pprint
 ```
 
-期待される出力は次のとおりです (dictionary の key の順序は問いません)．  
+期待される出力は次のとおりです (dict の key の順序は問いません)．  
 
 ```
 [{'category': 'Execution',
@@ -2101,7 +2101,7 @@ from pprint import pprint
 ## Q 9
 
 各言語で使用されるライブラリやフレームワークの名前が，次の list にまとめられています．  
-言語ごとにライブラリ名・フレームワーク名を dictionary でまとめ，出力してください．  
+言語ごとにライブラリ名・フレームワーク名を dict でまとめ，出力してください．  
 出力は `pprint` で整形してください．  
 
 ```python
@@ -2137,7 +2137,7 @@ tool_lst = [
 ```
 
 期待される出力は次のとおりです．  
-なお，出力する dictionary の key の順序は問いません．  
+なお，出力する dict の key の順序は問いません．  
 
 ```
 {'C++': ['Boost'],
@@ -2148,8 +2148,8 @@ tool_lst = [
 
 ## Q 10
 
-Satoshi，Kasumi，Takeshi の， TOEIC のセクション別スコアが次の dictionary で与えられます．  
-各セクションについて3人の平均スコアを求め，dictionary にまとめて出力してください．  
+Satoshi，Kasumi，Takeshi の， TOEIC のセクション別スコアが次の dict で与えられます．  
+各セクションについて3人の平均スコアを求め，dict にまとめて出力してください．  
 出力は `pprint` メソッドを使用して整形してください．  
 
 ```python

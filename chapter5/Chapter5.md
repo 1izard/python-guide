@@ -1,4 +1,4 @@
-# Chapter5 関数
+# Chapter 5 関数
 
 # 定義
 
@@ -6,7 +6,7 @@
 同様に，同じ処理をあとから何度も使用できるようにできると，コードを書く量が減って便利です．
 また，ほかの人が，自分が書いた処理を簡単に使用することも期待できます．  
 
-例えば，Chapter4 の練習問題の Q 6 で使用した `nCk` を求めるプログラムは，`n` と `k` を可変にしていろいろな組合せの総数を求められるようにできると便利そうです．  
+例えば，Chapter 4 の練習問題の Q 6 で使用した `nCk` を求めるプログラムは，`n` と `k` を可変にしていろいろな組合せの総数を求められるようにできると便利そうです．  
 
 処理をまとめ，あとから使用する(=呼び出す)には **関数 (function)** を用います．  
 関数の **定義**は次のようになっています．  
@@ -118,7 +118,7 @@ res = comb(k=3, n=7)    # 35
 この例ではキーワード引数を使ってもそんなうれしいことないんですが，引数がもっとたくさんある関数のときデフォルト引数とともに活躍します．  
 
 位置引数の場合は tuple や list でのアンパックによる引数の指定が可能でした．  
-キーワード引数の場合は実引数である dictionary の前に `**` を置くことで引数を指定できます．  
+キーワード引数の場合は実引数である dict の前に `**` を置くことで引数を指定できます．  
 
 ```python
 def comb(n, k):
@@ -142,8 +142,8 @@ res = comb(**d)    # 35
 
 こちらの場合も (実引数のほかに)仮引数の前に `**` をつけると違う意味になります．  
 
-今回の例を見て， `*` や `**` を使って引数を指定するにはわざわざ tuple や dictionary を作らなければいけなくて手間増えてない？と思うかもしれません．  
-実際には，プログラム中で受け取った(既に作られた) tuple や dictionary の値を自分が何かしらの関数に使いたくなったとき，いちいち自分で分解しなくても `*` や `**` で引数として渡せてうれしいといった感じです．  
+今回の例を見て， `*` や `**` を使って引数を指定するにはわざわざ tuple や dict を作らなければいけなくて手間増えてない？と思うかもしれません．  
+実際には，プログラム中で受け取った(既に作られた) tuple や dict の値を自分が何かしらの関数に使いたくなったとき，いちいち自分で分解しなくても `*` や `**` で引数として渡せてうれしいといった感じです．  
 
 
 # 仮引数
@@ -276,7 +276,7 @@ DataFrame.merge(right, how='inner', on=None, left_on=None, right_on=None, left_i
 
 ### ミュータブルオブジェクト
 
-**デフォルト引数の値として list や dictionary といったミュータブルオブジェクトを使うのは推奨されません**．  
+**デフォルト引数の値として list や dict といったミュータブルオブジェクトを使うのは推奨されません**．  
 言い換えれば，デフォルト引数の値はイミュータブルオブジェクトにすべきです．  
 これには Python のデフォルト引数の言語仕様が関わっています．  
 
@@ -488,12 +488,12 @@ res2 = has_any(lst, *tpl2)    # False
 ```
 
 
-### `**` によるキーワード引数の dictionary 化
+### `**` によるキーワード引数の dict 化
 
-仮引数の前に `**` を置くことで，任意の個数のキーワード引数を dictionary にして受け取ることができます．  
+仮引数の前に `**` を置くことで，任意の個数のキーワード引数を dict にして受け取ることができます．  
 仮引数の名前は `**` をつければ kwargs 以外でも使えますが，一般的に kwargs が使用されます．  
 
-次の inc_expenses 関数は，支出 (expenses) の各項目ごとの金額のデータを保持している dictionary と `**` による可変長引数の仮引数をもつ関数です．  
+次の inc_expenses 関数は，支出 (expenses) の各項目ごとの金額のデータを保持している dict と `**` による可変長引数の仮引数をもつ関数です．  
 任意の個数の項目と金額のペアをキーワード引数として追加することで，expenses に項目があれば引数の値を追加し，なければ新しく項目と金額を追加します．  
 
 ```python
@@ -509,17 +509,17 @@ expenses = {
 }
 
 inc_expenses(expenses, food=3000, transportation=2000)
-'''
+"""
 {
   'food': 23000, 
   'utilities': 10000, 
   'entertainmemt': 20000, 
   'transportation': 2000
 }
-'''
+"""
 ```
 
-仮引数が `**kwargs` である関数にキーワード引数として dictionary を使いたい場合は，関数を呼び出す際に実引数である dictionary の前に `**` を置いてアンパックします．  
+仮引数が `**kwargs` である関数にキーワード引数として dict を使いたい場合は，関数を呼び出す際に実引数である dict の前に `**` を置いてアンパックします．  
 
 ```python
 def inc_expenses(expenses, **kwargs):
@@ -540,17 +540,17 @@ increment = {
 }
 
 inc_expenses(expenses, **increment)
-'''
+"""
 {
   'food': 23000, 
   'utilities': 10000, 
   'entertainmemt': 20000, 
   'transportation': 2000
 }
-'''
+"""
 ```
 
-# バリデーションチェック (Validation Check)
+# バリデーション (Validation Check)
 
 先ほどまで見ていた `comb` 関数ですが，1 つバグがあります．  
 例えば，次のような引数で関数を呼び出した場合はどうなるでしょうか．  
@@ -959,17 +959,127 @@ for dataset in dataset_lst:
     rate = counter(dataset.data, tester)
     res[dataset.name] = rate
 print(res)
-'''
+"""
 {
   'dataset 1': 0.54,
   'dataset 2': 0.6,
   'dataset 3': 0.44
 }
-'''
+"""
 ```
 
 まあ上のコードだけ見ると，そもそもクロージャを使わずとも for 文のとこで counter 関数の内部処理と同じ処理書けばよくねって思われるかもしれないですが...
 関数を引数にとる関数を使う必要があったり，ロジックが複雑でメイン処理と関数に分けたかったりする場合，あるいはクロージャでこういったこともできますって感じです．  
+
+
+# Generator 関数
+
+Chapter 4 で `(expression for item in iterable)` が generator 内包表記であるという話から，generaotr オブジェクトについて少し説明しました．  
+list や tuple といった iterable オブジェクトの一つで， list や tuple が自身が保持する値をイテレートするのに対して，generator は次の値が必要になったときはじめて値を生成します．  
+そのため，メモリに乗り切らない大量のデータを処理するときや遅延評価が必要なときに使用されます．  
+また，generator オブジェクトがイテレート可能なのは 1 回のみです．  
+
+generator 内包表記のほかに generator オブジェクトを作る方法として，generator 関数があります．  
+
+次のジェネレータ内包表記で作られるのは，2 の累乗を 0 乗から 9 乗まで順に生成する generator オブジェクトです．  
+
+```python
+g = (2 ** i for i in range(10))
+print(list(g))  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+print(list(g))  # []
+```
+
+これと同じ働きをする generator オブジェクトを作るのが，次の generator 関数 gen_2_power です．  
+generator 関数の返り値は generator オブジェクトになります．  
+普通の関数が return 文で値を返すのに対して，generator 関数は **yield 文で値を生成する generator オブジェクトを返します**．  
+つまり，generator 関数のロジックは generator オブジェクトのロジックを示しています．  
+
+```python
+def gen_2_power():
+    # ここに書かれているように動作する generator オブジェクトを返す
+    i = 0
+    while i < 10:
+        yield 2 ** i
+        i += 1
+
+
+g = gen_2_power()
+print(g)        # <generator object gen_power_2 at 0x7fc4fecf8b30>
+print(list(g))  # [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
+print(list(g))  # []
+```
+
+ここで，generator オブジェクト，ひいては iterator オブジェクトの働きを理解するため，組込み関数 iter と next を紹介します．  
+組込み関数 iter は，iterable オブジェクトから iterator オブジェクトを取得する関数です．  
+iterable オブジェクトはイテレート可能なオブジェクトだと説明してきましたが，正確には iter 関数で iterator オブジェクトを取得できるオブジェクトのことをいいます．  
+そして，for 文などが実際にイテレートしているのは iterable オブジェクトから得た iterator オブジェクトだったりします．  
+iterator オブジェクトは，組込み関数 next を使うことによって次の要素を返すオブジェクトです．  
+例えば，組込み関数 iter を使って list `[10, 11, 12]` から iterator オブジェクトを取得し，`next()` を使って要素を 1 つずつ取得することができます．  
+次の要素がない場合は，例外 `StopIteration` が送出されます．  
+
+```python
+lst = [10, 11, 12]
+
+it = iter(lst)
+print(it)       # <list_iterator object at 0x7f4b586249a0>
+
+n = next(it)
+print(n)        # 10
+
+n = next(it)
+print(n)        # 11
+
+n = next(it)
+print(n)        # 12
+
+n = next(it)
+"""
+Traceback (most recent call last):
+  File "example.py", line 15, in <module>
+    n = next(it)
+StopIteration
+"""
+```
+
+generator オブジェクトは，generator 関数によって作られることを除いて iterator オブジェクトと同じ働きをします．  
+つまり，iterator オブジェクトを generator 関数という簡易的な方法で実装できるようにしたのが generator オブジェクトというわけです．  
+
+yield 文は，１ 回のイテレーションで生成する値を示します．  
+次のコードの generator 関数 gen_10_11_12 から作られる generator オブジェクトは，イテレーションごとに 10, 11, 12 を順に生成します．  
+コードの実行結果からわかるように，generator 関数内のコードは next が呼ばれると最初の yield 文まで実行し，再度 next が呼ばれると前回呼び出された yield 文のあとから次の yield 文までを実行します．  
+このようにして，generator 関数でイテレーション機能をもったオブジェクトを作ることができます．  
+
+```python
+def gen_10_11_12():
+    print("yield 10")
+    yield 10
+    print("yield 11")
+    yield 11
+    print("yield 12")
+    yield 12
+    print("exhausted")
+
+
+g = gen_10_11_12()
+print(g)        # <generator object gen_10_11_12 at 0x7f66c77a4b30>
+
+n = next(g)     # yield 10
+print(n)        # 10
+
+n = next(g)     # yield 11
+print(n)        # 11
+
+n = next(g)     # yield 12
+print(n)        # 12
+
+n = next(g)     # exhausted
+"""
+Traceback (most recent call last):
+  File "example.py", line 19, in <module>
+    n = next(g)
+StopIteration
+"""
+```
 
 
 # Type Hint
@@ -1032,7 +1142,7 @@ def none_safe_strip(s: str or None) -> str or None:
 
 次のコードは，与えられた 2 つの list をベクトルと見立てて，その和を返す関数です．  
 `List[float]` の形式で，float 型の値を持った list であることを明示しています．  
-(tuple, dictionary でもそうですが `[float]` まで詳しくなくてもよく，例えば `a: List` でも定義可)
+(tuple, dict でもそうですが `[float]` まで詳しくなくてもよく，例えば `a: List` でも定義可)
 
 ```python
 from typing import List
@@ -1042,7 +1152,7 @@ def add_vector(a: List[float], b: List[float]) -> List[float]:
     return list(map(lambda x: x[0] + x[1], zip(a, b)))
 ```
 
-次のコードは，dictionary の key と value のペアを tuple の list にして返す関数です．  
+次のコードは，dict の key と value のペアを tuple の list にして返す関数です．  
 書けるとこまで型を書くとこんな感じです．  
 
 ```python
@@ -1094,7 +1204,7 @@ def get_color_value(color: Color) -> int:
 よく使うのはこのあたりですが，一度公式 doc を読むのをおすすめします．  
 https://docs.python.org/ja/3/library/typing.html
 
-(ここまでExtra)  
+(ここまで Extra)  
 
 
 # スコープ (Scope)
@@ -1192,7 +1302,7 @@ print(f())  # 10
 ![tic_toc_toe](tic_toc_toe.png)
 
 グローバル変数の使い方の例として参考にしてください．  
-なお，コードが煩雑になってロジックを追いづらくなるため，各標準入力のバリデーションチェックは設けていません．  
+なお，コードが煩雑になってロジックを追いづらくなるため，各標準入力のバリデーションは設けていません．  
 
 ```python
 # グローバル変数
@@ -1434,20 +1544,20 @@ report_name = make_report_name(1)   # monthly_report_jan.txt
 
 ```python
 report_name = make_report_name(0)
-'''
+"""
 Traceback (most recent call last):
   File "q5.py", line 13, in <module>
     print(make_report_name(13))
   File "q5.py", line 7, in make_report_name
     raise ValueError("Invalid Argument: month must be 1 <= month <= 12.")
 ValueError: Invalid Argument: month must be 1 <= month <= 12.
-'''
+"""
 ```
 
 
 ## Q 6
 
-dictionary `cart` はショッピングカートの内容を表しており，key が商品名，value が個数になっています．  
+dict `cart` はショッピングカートの内容を表しており，key が商品名，value が個数になっています．  
 `cart` を引数として渡すと合計金額を返す関数 calc_total を実装してみましょう．  
 なお，金額は次の PRICES を global 変数として使用してください．  
 
@@ -1518,14 +1628,14 @@ print(x)    # [10, 20, 30, 40, 50]
 ```python
 x = [10, 20, 30]
 sort_by_indices(x, indices=[2, 0, 1, 4, 3]
-'''
+"""
 Traceback (most recent call last):
   File "q7.py", line 23, in <module>
     sort_by_indices(x, indices=[2, 0, 1, 4, 3])
   File "q7.py", line 7, in sort_by_indices
     raise ValueError(
 ValueError: Invalid Argument: the length of indices must be the same with the length of x.
-'''
+"""
 ```
 
 
@@ -1553,14 +1663,14 @@ res = perm(0)   # 1
 
 ```python
 res = perm(-1)
-'''
+"""
 Traceback (most recent call last):
   File "q8.py", line 15, in <module>
     print(perm(-1))
   File "q8.py", line 3, in perm
     raise ValueError("Invalid Argument: n must be n >= 0.")
 ValueError: Invalid Argument: n must be n >= 0.
-'''
+"""
 ```
 
 
@@ -1592,14 +1702,14 @@ res = perm_with_dup(3, 1, 1, 2, 1)    # 3360
 
 ```python
 res = perm_with_dup(5, 3, 0)
-'''
+"""
 Traceback (most recent call last):
   File "q9.py", line 27, in <module>
     print(perm_with_dup(5, 3, 0))
   File "q9.py", line 17, in perm_with_dup
     raise ValueError("Invalid Argument: all args must be arg > 0.")
 ValueError: Invalid Argument: all args must be arg > 0.
-'''
+"""
 ```
 
 
@@ -1643,7 +1753,7 @@ schedules = [
 ```
 
 
-会議室を予約する場合は，開始時刻 start (hour)，終了時刻 end (hour)，使用する会議室 room，人数 num を含んだ dictionary を shedules に追加する必要があります．  
+会議室を予約する場合は，開始時刻 start (hour)，終了時刻 end (hour)，使用する会議室 room，人数 num を含んだ dict を shedules に追加する必要があります．  
 予約情報を shedules に追加する関数 book を実装したいです．  
 ただし，これから予約する会議室と，すでに予約されている会議室の使用時間に重複がある場合は予約することができません (一方の終了時刻が他方の開始時刻と重複する場合は予約できます)．  
 予約できた場合は `True`，そうでない場合は `False` を返すようにしてください．  
@@ -1665,14 +1775,14 @@ booking = {
 booked = book(**booking)
 print(booked)   # True
 pprint(schedules)
-'''
+"""
 [{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
  {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
  {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
  {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
  {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19},
  {'end': 10, 'num': 8, 'room': 'meeting_room_A', 'start': 9}]
-'''
+"""
 ```
 
 例 2.  
@@ -1684,14 +1794,14 @@ from pprint import pprint
 booked = book(start=15, end=17, room="meeting_room_B", num=15)
 print(booked)   # True
 pprint(schedules)
-'''
+"""
 [{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
  {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
  {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
  {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
  {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19},
  {'end': 17, 'num': 15, 'room': 'meeting_room_B', 'start': 15}]
-'''
+"""
 ```
 
 例 3.  
@@ -1703,13 +1813,13 @@ from pprint import pprint
 booked = book(start=11, end=13, room="meeting_room_A", num=10)
 print(booked)   # False
 pprint(schedules)
-'''
+"""
 [{'end': 9, 'num': 10, 'room': 'meeting_room_A', 'start': 8},
  {'end': 14, 'num': 12, 'room': 'meeting_room_A', 'start': 12},
  {'end': 14, 'num': 5, 'room': 'meeting_room_B', 'start': 13},
  {'end': 19, 'num': 5, 'room': 'meeting_room_A', 'start': 18},
  {'end': 20, 'num': 7, 'room': 'meeting_room_B', 'start': 19}]
-'''
+"""
 ```
 
 <details>
