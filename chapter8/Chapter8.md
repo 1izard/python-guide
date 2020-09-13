@@ -3179,11 +3179,11 @@ dir2_1 以下にある拡張子が `.txt` であるファイルの絶対パス�
 絶対パスは実行環境によって異なりますが，期待される出力例は次のとおりです．  
 
 ```
-['/workspaces/aaa/workspaces/dir2/dir2_1/file2_1_1.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
+['/workspaces/dir2/dir2_1/file2_1_1.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
 ```
 
 

@@ -21,11 +21,11 @@ for p in src.glob("**/*.txt"):
 # (Extra) txts = [str(p) for p in path.glob("**/*.txt")]
 pprint(txts)
 """
-['/workspaces/aaa/workspaces/dir2/dir2_1/file2_1_1.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
- '/workspaces/aaa/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
+['/workspaces/dir2/dir2_1/file2_1_1.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
 """
 ```
 
@@ -41,11 +41,11 @@ src = os.path.abspath(os.path.dirname(__file__))
 txts = glob.glob(os.path.join(src, "**", "*.txt"), recursive=True)
 pprint(txts)
 """
-['/workspaces/bbb/workspaces/dir2/dir2_1/file2_1_1.txt',
- '/workspaces/bbb/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
- '/workspaces/bbb/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
- '/workspaces/bbb/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
- '/workspaces/bbb/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
+['/workspaces/dir2/dir2_1/file2_1_1.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_01.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_02.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_1/file2_1_1_03.txt',
+ '/workspaces/dir2/dir2_1/dir2_1_2/file2_1_2_02.txt']
 """
 ```
 
