@@ -132,7 +132,7 @@ from pprint import pprint
 
 
 category_dct = {
-    "TA0001": "Innitial Access",
+    "TA0001": "Initial Access",
     "TA0002": "Execution",
     "TA0003": "Persistence",
 }

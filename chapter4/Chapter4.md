@@ -2020,7 +2020,7 @@ dict は `{ カテゴリID : カテゴリ名 }` の対応を表しています�
 
 ```python
 category_dct = {
-    "TA0001": "Innitial Access",
+    "TA0001": "Initial Access",
     "TA0002": "Execution",
     "TA0003": "Persistence",
 }
@@ -2089,7 +2089,7 @@ from pprint import pprint
  {'category': 'Unknown',
   'datetime': '2020-08-16 21:02:56',
   'severity': 'Middle'},
- {'category': 'Innitial Access',
+ {'category': 'Initial Access',
   'datetime': '2020-08-17 08:30:17',
   'severity': 'High'},
  {'category': 'Execution',
