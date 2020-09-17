@@ -65,7 +65,7 @@ str1 = "squirtle"
 str2 = "ゼニガメ"
 ```
 
-![count index](string_index.png)
+![count index](img/string_index.png)
 
 <br>
 
@@ -164,9 +164,9 @@ str1_1_6_3 = str1[1:6:3]  # 1文字目から(6-1=5)文字目までステップ�
 str1_2_5_1 = str1[2:5:1]  # 2文字目から(5-1=4)文字目までステップ数1で = uir
 str1_2_5_2 = str1[2:5:2]  # 2文字目から(5-1=4)文字目までステップ数2で = ur
 ```
-![slice1](string_slice1.png)
+![slice1](img/string_slice1.png)
 
-![slice2](string_slice2.png)
+![slice2](img/string_slice2.png)
 
 以下の例では `step` を省略しています．  
 この場合は `step = 1` とするのと同じ結果になります．  
@@ -181,7 +181,7 @@ str1_2_m1 = str1[2:-1]  # 2文字目から(-1-1=-2)文字目まで = uirtl
 str1_4_2 = str1[4:2]    # 4文字目から(2-1=1)文字目まで = ""(空文字)
 ```
 
-![slice3](string_slice3.png)
+![slice3](img/string_slice3.png)
 
 `step = 1` のときは，`抽出される文字列長 = end - start`であることを覚えておきましょう．  
 例えば，`str1[1:6]` の場合 1 番目の文字から(6 - 1 = 5)文字を抽出します．  
@@ -233,7 +233,7 @@ str1_m3 = str1[::-3]   # erq
 str1_m1 = str1[::-1]   # eltriuqs
 ```
 
-![string_slice](string_slice4.png)
+![string_slice](img/string_slice4.png)
 
 <br>
 
@@ -513,9 +513,9 @@ Python において，オブジェクトがミュータブル，あるいはイ�
 実は，これらの 2 つのコードにおいてそれぞれの str オブジェクトの値は変更されていません．  
 変わったのは変数が指すオブジェクトです．  
 
-![s1](s1.png)
+![s1](img/s1.png)
 
-![s2](s2.png)
+![s2](img/s2.png)
 
 このことは，組込み関数 `id()` を使うことで確かめられます．  
 `id()` は，オブジェクトが格納されているメモリのアドレスを返す関数です．  
@@ -566,7 +566,7 @@ s4 | 4378886960
 つまり，**変数に変数を代入した場合は，オブジェクトを指す変数が 2 種類に増えるだけで，オブジェクトがコピーされるわけではありません．**  
 イメージとしては次のようになります．  
 
-![Ditto](Ditto.png)
+![Ditto](img/Ditto.png)
 
 このように，Python における変数はメモリと一対一の関係にはなく，オブジェクトを指すためのラベルとして働きます．  
 "変数に代入する" という言い方が紛らわしいですね...
@@ -719,3 +719,9 @@ s = "Mr.Mime"
 ```python
 t = 7529
 ```
+
+
+<hr>
+
+[Chapter 2 練習問題解答例](Answers2.md)  
+[Index](../README.md)

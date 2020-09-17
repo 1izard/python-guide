@@ -17,7 +17,7 @@
 条件によってプログラムの処理を分岐させます．  
 書式は以下のようになります．  
 
-![if_format](if_format.png)
+![if_format](img/if_format.png)
 
 else 節はすべての条件に当てはまらなかった場合に実行されます．  
 
@@ -438,7 +438,7 @@ s = "Even" if n % 2 == 0 else "Odd"
 while 文の書式は次の通りです．  
 条件式が `False` になるまで処理を繰り返します．  
 
-![while_format](while_format.png)
+![while_format](img/while_format.png)
 
 これも例を順に見ていきましょう．  
 
@@ -526,45 +526,6 @@ else:
 2
 Found
 """
-```
-
-## else 節
-
-while 文の末尾にも else 節を設けることができます．  
-while 文で break 文が使用されなかった場合に else 節に入ります．  
-
-以下の 2 つのプログラムのうち，上のプログラムは break 文が使用されるケース，下のプログラムは break 文が使用されないケースになります
-
-```python
-s = "Slowpoke"
-
-i = 0
-n = len(s)
-while i < n:
-    if s[i] == "o":
-        print("Found")
-        break
-    i += 1
-else:
-    print("Not found")
-
-# Found
-```
-
-```python
-s = "Shelldero"
-
-i = 0
-n = len(s)
-while i < n:
-    if s[i] == "o":
-        print("Found")
-        break
-    i += 1
-else:
-    print("Not found")
-
-# Not found
 ```
 
 
@@ -664,7 +625,7 @@ int main() {
 
 図解するとこんな感じです．  
 
-![if_scope_cpp](if_scope_cpp.png)
+![if_scope_cpp](img/if_scope_cpp.png)
 
 Python だと，if 文はスコープをつくらないので if 文内で ans を定義しているにも関わらず次のコードは正しく動作します．  
 
@@ -995,3 +956,9 @@ CPUのかち！
 ```
 
 (ここまで Extra)  
+
+
+<hr>
+
+[Chapter 3 練習問題解答例](Answers3.md)  
+[Index](../README.md)

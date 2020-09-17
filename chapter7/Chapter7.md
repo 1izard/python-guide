@@ -2307,7 +2307,7 @@ print(res)  # None
 
 基本的な統計情報である平均，分散，標準偏差は，N 個のデータを `x1, x2, ..., xN` として以下の数式で計算できます．  
 
-![stats](stats.png)
+![stats](img/stats.png)
 
 以下のインスタンス属性とインスタンスメソッドを実装して StatsList クラスを作ってみましょう．  
 また，例を参考に StatsList オブジェクトで実際に平均，分散，標準偏差を計算してみましょう．  
@@ -2519,8 +2519,7 @@ print("cheapest by train |", navi.cheapest(Way.TRAIN))  # cheapest by train | No
 ```
 
 
+<hr>
 
-
-## Q
-
-setter に処理をはさむ
+[Chapter 7 練習問題解答例](Answers7.md)  
+[Index](../README.md)

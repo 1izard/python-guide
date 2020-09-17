@@ -126,7 +126,7 @@ print(str(file1_2_1_rel_path))  # ..\dir1_2\file1_2_1.md
 
 Path クラスのクラス図はこんな感じです (公式 doc https://docs.python.org/3/library/pathlib.html )．  
 
-![path](path.png)
+![path](img/path.png)
 
 上のコードの場合，**相対パスの基準は実行されたプログラムの場所ではなくプログラムを実行した場所** になります．  
 したがって，上のコードを example.py として dir1_1 から実行したときは `../file1_1.html` は `dir1/file1_1.html`，`../dir1_2/file1_2_1.md` は `dir1/dir1_2/file1_2_1.md` となり正しいファイルパスですが，dir1 で example.py を実行したときは `../file1_1.html` は `workspaces/file1_1.html`，`../dir1_2/file1_2_1.md` は `workspaces/dir1_2/file1_2_1.md` となり正しいファイルパスになりません．  
@@ -3563,4 +3563,7 @@ dir2_4
 ```
 
 
+<hr>
 
+[Chapter 8 練習問題解答例](Answers8.md)  
+[Index](../README.md)

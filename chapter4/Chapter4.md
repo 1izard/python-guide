@@ -329,9 +329,9 @@ print(lst1)    # [100, 11, 12, 300, 400]
 再代入とはラベルを貼り替えることでした．  
 上のコードがしていることを図で表すと次のようになります (アドレスは一例です)．  
 
-![list_assignment1](list_assignment1.png)
+![list_assignment1](img/list_assignment1.png)
 
-![list_assignment2](list_assignment2.png)
+![list_assignment2](img/list_assignment2.png)
 
 この図のように，list はオブジェクトそのものを保持しているわけではなく，オブジェクトの参照を保持しています．  
 つまり，例えば `lst[0] = 100` というのは，list が持っている変数 `lst[0]` に代入する (list が持っているラベル `lst[0]` を `100` に割り当てる) ことと同じです．  
@@ -349,7 +349,7 @@ print(lst1)    # [100, 11, 12, 13, 14]
 print(lst2)    # [100, 11, 12, 13, 14]
 ```
 
-![list_assignment3](list_assignment3.png)
+![list_assignment3](img/list_assignment3.png)
 
 同じ参照を持った異なる list オブジェクトを作るには，変数の代入ではなく list オブジェクトをコピーする必要があります．  
 list のコピーについては後述します．  
@@ -525,7 +525,7 @@ print(f"id(lst2[2]) | {id(lst2[2])}")   # id(lst2[2]) | 4437912352
 
 図にするとこんな感じです．  
 
-![1d_list_copy](1d_list_copy.png)
+![1d_list_copy](img/1d_list_copy.png)
 
 このように，1 次元 list の場合は Shallow Copy で別々の list が作れます．  
 
@@ -590,7 +590,7 @@ print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4343381056
 中の list オブジェクトへの参照を維持したままコピーされるため，もとの list と コピーされて作られた list は同じ list オブジェクトを使うことになります．  
 その結果，`lst4[0][0] = 100` で `lst3[0][0]` も 100 になってしまったのです．  
 
-![2d_list_shallow_copy](2d_list_shallow_copy.png)
+![2d_list_shallow_copy](img/2d_list_shallow_copy.png)
 
 
 これを回避するには，オブジェクトの参照先からまるごとコピーする，すなわち Deep Copy する必要があります．  
@@ -651,9 +651,9 @@ print(f"id(lst4[1][0]) | {id(lst4[1][0])}")  # id(lst4[1][0]) | 4448627744
 print(f"id(lst4[1][1]) | {id(lst4[1][1])}")  # id(lst4[1][1]) | 4448627776
 ```
 
-![2d_list_deep_copy1](2d_list_deep_copy1.png)
+![2d_list_deep_copy1](img/2d_list_deep_copy1.png)
 
-![2d_list_deep_copy2](2d_list_deep_copy2.png)
+![2d_list_deep_copy2](img/2d_list_deep_copy2.png)
 
 このように，多次元の list をはじめ オブジェクトを保持するオブジェクトのコピーには Deep Copy を使う場面があるということを覚えておいてください．  
 
@@ -1538,7 +1538,7 @@ Pythonにおけるfor文は list や tuple，dict といった iterableオブジ
 ほかの言語を知っている方は，拡張for文をイメージするとわかりやすいと思います．  
 書式は次の通りです．  
 
-![for_format](for_format.png)
+![for_format](img/for_format.png)
 
 次の例は，list の要素を1つずつ取り出して出力するコードです．  
 
@@ -1887,44 +1887,6 @@ for i in range(1, 8):
 ```
 
 
-## else節
-
-for文 でも else節 を使うことができます．  
-次のプログラムは，dict に list `numbers` にある数と同じ `number` をもつ要素があるかを判定しています．  
-存在する場合は `Found`，存在しない場合(=break文が使われなかった場合)は else節 で `Not Found` を出力します．  
-
-```python
-numbers = [134, 196]
-
-dct = {
-    "Vapareon": {
-        "number": 134,
-        "type": "Water"
-    },
-    "Jolteon": {
-        "number": 135,
-        "type": "Electric"
-    },
-    "Flareon": {
-        "number": 136,
-        "type": "Fire"
-    }
-}
-
-for n in numbers:
-    print(f"number {n}: ", end="")
-    for v in dct.values():
-        if v["number"] == n:
-            print("Found")
-            break
-    else:
-        print("Not Found")
-"""
-number 134: Found
-number 196: Not Found
-"""
-```
-
 ## continue文
 
 for文 でも continue文 が使用できます．  
@@ -2195,7 +2157,7 @@ result_dct = {
 
 次の行列の積を求めてみましょう．  
 
-![Q_matrix](Q_matrix.png)
+![Q_matrix](img/Q_matrix.png)
 
 ```python
 A = [[2, 0, 8, 7], [2, 4, 8, 3], [9, 0, 4, 3]]
@@ -2211,5 +2173,8 @@ B = [[9, 9, 8, 0, 4], [5, 1, 5, 3, 8], [3, 6, 4, 1, 9], [8, 5, 5, 3, 3]]
 ```
 
 
+<hr>
 
+[Chapter 4 練習問題解答例](Answers4.md)  
+[Index](../README.md)
 

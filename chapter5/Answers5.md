@@ -192,3 +192,8 @@ def book(start, end, room, num):
     else:
         return False
 ```
+
+<hr>
+
+[Chapter 5 関数](Chapter5.md)  
+[Index](../README.md)

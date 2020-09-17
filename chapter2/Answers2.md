@@ -138,3 +138,9 @@ m = t // 60 % 60    # 分
 s = t % 60          # 秒
 print(f'{h}時間{m}分{s}秒')     # 2時間5分29秒 (マラソン男子日本記録)
 ```
+
+<hr>
+
+[Chapter 2 文字列](Chapter2.md)  
+[Index](../README.md)
+

@@ -363,3 +363,8 @@ for client in clients:
 print(ans)
 ```
 
+
+<hr>
+
+[Chapter 6 組込み関数](Chapter6.md)  
+[INdex](../README.md)

@@ -626,3 +626,8 @@ n = 22
 ```python
 a = 1
 ```
+
+<hr>
+
+[Chapter 1 練習問題解答例](Answers1.md)  
+[Index](../README.md)

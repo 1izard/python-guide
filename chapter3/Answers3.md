@@ -82,8 +82,8 @@ print(total)  # 5080
 
 ## Q 7
 
-`s` を1文字ずつ照合していったとき `e` に一致したらbreak文で抜けます．  
-while文のあとにelse節を設けることで，見つからなかった場合(=break文が使われなかった場合)`i` にスムーズに `-1` を代入できます．  
+`s` を1文字ずつ照合していって，`e` に一致したら break 文で抜けます．  
+i が n より大きいときは見つからなかった場合なので i に -1 を代入します．  
 
 ```python
 s = input()
@@ -94,9 +94,9 @@ while i < n:
     if s[i] == "e":
         break
     i += 1
-else:
-    i = -1
 
+if i >= n:
+    i = -1
 print(i)
 ```
 
@@ -118,8 +118,6 @@ while i >= 0:
         if cnt == 2:
             break
     i -= 1
-else:
-    i = -1
 
 print(i)
 ```
@@ -204,3 +202,8 @@ while player == cpu:
     else:
         print("あいこで > ", end="")
 ```
+
+<hr>
+
+[Chapter 3 基本構文](Chapter3.md)  
+[Index](../README.md)

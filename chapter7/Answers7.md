@@ -460,3 +460,8 @@ print("cheapest by train |", navi.cheapest(Way.TRAIN))  # cheapest by train | No
 ```
 
 (ここまで Extra)  
+
+<hr>
+
+[Chapter 7 クラス](Chapter7.md)  
+[Index](../README.md)

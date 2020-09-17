@@ -184,3 +184,9 @@ a = 1
 ans = 1 << 10
 print(ans)  # 1024
 ```
+
+
+<hr>
+
+[Chapter 1 組込みデータ型](Chapter1.md)  
+[Index](../README.md)
