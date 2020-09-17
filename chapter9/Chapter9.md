@@ -951,7 +951,7 @@ amuletcoin のコンテンツとして amuletcoin 以下に次のプログラム
 
 実装済みのプログラムは `chapter9/amuletcoin_org` にあります．  
 
-CSV ファイルの例として `chapter9/amuletcoin/accounts/account.csv` を用意しています (`chapter9/workspaces/mkaccount.py` で作りました)．  
+CSV ファイルの例として `chapter9/amuletcoin/accounts/account.csv` を用意しています (`chapter9/amuletcoin/accounts/mkaccount.py` で作りました)．  
 このファイルには 2020-01-01 から 2022-12-31 までの 3 年分の家計簿がつけられています．  
 先頭の 5 行は次のようになっています．  
 date，category，expense をカンマで区切っています．  
