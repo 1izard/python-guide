@@ -1,1 +1,79 @@
 # python-tutorial
+
+練習問題付き Python 入門  
+
+
+# 推奨環境
+
+- Python 3.6 以上  
+- OS はたぶんなんでも OK  
+- エディタは VSCode 推奨  
+
+本稿のコードの多くのは Python 3.8.5 を Docker コンテナ上で実行して動作確認していますが，ファイル操作のあたりなどは Windows，MacOS 上でも動作確認しています．  
+
+
+# 対象読者
+
+プログラミング初心者，Python 初学者 / 初級者  
+
+
+# 本稿のゴール
+
+Python の基本文法を学習しながら，最終的にコマンドラインツール (Terminal や Powershell などで使うツール) を実装できるようにします．  
+そのため Python の実行はコマンドラインでの実行を前提とします．  
+エディタとして何を使っていいかわからない方の中で，とりあえず Python の文法だけ勉強できればいい方は Google Colab ( https://colab.research.google.com/notebooks/intro.ipynb )，コマンドラインツールまで実装したい方は VSCode ( https://code.visualstudio.com/ ) をおすすめしますが，本稿での説明は VSCode を前提とします．  
+
+# Index
+
+[Chapter 1 基本データ型](chapter1/Chapter1.md)  
+[Chapter 2 文字列](chapter2/Chapter2.md)  
+[Chapter 3 基本構文](chapter3/Chapter3.md)  
+[Chapter 4 基本データ構造](chapter4/Chapter4.md)  
+[Chapter 5 関数](chapter5/Chapter5.md)  
+[Chapter 6 組込み関数](chapter6/Chapter6.md)  
+[Chapter 7 クラス](chapter7/Chapter7.md)  
+[Chapter 8 ファイル操作](chapter8/Chpater8.md)  
+[Chapter 9 システム/例外処理/モジュール](chapter9/Chapter9.md)  
+
+
+# Topics
+
+基本的な文法のほかに，以下について解説に力を入れています．  
+
+- Python において変数は箱ではなくラベルである
+- list の deep copy と shallow copy の違い
+- 内包表記の使用例
+- クロージャの実用的な使い方
+- 組込み関数の実用的な使い方
+- プロパティについて
+- UserList，UserDict の継承
+- `__str__` をはじめとする特殊メソッド
+- ファイル操作
+- Pathlib と os.path の使い方
+
+
+# 読み方
+
+## サンプルコード
+
+本文中のサンプルコードを分割して説明を挟むようなことはせず，すべてコピペしてすぐ使えるようにしています．  
+
+
+## ディレクトリ構成
+
+Chapter 8 のファイル操作の練習用に自動的にディレクトリとファイルを作成するプログラムや Chapter 9 で実装するコマンドラインツール用のディレクトリなど，本リポジトリをクローンあるいはダウンロードすることで実装する環境を手軽に作ることができます．  
+
+
+## Extra
+
+文中の `(Extra)` とある部分は発展的な内容です．  
+プログラミング初心者の方や Python 初学者の方は余裕がなければスキップしましょう．  
+
+
+
+# Python のインストール
+
+https://www.python.jp/index.html がとてもわかりやすいです．  
+
+- Windows ( https://www.python.jp/install/windows/index.html )
+- MacOS  ( https://www.python.jp/install/macos/install_python.html )
