@@ -2107,7 +2107,7 @@ print(vectors)  # [Vector([3, 4, 5]), Vector([3, 4, 5]), Vector([1, 5, 9])]
 |`content: str`|タスクの内容|
 |`created: str`|タスクが作られた日付|
 |`deadline: str`|タスクの期日|
-|`finished: bool`|タスクが完了した場合 `True`，そうでない場合 `False`|
+|`finished: bool`|タスクが完了した場合 `True`，そうでない場合 `False`．最初は `False` に設定|
 
 |インスタンスメソッド|説明|
 |:---:|:---:|

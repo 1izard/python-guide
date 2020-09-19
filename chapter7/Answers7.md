@@ -10,9 +10,10 @@ class Task:
         self.content = content
         self.created = created
         self.deadline = deadline
+        self.finished = False
 
     def __repr__(self):
-        return f"Task(content={self.content}, created={self.created}, deadline={self.deadline})"
+        return f"Task(content={self.content}, created={self.created}, deadline={self.deadline}, finished={self.finished})"
 
     def done(self):
         self.finished = True
@@ -29,9 +30,13 @@ class Task:
         self.content = content
         self.created = created
         self.deadline = deadline
+        self.finished = False
 
     def __repr__(self):
-        return f"Task(content={self.content}, created={self.created}, deadline={self.deadline})"
+        return f"Task(content={self.content}, created={self.created}, deadline={self.deadline}, finished={self.finished})"
+
+    def done(self):
+        self.finished = True
 
 
 class Schedule:

@@ -25,6 +25,7 @@ Python の基本文法を学習しながら，最終的にコマンドライン�
 
 # Index
 
+[Chapter 0 準備](chapter0/Chapter0.md)
 [Chapter 1 基本データ型](chapter1/Chapter1.md)  
 [Chapter 2 文字列](chapter2/Chapter2.md)  
 [Chapter 3 基本構文](chapter3/Chapter3.md)  
@@ -69,11 +70,3 @@ Chapter 8 のファイル操作の練習用に自動的にディレクトリと�
 文中の `(Extra)` とある部分は発展的な内容です．  
 プログラミング初心者の方や Python 初学者の方は余裕がなければスキップしましょう．  
 
-
-
-# Python のインストール
-
-https://www.python.jp/index.html がとてもわかりやすいです．  
-
-- Windows ( https://www.python.jp/install/windows/index.html )
-- MacOS  ( https://www.python.jp/install/macos/install_python.html )
