@@ -12,7 +12,7 @@
 絶対パスはディレクトリの階層のうち最上層を基準としたファイルの場所のことで，相対パスはカレントディレクトリ (current directory : 今いるディレクトリ) を基準としたファイルの場所のことをいいます．  
 
 以降，例として以下のディレクトリ構成を想定します．  
-`chapter8/workspaces` 内の `init_dirs_pathlib.py` または `init_dirs_ospath.py` を実行すると，workspaces 以下に次のような dir1 ディレクトリが作成されます．  
+`chapter08/workspaces` 内の `init_dirs_pathlib.py` または `init_dirs_ospath.py` を実行すると，workspaces 以下に次のような dir1 ディレクトリが作成されます．  
 Python 3.6 以上を使っている方は `init_dir1_pathlib.py`，Python 3.6 未満 3.0 以上の方は `init_dir1_ospath.py` を使用してください．  
 なお，`init_dir1_pathlib.py`，`init_dir1_ospath.py` を実行すれば何度でも以下のようなディレクトリを作ることができます．  
 途中で失敗したときなどもう一度最初からやり直したくなった場合は再度実行してください．  
@@ -3166,7 +3166,7 @@ print(obj_str)
 
 # 練習問題
 
-Python 3.6 以上を使用している方は `chapter8/workspaces/init_dir2_pathlib.py`，Python 3.6 未満 3.0 以上の方は `chapter8/workspaces/init_dir2_ospath.py` を使って練習問題用のディレクトリを作成してください．  
+Python 3.6 以上を使用している方は `chapter08/workspaces/init_dir2_pathlib.py`，Python 3.6 未満 3.0 以上の方は `chapter08/workspaces/init_dir2_ospath.py` を使って練習問題用のディレクトリを作成してください．  
 実行すると workspaces 内に dir2 ディレクトリが作成されます．  
 `init_dir2_pathlib.py` と `init_dir2_ospath.py` は実行すると dir2 があれば削除して新しく作るようになっているので，失敗したときなどやり直したくなったときは再度実行してください．  
 

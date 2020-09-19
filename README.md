@@ -26,15 +26,15 @@ Python の基本文法を学習しながら，最終的にコマンドライン�
 # Index
 
 [Chapter 0 準備](chapter0/Chapter0.md)
-[Chapter 1 基本データ型](chapter1/Chapter1.md)  
-[Chapter 2 文字列](chapter2/Chapter2.md)  
-[Chapter 3 基本構文](chapter3/Chapter3.md)  
-[Chapter 4 基本データ構造](chapter4/Chapter4.md)  
-[Chapter 5 関数](chapter5/Chapter5.md)  
-[Chapter 6 組込み関数](chapter6/Chapter6.md)  
-[Chapter 7 クラス](chapter7/Chapter7.md)  
-[Chapter 8 ファイル操作](chapter8/Chpater8.md)  
-[Chapter 9 システム/例外処理/モジュール](chapter9/Chapter9.md)  
+[Chapter 1 基本データ型](chapter01/Chapter1.md)  
+[Chapter 2 文字列](chapter02/Chapter2.md)  
+[Chapter 3 基本構文](chapter03/Chapter3.md)  
+[Chapter 4 基本データ構造](chapter04/Chapter4.md)  
+[Chapter 5 関数](chapter05/Chapter5.md)  
+[Chapter 6 組込み関数](chapter06/Chapter6.md)  
+[Chapter 7 クラス](chapter07/Chapter7.md)  
+[Chapter 8 ファイル操作](chapter08/Chpater8.md)  
+[Chapter 9 システム/例外処理/モジュール](chapter09/Chapter9.md)  
 
 
 # Topics
