@@ -3238,7 +3238,7 @@ print(obj_str)
 ```
 
 
-# 練習問題
+# 練習問題 8
 
 Python 3.6 以上を使用している方は `chapter08/workspaces/init_dir2_pathlib.py`，Python 3.6 未満 3.0 以上の方は `chapter08/workspaces/init_dir2_ospath.py` を使って練習問題用のディレクトリを作成してください．  
 実行すると workspaces 内に dir2 ディレクトリが作成されます．  

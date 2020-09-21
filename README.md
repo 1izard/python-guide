@@ -41,8 +41,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [文字列](chapter01/Chapter1.md#文字列)
 - [None](chapter01/Chapter1.md#None)
 - [変換](chapter01/Chapter1.md#変換)
-- [練習問題](chapter01/Chapter1.md#練習問題)
-- [練習問題回答例](chapter01/Answers1.md)
+- [練習問題 1](chapter01/Chapter1.md#練習問題)
+- [練習問題 1 回答例](chapter01/Answers1.md)
 
 
 ## [Chapter 2 文字列](chapter02/Chapter2.md)  
@@ -53,32 +53,31 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [スライス](chapter02/Chapter2.md#スライス)
 - [str 型で使用できる主なメソッド](chapter02/Chapter2.md#str-型で使用できる主なメソッド)
 - [変数](chapter02/Chapter2.md#変数)
-- [練習問題](chapter02/Chapter2.md#練習問題)
-- [練習問題解答例](chapter02/Answers2.md)
+- [練習問題 2](chapter02/Chapter2.md#練習問題)
+- [練習問題 2 解答例](chapter02/Answers2.md)
 
 
 ## [Chapter 3 基本構文](chapter03/Chapter3.md)  
 - [if 文](chapter03/Chapter3.md#if-文)
 - [while 文](chapter03/Chapter3.md#while-文)
 - [スコープ](chapter03/Chapter3.md#スコープ)
-- [練習問題](chapter03/Chapter3.md#練習問題)
-- [練習問題解答例](chapter03/Answers3.md)
+- [練習問題 3](chapter03/Chapter3.md#練習問題)
+- [練習問題 3 解答例](chapter03/Answers3.md)
 
 
 ## [Chapter 4 基本データ構造](chapter04/Chapter4.md)  
-- [基本データ構造](chapter04/Chapter4.md#基本データ構造)
 - [list](chapter04/Chapter4.md#list)
-- [tuple (タプル)](chapter04/Chapter4.md#list-タプル)
+- [tuple (タプル)](chapter04/Chapter4.md#tuple-タプル)
 - [dict (辞書)](chapter04/Chapter4.md#dict-辞書)
 - [for 文](chapter04/Chapter4.md#for-文)
-- [練習問題](chapter04/Chapter4.md#練習問題)
-- [練習問題解答例](chapter04/Answers4.md)
+- [練習問題 4](chapter04/Chapter4.md#練習問題)
+- [練習問題 4 解答例](chapter04/Answers4.md)
 
 
 ## [Chapter 5 関数](chapter05/Chapter5.md)  
 - [定義](chapter05/Chapter5.md#定義)
-- [実引数 (argument)](chapter05/Chapter5.md#実引数-argument-)
-- [仮引数 (parameter)](chapter05/Chapter5.md#仮引数-parameter-)
+- [実引数 (Argument)](chapter05/Chapter5.md#実引数-argument)
+- [仮引数 (Parameter)](chapter05/Chapter5.md#仮引数-parameter)
 - [バリデーション (Validation)](chapter05/Chapter5.md#バリデーション-validation)
 - [再帰関数](chapter05/Chapter5.md#再帰関数)
 - [関数オブジェクト](chapter05/Chapter5.md#関数オブジェクト)
@@ -87,8 +86,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [Generator 関数](chapter05/Chapter5.md#generator-関数)
 - [Type Hint](chapter05/Chapter5.md#type-hint)
 - [スコープ](chapter05/Chapter5.md#スコープ)
-- [練習問題](chapter05/Chapter5.md#練習問題)
-- [練習問題解答例](chapter05/Answers5.md)
+- [練習問題 5](chapter05/Chapter5.md#練習問題)
+- [練習問題 5 解答例](chapter05/Answers5.md)
 
 
 ## [Chapter 6 組込み関数](chapter06/Chapter6.md)  
@@ -104,8 +103,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [zip()](chapter06/Chapter6.md#zip)
 - [type()](chapter06/Chapter6.md#type)
 - [isinstance()](chapter06/Chapter6.md#isinstance)
-- [練習問題](chapter06/Chapter6.md#練習問題)
-- [練習問題解答例](chapter06/Answers6.md)
+- [練習問題 6](chapter06/Chapter6.md#練習問題)
+- [練習問題 6 解答例](chapter06/Answers6.md)
 
 
 ## [Chapter 7 クラス](chapter07/Chapter7.md)  
@@ -121,8 +120,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [Enum クラス](chapter07/Chapter7.md#enum-クラス)
 - [namedtuple](chapter07/Chapter7.md#namedtuple)
 - [特殊メソッド (Spacial Method)](chapter07/Chapter7.md#特殊メソッド-special-method)
-- [練習問題](chapter07/Chapter7.md#練習問題)
-- [練習問題解答例](chapter07/Answers7.md)
+- [練習問題 7](chapter07/Chapter7.md#練習問題)
+- [練習問題 7 解答例](chapter07/Answers7.md)
 
 
 ## [Chapter 8 ファイル操作](chapter08/Chapter8.md)  
@@ -133,8 +132,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [shutil](chapter08/Chapter8.md#shutil)
 - [ファイル I/O](chapter08/Chapter8.md#ファイル-IO)
 - [JSON](chapter08/Chapter8.md#json)
-- [練習問題](chapter08/Chapter8.md#練習問題)
-- [練習問題解答例](chapter08/Answers8.md)
+- [練習問題 8](chapter08/Chapter8.md#練習問題)
+- [練習問題 8 解答例](chapter08/Answers8.md)
 
 
 ## [Chapter 9 システム/例外処理/モジュール](chapter09/Chapter9.md)  
@@ -143,8 +142,8 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [datetime](chapter09/Chapter9.md#datetime)
 - [例外処理](chapter09/Chapter9.md#例外処理)
 - [モジュール](chapter09/Chapter9.md#モジュール)
-- [練習問題](chapter09/Chapter9.md#練習問題)
-- [練習問題解答例](chapter09/Answers9.md)
+- [練習問題 9](chapter09/Chapter9.md#練習問題)
+- [練習問題 9 解答例](chapter09/Answers9.md)
 
 
 ## [Chapter 10 コマンドラインツールを作ってみよう](chapter10/Chapter10.md)

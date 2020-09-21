@@ -443,7 +443,7 @@ print(isinstance("str_obj", int))   # False
 print(isinstance([0, 1, 2], tuple))  # False
 ```
 
-# 練習問題
+# 練習問題 6
 
 
 ## Q 1

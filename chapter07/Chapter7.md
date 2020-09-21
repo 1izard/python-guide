@@ -2090,7 +2090,8 @@ print(vectors)  # [Vector([3, 4, 5]), Vector([3, 4, 5]), Vector([1, 5, 9])]
 
 (ここまで Extra)  
 
-# 練習問題
+
+# 練習問題 7
 
 ## Q 1
 
