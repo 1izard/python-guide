@@ -126,7 +126,7 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 
 ## [Chapter 8 ファイル操作](chapter08/Chapter8.md)  
 - [ファイルパス](chapter08/Chapter8.md#ファイルパス)
-- [Path](chatper08/Chapter8.md#path)
+- [pathlib](chatper08/Chapter8.md#pathlib)
 - [os](chapter08/Chapter8.md#os)
 - [glob.glob()](chapter08/Chapter8.md#glob.glob)
 - [shutil](chapter08/Chapter8.md#shutil)
