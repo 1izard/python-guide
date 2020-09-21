@@ -9,7 +9,7 @@
 - OS はたぶんなんでも OK  
 - エディタは VSCode 推奨  
 
-本稿のコードの多くのは Python 3.8.5 を Docker コンテナ上で実行して動作確認していますが，プラットフォームごとに差異がありそうなところは Windows，MacOS 上でも動作確認しています．  
+本稿のコードの多くのは Python 3.8.5 を Docker コンテナ上で実行して動作確認していますが，プラットフォームごとに差異がありそうなところは Windows，MacOS 上でも一応動作確認しています．  
 
 
 # 対象読者
@@ -19,13 +19,20 @@
 
 # 本稿のゴール
 
-Python の基本文法を学習しながら，最終的にコマンドラインツール (Terminal や Powershell などで使うツール) を実装できるようにします．  
+Python の基本文法を学習しながら，最終的にコンソール上で動く学習用ツールを実装できるようにします．  
 そのため Python の実行はコマンドラインでの実行を前提とします．  
-エディタとして何を使っていいかわからない方の中で，とりあえず Python の文法だけ勉強できればいい方は Google Colab ( https://colab.research.google.com/notebooks/intro.ipynb )，コマンドラインツールまで実装したい方は VSCode ( https://code.visualstudio.com/ ) をおすすめしますが，本稿での説明は VSCode を前提として進めます．  
+エディタとして何を使っていいかわからない方の中で，とりあえず Python の文法だけ勉強できればいい方は Google Colab ( https://colab.research.google.com/notebooks/intro.ipynb )，ツールまで実装したい方は VSCode ( https://code.visualstudio.com/ ) をおすすめしますが，本稿での説明は VSCode を前提として進めます．  
 
 # Index
 
-[Chapter 0 準備](chapter0/Chapter0.md)  
+## [Chapter 0 準備](chapter00/Chapter0.md)  
+- [Python のインストール](chapter00/Chapter0.md#Python-のインストール)
+- [リポジトリのクローン / ダウンロード](chapter00/Chapter0.md#リポジトリのクローン-/-ダウンロード)
+- [VSCode のインストール](chapter00/Chapter0.md#VSCode-のインストール)
+- [最初のプログラム](chapter00/Chapter0.md#最初のプログラム)
+- [Python Extension のインストール](chapter00/Chapter0.md#Python-Extension-のインストール)
+- [Linter, Formatter の設定](chapter00/Chapter0.md#Linter,-Formatter-の設定)
+
 [Chapter 1 基本データ型](chapter01/Chapter1.md)  
 [Chapter 2 文字列](chapter02/Chapter2.md)  
 [Chapter 3 基本構文](chapter03/Chapter3.md)  
@@ -64,6 +71,7 @@ Python の基本文法を学習しながら，最終的にコマンドライン�
 
 各 chapter のディレクトリに `workspaces` という作業用ディレクトリを用意しています．  
 練習用に自動的にディレクトリやファイルを作成するプログラムも用意してあるので，本リポジトリをクローンあるいはダウンロードすることで練習する環境を手軽に作ることができます．  
+詳しくは [Chapter 0 準備](chapter0/Chapter0.md) を参照してください．  
 
 
 ## Extra

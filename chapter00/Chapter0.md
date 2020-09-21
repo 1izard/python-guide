@@ -1,5 +1,7 @@
 # Chapter 0 準備
 
+(補足) 画像はすべて Windows 10 でのものになります．  
+
 
 # Python のインストール
 
@@ -80,7 +82,7 @@ EXPLORER 上で work ディレクトリを右クリックし，`New File` を選
 EXPLORER 上で hello.py をクリックすると hello.py を開くことができます．  
 中身は `print("Hello, World!")` にしておきましょう．  
 
-![vscode_hello](img/vscode_hello.jpg)
+![vscode_hello](img/vscode_hello.png)
 
 
 ## プログラムの実行
@@ -92,15 +94,18 @@ EXPLORER 上で workspaces ディレクトリを右クリックし，`Open in In
 組込み関数 print はプログラムの実行結果を標準出力 (standard output; コンソールに出力すること) に出力します．  
 コンソール上で `python hello.py` (あるいは `py hello.py`, `python3 hello.py`) を入力してエンターキーを押すと hello.py が実行され，`Hello, World!` と表示されます．  
 
-![vscode_run_hello](img/vscode_run_hello.png)
+![vscode_run_hello](img/vscode_run_hello.jpg)
 
-こんな感じでプログラムを実行することができます．  
+こんな感じでプログラムを実行し，実行結果を表示することができます．  
 
 
 
-## Python Extension のインストール
+# Python Extension のインストール
 
-hello.py を作るかクリックすると上の画像のように右下あたりに `Do you want to install the recommended extensions for Python?` (Python Extension をインストールしますか？) というモーダルが出てきます．  
+hello.py を作るかクリックすると画像のように右下あたりに `Do you want to install the recommended extensions for Python?` (Python Extension をインストールしますか？) というモーダルが出てきます．  
+
+![vscode_modal](img/vscode_modal.jpg)
+
 Extension とは VSCode の拡張機能のことです．  
 Google 拡張機能みたいにどんどん VSCode に機能を追加していくことができます．  
 Python Extension は Python をコーディングするときに関数名などを補完してくれる便利な拡張機能です．  
@@ -112,14 +117,20 @@ Python Extension は Python をコーディングするときに関数名など�
 ![vscode_extensions](img/vscode_extensions.jpg)
 
 
-## Linter, Formatter の設定
+# Linter, Formatter の設定
 
 Linter とはコードを書いているときにアドバイスをくれるツール，Formatter はコードを自動整形してくれるツールです．  
-あったほうが便利ですが，必要なかったり設定が面倒だったりする方はプログラムの実行の項目に進んでください．  
 
 本稿では Linter として flake8，Formatter として autopep8 を使い，コード中の 1 行の長さを 110 文字に設定しています (デフォルトは 80 文字)．  
 `python-tutorial/tox.ini` で文字数を指定しているので自動的に反映されます．  
 変更したい方は tox.ini の `110` のところを変更してください．  
+
+
+Linter と Formatter をインストールします．  
+python-tutorial ディレクトリでコンソールを開き， `pip install -r requirements.txt` を実行します (`python3` コマンドを使っている方は `pip3 install -r requirements.txt`)．  
+`python-tutorial/requirements.txt` に書いてある flake8 と autpep8 を使うのに必要なファイルをインストールしています．  
+
+![vscode_pip_install](img/vscode_pip_install.jpg)
 
 
 Linter と Formatter を設定するため `File -> Preferences -> Settings` を選択して VSCode の設定を開きます．  
@@ -145,3 +156,6 @@ Linter と Formatter を設定するため `File -> Preferences -> Settings` を
 ファイルを保存したとき自動的にコードがフォーマットされるようになります．  
 
 ![vscode_setting_format2](img/vscode_setting_format2.jpg)
+
+
+準備完了です！
