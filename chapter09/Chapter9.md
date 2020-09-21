@@ -1876,21 +1876,21 @@ inquiries.csv を読み出して，指定した期間中の問い合わせ件数
 例 1. 1 月から 2 月まで (2020/01/01 から 2020/02/29 まで)  
 
 ```
-$ python q.py 2020 1 3
+$ python q10.py 2020 1 3
 50395
 ```
 
 例 2. 0 月から 4 月まで  
 
 ```
-$ python q.py 2020 0 4
+$ python q10.py 2020 0 4
 Error: start month and end month must be in 1..12.
 ```
 
 例 3. 7 月から 12 月まで (2020/07/01 から 2020/12/31 まで)  
 
 ```
-$ python q.py 2020 7 12
+$ python q10.py 2020 7 12
 88298
 ```
 
