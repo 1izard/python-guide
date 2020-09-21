@@ -771,11 +771,12 @@ list の代表的なメソッドを紹介します．
 |           `append(x)`           |             `x` を list の末尾に追加する             |
 |         `insert(i, x)`          |         インデックス `i` に値 `x` を挿入する         |
 |           `remove(x)`           | `x` に等しい要素でインデックスが最小のものを除去する |
-|             `pop()`             |           list の末尾の要素を除去して返す            |
+|             `pop([i])`             |           list のインデックス `i` の要素を除去して返す．インデックスを指定しなかった場合は末尾の要素を除去して返す            |
 |           `index(x)`            |      `x` に等しい要素で最小のインデックスを返す      |
 |           `count(x)`            |             引数と同じ値の要素の数を返す             |
 | `sort(key=None, reverse=False)` |           要素を **in-place** でソートする           |
 
+## list.append()
 
 `append()` は引数のオブジェクトを list の末尾に追加します．  
 
@@ -785,6 +786,8 @@ lst1.append(10)    # [10]
 lst1.append(11)    # [10, 11]
 lst1.append(12)    # [10, 11, 12]
 ```
+
+## list.index() / list.count()
 
 `index(x)` で，`x` に等しい要素のインデックスを返します．  
 複数ある場合は最小のインデックスになります．  
@@ -834,6 +837,9 @@ print(idx12)    # -1
 ```
 (ここまで Extra)
 
+
+## list.sort()
+
 `sort()` でlistの要素を昇順にできます．   
 
 ```python
@@ -865,8 +871,7 @@ print(lst2)    # [10, 10, 11, 12, 13, 14]
 `sort()` に `key` を渡すといろんな仕方でソートできて楽しいのですが，書くことが多くて煩雑になるのでまた別のところで説明しようと思います．  
 
 
-(Extra)  
-以下は一応表には載せたんですがあんま使わないメソッドになります．  
+## list.insert()
 
 `insert(i, x)` で，`x` を `i`番目に挿入します．   
 
@@ -878,6 +883,8 @@ print(lst1)    # [10, 100, 11, 12]
 print(lst2)
 ```
 
+## list.remove()
+
 `remove(x)` で `x` をlistから除去します．  
 同じ値の要素が複数ある場合は，インデックスが最小のものを除去します．  
 
@@ -886,6 +893,9 @@ lst1 = [10, 11, 11, 10, 11, 10]
 
 lst1.remove(11)    # [10, 11, 10, 11, 10]
 ```
+
+
+## list.pop()
 
 `append()` と `pop()` を使ってlist をスタックとして扱えます．  
 
@@ -899,9 +909,20 @@ a = lst1.pop()    # 14
 b = lst1.pop()    # 13
 c = lst1.pop()    # 12
 
-print(lst1)    # [10, 11, 12]
+print(lst1)    # [10, 11]
 ```
-(ここまで Extra)
+
+インデックスを指定するとそのインデックスの要素を除去して返します．  
+
+```python
+lst1 = [10, 11, 12, 13, 14]
+
+lst1.pop(1)
+print(lst1)         # [10, 12, 13, 14]
+
+a = lst1.pop(-2)    # 13
+print(lst1)         # [10, 12, 14]
+```
 
 
 # tuple (タプル)
@@ -1405,6 +1426,9 @@ dict に使用できる主なメソッドを紹介します．
 |         values()         |                                      すべての value を dictviewオブジェクト で返す                                       |
 |         items()          |                                 すべての key, value のペアを dictviewオブジェクト で返す                                 |
 
+
+## dict.get()
+
 `<dictオブジェクト>[key]` で key に紐づいた value を取得できますが，存在しない key を指定した場合は `KeyError` になるのでした．  
 `get(key, default=x)` で，key が存在しない場合は default に指定した値を返すようにすることで，より安全に value を取得することができます．  
 ケースによって key が存在したり存在しなかったりする dict を扱う際に重宝します．  
@@ -1419,6 +1443,9 @@ dct1 = {
 a = dct1.get("Vapareon", "Unknown")  # Water
 b = dct1.get("Espeon", "Unknown")    # Unknown
 ```
+
+
+## dict.update()
 
 `dict1.update(dict2)` で，dict1 に dict2 を連結します．  
 重複する key の value は dict2 の value に更新(update)されます．  
@@ -1451,6 +1478,9 @@ print(dct1)
 ```
 
 (Extra)  
+
+## dict.setdefault()
+
 `setdefault(key, default)` は，key が存在すればその value を返し，存在しなければ新しく key と default のペアを dict に追加して，value(=default) を返します．  
 
 ```python
@@ -1478,6 +1508,9 @@ print(dct1)
 使用例は練習問題を参考にしてください．  
 (ここまで Extra)
 
+
+## dict.keys()
+
 `keys()`, `values()`, `items()` は，後述するfor文とともによく使用されるメソッドです．  
 
 `keys()` で dict のもつすべての key を取得できます．  
@@ -1498,6 +1531,9 @@ key_lst = list(keys)
 print(key_lst)   # ['Vapareon', 'Jolteon', 'Flareon']
 ```
 
+
+## dict.values()
+
 `values()` で dict のもつすべての value を取得できます．  
 `keys()` と同様，返り値は dictviewオブジェクト です．  
 `list()` で list化できます．  
@@ -1515,6 +1551,9 @@ print(values)         # dict_values(['Water', 'Electric', 'Fire'])
 value_lst = list(values)
 print(value_lst)     # ['Water', 'Electric', 'Fire']
 ```
+
+
+## dict.items()
 
 `items()` で dict のもつすべての key, value のペアを取得できます．  
 返り値は dictviewオブジェクト で，1つ1つのペアは tuple になっています．  
