@@ -116,7 +116,7 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [クラス属性](chapter07/Chapter7.md#クラス属性)
 - [クラスメソッド](chapter07/Chapter7.md#クラスメソッド)
 - [スタティックメソッド](chapter07/Chapter7.md#スタティックメソッド)
-- [継承 (inheritance)](chapter07/Chapter7.md#継承-inheritance)
+- [継承 (Inheritance)](chapter07/Chapter7.md#継承-inheritance)
 - [Enum クラス](chapter07/Chapter7.md#enum-クラス)
 - [namedtuple](chapter07/Chapter7.md#namedtuple)
 - [特殊メソッド (Spacial Method)](chapter07/Chapter7.md#特殊メソッド-special-method)
