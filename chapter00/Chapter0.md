@@ -94,7 +94,7 @@ EXPLORER 上で workspaces ディレクトリを右クリックし，`Open in In
 組込み関数 print はプログラムの実行結果を標準出力 (standard output; コンソールに出力すること) に出力します．  
 コンソール上で `python hello.py` (あるいは `py hello.py`, `python3 hello.py`) を入力してエンターキーを押すと hello.py が実行され，`Hello, World!` と表示されます．  
 
-![vscode_run_hello](img/vscode_run_hello.jpg)
+![vscode_run_hello](img/vscode_run_hello.png)
 
 こんな感じでプログラムを実行し，実行結果を表示することができます．  
 
@@ -130,7 +130,7 @@ Linter と Formatter をインストールします．
 python-tutorial ディレクトリでコンソールを開き， `pip install -r requirements.txt` を実行します (`python3` コマンドを使っている方は `pip3 install -r requirements.txt`)．  
 `python-tutorial/requirements.txt` に書いてある flake8 と autpep8 を使うのに必要なファイルをインストールしています．  
 
-![vscode_pip_install](img/vscode_pip_install.jpg)
+![vscode_pip_install](img/vscode_pip_install.png)
 
 
 Linter と Formatter を設定するため `File -> Preferences -> Settings` を選択して VSCode の設定を開きます．  

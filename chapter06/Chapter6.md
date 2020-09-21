@@ -25,7 +25,7 @@ Python では，一般的に使用される関数を **組込み関数** (built-
 この章では，まだ紹介していない有用な組込み関数をみていきます．  
 
 
-# abs
+# abs()
 
 abs 関数は数値の絶対値を返します．  
 (Extra) あるいは，`__abs__` メソッドが実装されているクラスのオブジェクトであれば `__abs__` メソッドの結果を返します．(ここまで Extra)
@@ -43,7 +43,7 @@ within = abs(c) < 5.0   # True
 ```
 
 
-# all
+# all()
 
 iterable オブジェクトの要素がすべて `True` と判定されるオブジェクトであれば `True`，1 つでも `False` と判定されるオブジェクトがあれば `False` を返す関数です．  
 all 関数は， `False` となる要素を見つけたら直ちに `False` を返します．  
@@ -64,7 +64,7 @@ s2 = all(["Oddish", "", "Vileplume"])     # False
 ```
 
 
-# any
+# any()
 
 any 関数は，iterable オブジェクトの要素のうち 1 つでも `True` と判定されるオブジェクトがあれば `True`，すべて `False` と判定されるオブジェクトであれば `False` を返す関数です．  
 1 つでも `True` の要素が見つかれば，その時点で `True` を返します．  
@@ -84,7 +84,7 @@ s2 = any(["", "", "", ""])          # False
 ```
 
 
-# min
+# min()
 
 min 関数は，複数の値，あるいは iterable オブジェクトを与えるとその中で最小の値を返す関数です．  
 
@@ -97,7 +97,7 @@ d = min([1.26, -4.44, 2.24, 2.91, 3.67, -1.81, 1.53, -2.56, 2.81, 4.0])  # -4.44
 ```
 
 
-# max
+# max()
 
 max 関数は，複数の値，あるいは iterable オブジェクトを与えるとその中で最大の値を返します．  
 
@@ -110,7 +110,7 @@ d = min([1.26, -4.44, 2.24, 2.91, 3.67, -1.81, 1.53, -2.56, 2.81, 4.0])  # 4.0
 ```
 
 
-# sum
+# sum()
 
 sum 関数は，iterable オブジェクトを引数として渡すと要素の和を返します．  
 
@@ -121,7 +121,7 @@ s2 = sum([1.64, 0.84, 1.18, -3.21, -4.36])  # -3.91
 
 (Extra)  
 
-# filter
+# filter()
 
 filter 関数は，bool オブジェクトを返す関数オブジェクトと iterable オブジェクトを引数として渡すと，関数オブジェクトが `True` を返す要素のみを含んだ iterable オブジェクトである filter オブジェクトを返します．  
 `filter(<関数オブジェクト> <iterable オブジェクト>)` のように使います．  
@@ -181,7 +181,8 @@ reasonables = [x for x in prices if prices[x] < 1000]
 print(reasonables)  # ['poke_ball', 'great_ball']
 ```
 
-# map
+
+# map()
 
 map 関数は，関数オブジェクトと iterable オブジェクトを引数にとり，iterable オブジェクトの要素 1 つ 1 つに関数を適用して，その結果を iterable オブジェクトである map オブジェクトで返します．  
 filter 関数と同様， `map(<関数オブジェクト>, <iterable オブジェクト>)` のように使います．  
@@ -238,7 +239,7 @@ Effective Python では，filter 関数や map 関数より list 内包表記や
 (ここまで Extra)  
 
 
-# sorted
+# sorted()
 
 引数として与えられた iterable オブジェクトをソートします．  
 `<list オブジェクト>.sort()` が in-place でソートする (もとの list オブジェクトをソートする) のに対して，組込み関数 sorted はソートされた list を新しく作って返します．  
@@ -380,7 +381,7 @@ pprint(schedules)
 ```
 
 
-# zip
+# zip()
 
 zip 関数は，引数として与えられた 2 つの iterable オブジェクトのインデックスが同じ要素どうしを tuple にした iterable オブジェクトである zip オブジェクトを作って返します．  
 
@@ -412,7 +413,7 @@ emails = [userid + "@" + domain for userid, domain in zip(userids, domains)]
 print(emails)   # ['1ickitung@example.com', '9b0ne@sample.co.jp']
 ```
 
-# type
+# type()
 
 type 関数はオブジェクトの属するクラス (型 : type) を返す関数です．  
 返り値は type オブジェクトになります．  
@@ -426,7 +427,7 @@ print(type([0, 1, 2]))  # <class 'list'>
 print(type(type))       # <class 'type'>
 ```
 
-# isinstance
+# isinstance()
 
 isinstance 関数は，引数にオブジェクトとクラスオブジェクトを渡すとオブジェクトがクラスに属している場合は `True`，そうでない場合は `False` を返す関数です．  
 オブジェクトの属しているクラスが継承しているすべてのクラスで `True` を返します．  

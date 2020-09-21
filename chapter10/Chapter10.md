@@ -1,4 +1,4 @@
-# Chapter 10 コマンドラインツール Rare Candy を作ろう
+# Chapter 10 コマンドラインツールを作ってみよう
 
 この章では今まで学習してきたことを使ってコマンドラインツール `Rare Candy` を作ります．  
 Rare Candy は問題の登録や出題，一覧表示，削除といった機能を持つ勉強用ツールです．  
@@ -2638,3 +2638,4 @@ root@45a372fb919c:/workspaces/python-tutorial/chapter10/rarecandy_org# python ra
 ```
 
 お疲れ様でした，Rare Candy の完成です！
+ぜひ日々の学習にお役立てくださいませ

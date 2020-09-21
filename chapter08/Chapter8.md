@@ -4,6 +4,80 @@
 とても多くの変数や関数が出てきますが，ファイル操作にどれも必要なものばかりです．  
 一度に覚えようとせず，まずは軽く目を通しておいて必要になったときにそういやこんなこと簡単にできる関数なかったっけ？と引っかかるようにしておくと良いと思います．  
 
+あとから見やすいよう，先に紹介する属性やメソッドを載せておきます．  
+
+## Path
+
+|属性|説明|
+|:---:|:---:|
+|[parts](#purepath.parts)|ファイルパスの各要素を持つ list|
+|[parents](#purepath.parents)|親ディレクトリ以上のファイルパスの list|
+|[parent](#purepath.parent)|親ディレクトリのファイルパス|
+|[name](#purepath.name)|ファイル名|
+|[suffix](#purepath.suffix)|拡張子|
+|[suffixes](#purepath.suffixes)|拡張子の list|
+|[stem](#purepath.suffixes)|拡張子を除いたファイル名|
+
+
+|メソッド|説明|
+|:---:|:---:|
+|[resolve()](#path.resolve)|絶対パスを返す|
+|[exists()](#path.exists)|ファイルあるいはディレクトリが存在するか|
+|[is_file()](#path.is_file)|ファイルが存在するか|
+|[is_dir()](#path.is_dir)|ディレクトリが存在するか|
+|[joinpath()](#path.joinpath)|ファイルパスを連結する|
+|[with_name()](#path.with_name)|ファイル名を変えたファイルパスを作る|
+|[with_suffix()](#path.with_suffix)|拡張子を変えたファイルパスを作る|
+|[iterdir()](#path.iterdir)|ディレクトリ直下のすべてのディレクトリとファイルのパスを取得|
+|[mkdir()](#path.mkdir)|ディレクトリを作る|
+|[unlink()](#path.unlink)|ファイルを削除する|
+|[rmdir()](#path.rmdir)|空のディレクトリを削除する|
+|[rename()](#path.rename)|ファイルパスを変える|
+|[match()](#path.match)|パターンに合致するファイルパスか|
+|[glob()](#path.glob)|パターンに合致するすべてのファイルパスを取得|
+|[open()](#path.open)|ファイルを開く|
+|[read_text()](#path.read_text)|テキストファイルを読み出す|
+|[write_text()](#path.write_text)|文字列をファイルに書き込む|
+
+
+## os
+
+|メソッド|説明|
+|:---:|:---:|
+|[os.path.join()](#os.path.join)|ファイルパスを連結する|
+|[os.path.abspath()](#os.path.abspath)|絶対パスを返す|
+|[os.path.dirname()](#os.path.dirname)|親ディレクトリのファイルパスを返す|
+|[os.path.basename()](#os.path.basename)|ファイル名を返す|
+|[os.path.splitext()](#os.path.splitext)|ファイルパスを拡張子とそれ以外に分割する|
+|[os.path.exists()](#os.path.exists)|ファイルあるいはディレクトリが存在するか|
+|[os.path.isfile()](#os.path.isdir)|ファイルが存在するか|
+|[os.path.isdir()](#os.path.isdir)|ディレクトリが存在するか|
+|[os.path.scandir()](#os.path.scandir)|ディレクトリ内のすべてのディレクトリとファイルを生成する|
+|[os.walk()](#os.walk)|ファイルパス以下のすべてのファイルとディレクトリのパスを取得|
+|[os.makedirs()](#os.makedirs)|ディレクトリを作る|
+|[os.remove()](#os.remove)|ファイルを削除する|
+|[os.rmdir()](#os.rmdir)|空のディレクトリを削除する|
+|[os.removedirs()](#os.removedirs)|空のディレクトリを削除する|
+|[os.rename()](#os.rename)|ファイルパスを変更する|
+|[os.environ()](#os.environ)|環境変数を取得|
+
+
+## glob
+
+|メソッド|説明|
+|:---:|:---:|
+|[glob()](#glob.glob)|パターンに合致するすべてのファイルとディレクトリのパスを取得|
+
+
+## shutil
+
+|メソッド|説明|
+|:---:|:---:|
+|[copy() / copy2()](#copy--copy2)|ファイルをコピーする|
+|[copytree()](#copytree)|ディレクトリを中身ごとコピーする|
+|[rmtree()](#rmtree)|ディレクトリを中身ごと削除する|
+|[move()](#move)|ファイルパスを変える|
+
 
 # ファイルパス
 
@@ -2046,7 +2120,7 @@ shutil にはファイルをコピーするためのメソッドが 4 種類あ�
 |copy|x|o|x|o|
 |copy2|o|o|x|o|
 
-### copy メソッド / copy2 メソッド
+### copy() / copy2()
 
 次のディレクトリ構成で，`dir1_2/requirements.txt` を `dir1_1/requirements_copy.txt` としてコピーすることを考えます．  
 プログラムは example.py で実行します．  
@@ -2157,7 +2231,7 @@ workspaces
 ```
 
 
-### shutil.copytree()
+### copytree()
 
 copytree メソッドはディレクトリをその中身といっしょに丸ごとコピーできるメソッドです．  
 
@@ -2220,7 +2294,7 @@ workspaces
 └── file1_4.txt
 ```
 
-## shutil.rmtree()
+## rmtree()
 
 ディレクトリを中身ごと削除するメソッドです．  
 引数で指定したパス以下が丸ごと削除できます．  
@@ -2282,7 +2356,7 @@ workspaces
     └── file1_4.txt
 ```
 
-## shutil.move
+## move
 
 shutil モジュールにもファイルパスを変更してファイルを移動させるメソッド move があります．  
 機能は Linux コマンドの mv と同じです．  
@@ -2394,7 +2468,7 @@ workspaces
 
 
 
-# ファイル I/O (Input / Output)
+# ファイル I/O
 
 プログラム中でファイルの読み書きができるようになると，自動化できる作業の幅が大きく広がります．  
 Python プログラムでファイルの読み書きを行う方法を見ていきましょう．  
