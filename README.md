@@ -186,3 +186,11 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 文中の `(Extra)` とある部分ではちょっと難しい発展的な内容を扱っています．  
 プログラミング初心者の方や Python 初学者の方は余裕がなければスキップして OK です．  
 
+
+# 参考文献
+
+- 公式 doc ( https://docs.python.org/ja/3/ )
+- python Japan ( https://www.python.jp/ )
+- 入門 Python 3 / オライリー ( https://www.oreilly.co.jp/books/9784873117386/ )
+- Fluent Python / オライリー ( https://www.oreilly.co.jp/books/9784873118178/ )
+- Effective Python / オライリー ( https://www.oreilly.co.jp/books/9784873119175/ )
