@@ -10,63 +10,63 @@
 
 |属性|説明|
 |:---:|:---:|
-|[parts](#purepath.parts)|ファイルパスの各要素を持つ list|
-|[parents](#purepath.parents)|親ディレクトリ以上のファイルパスの list|
-|[parent](#purepath.parent)|親ディレクトリのファイルパス|
-|[name](#purepath.name)|ファイル名|
-|[suffix](#purepath.suffix)|拡張子|
-|[suffixes](#purepath.suffixes)|拡張子の list|
-|[stem](#purepath.suffixes)|拡張子を除いたファイル名|
+|[parts](#purepathparts)|ファイルパスの各要素を持つ list|
+|[parents](#purepathparents)|親ディレクトリ以上のファイルパスの list|
+|[parent](#purepathparent)|親ディレクトリのファイルパス|
+|[name](#purepathname)|ファイル名|
+|[suffix](#purepathsuffix)|拡張子|
+|[suffixes](#purepathsuffixes)|拡張子の list|
+|[stem](#purepathsuffixes)|拡張子を除いたファイル名|
 
 
 |メソッド|説明|
 |:---:|:---:|
-|[resolve()](#path.resolve)|絶対パスを返す|
-|[exists()](#path.exists)|ファイルあるいはディレクトリが存在するか|
-|[is_file()](#path.is_file)|ファイルが存在するか|
-|[is_dir()](#path.is_dir)|ディレクトリが存在するか|
-|[joinpath()](#path.joinpath)|ファイルパスを連結する|
-|[with_name()](#path.with_name)|ファイル名を変えたファイルパスを作る|
-|[with_suffix()](#path.with_suffix)|拡張子を変えたファイルパスを作る|
-|[iterdir()](#path.iterdir)|ディレクトリ直下のすべてのディレクトリとファイルのパスを取得|
-|[mkdir()](#path.mkdir)|ディレクトリを作る|
-|[unlink()](#path.unlink)|ファイルを削除する|
-|[rmdir()](#path.rmdir)|空のディレクトリを削除する|
-|[rename()](#path.rename)|ファイルパスを変える|
-|[match()](#path.match)|パターンに合致するファイルパスか|
-|[glob()](#path.glob)|パターンに合致するすべてのファイルパスを取得|
-|[open()](#path.open)|ファイルを開く|
-|[read_text()](#path.read_text)|テキストファイルを読み出す|
-|[write_text()](#path.write_text)|文字列をファイルに書き込む|
+|[resolve()](#pathresolve)|絶対パスを返す|
+|[exists()](#pathexists)|ファイルあるいはディレクトリが存在するか|
+|[is_file()](#pathis_file)|ファイルが存在するか|
+|[is_dir()](#pathis_dir)|ディレクトリが存在するか|
+|[joinpath()](#pathjoinpath)|ファイルパスを連結する|
+|[with_name()](#pathwith_name)|ファイル名を変えたファイルパスを作る|
+|[with_suffix()](#pathwith_suffix)|拡張子を変えたファイルパスを作る|
+|[iterdir()](#pathiterdir)|ディレクトリ直下のすべてのディレクトリとファイルのパスを取得|
+|[mkdir()](#pathmkdir)|ディレクトリを作る|
+|[unlink()](#pathunlink)|ファイルを削除する|
+|[rmdir()](#pathrmdir)|空のディレクトリを削除する|
+|[rename()](#pathrename)|ファイルパスを変える|
+|[match()](#pathmatch)|パターンに合致するファイルパスか|
+|[glob()](#pathglob)|パターンに合致するすべてのファイルパスを取得|
+|[open()](#pathopen)|ファイルを開く|
+|[read_text()](#pathread_text)|テキストファイルを読み出す|
+|[write_text()](#pathwrite_text)|文字列をファイルに書き込む|
 
 
 ## os
 
 |メソッド|説明|
 |:---:|:---:|
-|[os.path.join()](#os.path.join)|ファイルパスを連結する|
-|[os.path.abspath()](#os.path.abspath)|絶対パスを返す|
-|[os.path.dirname()](#os.path.dirname)|親ディレクトリのファイルパスを返す|
-|[os.path.basename()](#os.path.basename)|ファイル名を返す|
-|[os.path.splitext()](#os.path.splitext)|ファイルパスを拡張子とそれ以外に分割する|
-|[os.path.exists()](#os.path.exists)|ファイルあるいはディレクトリが存在するか|
-|[os.path.isfile()](#os.path.isdir)|ファイルが存在するか|
-|[os.path.isdir()](#os.path.isdir)|ディレクトリが存在するか|
-|[os.path.scandir()](#os.path.scandir)|ディレクトリ内のすべてのディレクトリとファイルを生成する|
-|[os.walk()](#os.walk)|ファイルパス以下のすべてのファイルとディレクトリのパスを取得|
-|[os.makedirs()](#os.makedirs)|ディレクトリを作る|
-|[os.remove()](#os.remove)|ファイルを削除する|
-|[os.rmdir()](#os.rmdir)|空のディレクトリを削除する|
-|[os.removedirs()](#os.removedirs)|空のディレクトリを削除する|
-|[os.rename()](#os.rename)|ファイルパスを変更する|
-|[os.environ()](#os.environ)|環境変数を取得|
+|[os.path.join()](#ospathjoin)|ファイルパスを連結する|
+|[os.path.abspath()](#ospathabspath)|絶対パスを返す|
+|[os.path.dirname()](#ospathdirname)|親ディレクトリのファイルパスを返す|
+|[os.path.basename()](#ospathbasename)|ファイル名を返す|
+|[os.path.splitext()](#ospathsplitext)|ファイルパスを拡張子とそれ以外に分割する|
+|[os.path.exists()](#ospathexists)|ファイルあるいはディレクトリが存在するか|
+|[os.path.isfile()](#ospathisdir)|ファイルが存在するか|
+|[os.path.isdir()](#ospathisdir)|ディレクトリが存在するか|
+|[os.path.scandir()](#ospathscandir)|ディレクトリ内のすべてのディレクトリとファイルを生成する|
+|[os.walk()](#oswalk)|ファイルパス以下のすべてのファイルとディレクトリのパスを取得|
+|[os.makedirs()](#osmakedirs)|ディレクトリを作る|
+|[os.remove()](#osremove)|ファイルを削除する|
+|[os.rmdir()](#osrmdir)|空のディレクトリを削除する|
+|[os.removedirs()](#osremovedirs)|空のディレクトリを削除する|
+|[os.rename()](#osrename)|ファイルパスを変更する|
+|[os.environ()](#osenviron)|環境変数を取得|
 
 
 ## glob
 
 |メソッド|説明|
 |:---:|:---:|
-|[glob()](#glob.glob)|パターンに合致するすべてのファイルとディレクトリのパスを取得|
+|[glob()](#globglob)|パターンに合致するすべてのファイルとディレクトリのパスを取得|
 
 
 ## shutil
