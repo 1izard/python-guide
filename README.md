@@ -128,7 +128,7 @@ Python の基本文法を学習しながら，最終的にコンソール上で�
 - [ファイルパス](chapter08/Chapter8.md#ファイルパス)
 - [pathlib](chatper08/Chapter8.md#pathlib)
 - [os](chapter08/Chapter8.md#os)
-- [glob.glob()](chapter08/Chapter8.md#glob.glob)
+- [glob.glob()](chapter08/Chapter8.md#globglob)
 - [shutil](chapter08/Chapter8.md#shutil)
 - [ファイル I/O](chapter08/Chapter8.md#ファイル-IO)
 - [JSON](chapter08/Chapter8.md#json)
